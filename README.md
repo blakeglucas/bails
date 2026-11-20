@@ -57,30 +57,9 @@ Android and iOS support is experimental.
 
 ## Syncing with Wails
 
-The `upstream` branch holds renamed snapshots of Wails: what
-`scripts/upstream-sync/split.py` produces from a Wails checkout by copying its
-Go module, removing upstream-only material and renaming Wails to bails. It
-contains no bails changes. Everything bails changes is an ordinary commit on
-`main`, so edit any file freely.
-
-To pull in newer Wails changes:
-
-```bash
-scripts/upstream-sync/sync.sh ~/Projects/wails   # commits a snapshot on upstream
-git merge upstream
-```
-
-Git merges against the last synced snapshot, so only upstream's new changes
-arrive, and they conflict only where bails changed the same lines. Generated
-files (binding goldens, embedded runtime bundles, the setup wizard bundle)
-often conflict; resolve those by regenerating rather than by hand:
-
-```bash
-python3 scripts/upstream-sync/split.py --regenerate .
-```
-
-Keep `split.py` purely mechanical. A bails decision added there would apply
-to `upstream` and blur the line the merges rely on.
+The `upstream` branch holds renamed snapshots of Wails, and `main` merges
+them. bails changes are ordinary commits on `main`. See
+[SYNCING.md](SYNCING.md).
 
 ## License
 
