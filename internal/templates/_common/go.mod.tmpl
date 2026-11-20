@@ -1,0 +1,9 @@
+module {{.ModulePath}}
+
+go 1.26.0
+
+require github.com/blakeglucas/bails {{.BailsVersion}}
+
+{{if .LocalModulePath}}
+replace github.com/blakeglucas/bails => {{.LocalModulePath}}v3
+{{end}}

@@ -1,0 +1,3 @@
+# Disposable manifest build state and published example binaries.
+.bails/
+bin/

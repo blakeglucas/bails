@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://v3.wails.io/schemas/wails.v3.json
+version: 3
+project:
+  name: bails-dev-acceptance
+  product_name: Bails Dev Acceptance
+  identifier: org.bails.devacceptance
+  version: 1.0.0
+frontend:
+  directory: frontend
+  install: [npm, install]
+  build: [npm, run, build]
+  dev: [npm, run, dev]
+  output: frontend/dist
+dev:
+  debounce_ms: 250
+  watch: ['**/*.go', bails.yaml]
+  exclude: [.bails, frontend, bin, .git]

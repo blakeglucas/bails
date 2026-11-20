@@ -1,0 +1,11 @@
+//bails:include js/test.js
+//bails:include **:js/test_all.js
+//bails:include *c:js/test_c.js
+//bails:include *i:js/test_i.js
+//bails:include j*:js/test_j.js
+//bails:include jc:js/test_jc.js
+//bails:include ji:js/test_ji.js
+//bails:include t*:js/test_t.ts
+//bails:include tc:js/test_tc.ts
+//bails:include ti:js/test_ti.ts
+package main

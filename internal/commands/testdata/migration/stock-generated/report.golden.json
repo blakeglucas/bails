@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "completed_by": "CLI_VERSION",
+  "complete": true,
+  "wrote": [
+    "bails.migrated.yaml"
+  ],
+  "sources": {
+    "Taskfile.yml": "c52277b0bbaf5e057c6c0b37215f3e081c26487d84cfa89cc74c02f64da2431e",
+    "build/Taskfile.yml": "5999f046db91bbb870f29a42466713f0d1276faecab1d936dbc4e0bd7a2fd59b",
+    "build/appicon.png": "28332a3b130d1970d208e40b7ab2c84f9ead10199f8c058e08e07fe21fe7ea49",
+    "build/config.yml": "a917388712079f0799706c1c3b865588af6de24eb7fc8460eb56e6159641494a",
+    "build/darwin/Info.plist": "c170307cce70f752ccf3ca3f86fe56fbe0fed2d0e5aca247459d7d9bbc70e915",
+    "build/darwin/Taskfile.yml": "6b75611710a8ab7aeb33e61b925c15fcb38aa7b22c1482f45e7b5e492909cec4",
+    "build/darwin/icons.icns": "0f62562b785f3ef33816d6a3ad06968505ce146da6ea75eb92c02905a4dfcf58",
+    "build/linux/Taskfile.yml": "d35775aad675b0c5fb33ba0d299b2473ea70c2a0447a00247fb87956f536c28c",
+    "build/windows/Taskfile.yml": "63aee516a0529f1f1e6187cd244e80af8109040998f51fceb4eee0b190f31d6f",
+    "build/windows/icon.ico": "126f9c6bb544d001921fc60ac1fd21550940fdada477e3f41d46c73e08ae84a7",
+    "build/windows/nsis/project.nsi": "5f80d6ac8a2d159a2e380f07366ed732aa74defbaff4d41ef844b88353d73f4b",
+    "build/windows/bails.exe.manifest": "ba4b4b51e37f3b0f3280770b730e791ff0f1dbe05b75324093e295b7f29cc490",
+    "frontend/package.json": "29397cd30cdbfddb84666ebb02c2462187643ea38e4d2df21cec10c046e69ca8",
+    "frontend/tsconfig.json": "503f05a0821c13fba639dd3870619cf2b01f8f6fa8735705c1eebad94f0c10d0"
+  },
+  "taskfiles": [
+    {
+      "file": "Taskfile.yml",
+      "role": "root",
+      "classification": "current-default"
+    },
+    {
+      "file": "build/Taskfile.yml",
+      "role": "common",
+      "classification": "historical-default"
+    },
+    {
+      "file": "build/darwin/Taskfile.yml",
+      "role": "darwin",
+      "classification": "historical-default"
+    },
+    {
+      "file": "build/linux/Taskfile.yml",
+      "role": "linux",
+      "classification": "historical-default"
+    },
+    {
+      "file": "build/windows/Taskfile.yml",
+      "role": "windows",
+      "classification": "historical-default"
+    }
+  ]
+}
