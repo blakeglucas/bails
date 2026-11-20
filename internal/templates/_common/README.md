@@ -6,6 +6,13 @@ Congratulations on generating your Bails application! This README will guide you
 
 1. Navigate to your project directory in the terminal.
 
+   The frontend installs `@bails/runtime` from a private registry
+   (see `frontend/.npmrc`). If you haven't yet, authenticate once:
+
+   ```
+   npm login --registry=https://npm.bgcl.dev/ --scope=@bails
+   ```
+
 2. To run your application in development mode, use the following command:
 
    ```

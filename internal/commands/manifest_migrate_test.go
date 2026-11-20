@@ -251,7 +251,7 @@ func TestMigrateGoldenFixtures(t *testing.T) {
 		source   string
 		rootName string
 	}{
-		{name: "stock-generated", source: filepath.Join("..", "..", "examples", "badge"), rootName: "badge"},
+		{name: "stock-generated", source: filepath.Join("testdata", "migration", "badge-stock"), rootName: "badge"},
 		{name: "customised", source: filepath.Join("testdata", "migration", "customised", "input"), rootName: "customised"},
 		{name: "included", source: filepath.Join("testdata", "migration", "included", "input"), rootName: "included"},
 		{name: "partial", source: filepath.Join("testdata", "migration", "partial", "input"), rootName: "partial"},
@@ -909,7 +909,7 @@ func TestLegacyBindingOptionsRecogniseTypedAndInterfaceFlags(t *testing.T) {
 }
 
 func TestMigrationAcceptsStockGeneratedExampleDeterministically(t *testing.T) {
-	root, err := filepath.Abs(filepath.Join("..", "..", "examples", "badge"))
+	root, err := filepath.Abs(filepath.Join("testdata", "migration", "badge-stock"))
 	require.NoError(t, err)
 	firstReport, firstDocument, err := analyseMigration(root)
 	require.NoError(t, err)
@@ -932,7 +932,7 @@ func TestMigrationAcceptsStockGeneratedExampleDeterministically(t *testing.T) {
 
 func TestMigrationHistoricalDefaultsAcceptCRLFButRejectEdits(t *testing.T) {
 	root := t.TempDir()
-	require.NoError(t, os.CopyFS(root, os.DirFS(filepath.Join("..", "..", "examples", "badge"))))
+	require.NoError(t, os.CopyFS(root, os.DirFS(filepath.Join("testdata", "migration", "badge-stock"))))
 	require.NoError(t, filepath.WalkDir(root, func(path string, entry fs.DirEntry, err error) error {
 		if err != nil {
 			return err
@@ -966,7 +966,7 @@ func TestMigrationHistoricalDefaultsAcceptCRLFButRejectEdits(t *testing.T) {
 }
 
 func TestMigrationAnalysisIsConcurrentAndDeterministic(t *testing.T) {
-	root, err := filepath.Abs(filepath.Join("..", "..", "examples", "badge"))
+	root, err := filepath.Abs(filepath.Join("testdata", "migration", "badge-stock"))
 	require.NoError(t, err)
 	wantReport, wantDocument, err := analyseMigration(root)
 	require.NoError(t, err)
@@ -1004,7 +1004,7 @@ func migrationDiagnosticCodes(report MigrationReport) []string {
 }
 
 func BenchmarkAnalyseMigration(b *testing.B) {
-	root, err := filepath.Abs(filepath.Join("..", "..", "examples", "badge"))
+	root, err := filepath.Abs(filepath.Join("testdata", "migration", "badge-stock"))
 	if err != nil {
 		b.Fatal(err)
 	}

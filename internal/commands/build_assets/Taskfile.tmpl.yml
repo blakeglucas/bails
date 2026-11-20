@@ -15,6 +15,11 @@ tasks:
     run: once
     cmds:
       - task: install:frontend:deps:{{.Opn}}.PACKAGE_MANAGER{{.Cls}}
+    vars:
+      PACKAGE_MANAGER:
+        # Detected from package.json/lockfile; falls back to bun, then npm.
+        # Override with PACKAGE_MANAGER=<bun|pnpm|yarn|npm>.
+        sh: '{{.Opn}}if .PACKAGE_MANAGER{{.Cls}}echo {{.Opn}}.PACKAGE_MANAGER{{.Cls}}{{.Opn}}else{{.Cls}}bails tool package-manager -dir frontend{{.Opn}}end{{.Cls}}'
 
   install:frontend:deps:npm:
     dir: frontend
@@ -70,7 +75,7 @@ tasks:
       - yarn install
 
   build:frontend:
-    label: build:frontend (DEV={{.Opn}}.DEV{{.Cls}} RUNNER={{.Opn}}.PACKAGE_MANAGER{{.Cls}})
+    label: build:frontend (DEV={{.Opn}}.DEV{{.Cls}} RUNNER={{.Opn}}.PACKAGE_MANAGER | default "auto"{{.Cls}})
     summary: Build the frontend project
     # darwin:build:universal runs its per-arch builds as parallel deps, each of
     # which depends on this task. Without run:once the two executions race:
@@ -107,6 +112,10 @@ tasks:
           SCRIPT: "{{.Opn}}.SCRIPT{{.Cls}}"
     vars:
       SCRIPT: "{{.Opn}}.SCRIPT{{.Cls}}"
+      PACKAGE_MANAGER:
+        # Detected from package.json/lockfile; falls back to bun, then npm.
+        # Override with PACKAGE_MANAGER=<bun|pnpm|yarn|npm>.
+        sh: '{{.Opn}}if .PACKAGE_MANAGER{{.Cls}}echo {{.Opn}}.PACKAGE_MANAGER{{.Cls}}{{.Opn}}else{{.Cls}}bails tool package-manager -dir frontend{{.Opn}}end{{.Cls}}'
 
   frontend:run:npm:
     dir: frontend
@@ -209,6 +218,11 @@ tasks:
       - task: install:frontend:deps
     cmds:
       - task: frontend:dev:{{.Opn}}.PACKAGE_MANAGER{{.Cls}}
+    vars:
+      PACKAGE_MANAGER:
+        # Detected from package.json/lockfile; falls back to bun, then npm.
+        # Override with PACKAGE_MANAGER=<bun|pnpm|yarn|npm>.
+        sh: '{{.Opn}}if .PACKAGE_MANAGER{{.Cls}}echo {{.Opn}}.PACKAGE_MANAGER{{.Cls}}{{.Opn}}else{{.Cls}}bails tool package-manager -dir frontend{{.Opn}}end{{.Cls}}'
 
   frontend:dev:npm:
     dir: frontend

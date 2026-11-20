@@ -12,9 +12,6 @@ project:
 frontend:
   disabled: false
   directory: frontend
-  install: [npm, install]
-  build: [npm, run, build]
-  dev: [npm, run, dev]
   output: dist
   bindings:
     typescript: false

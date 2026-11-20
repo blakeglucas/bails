@@ -360,7 +360,8 @@ project:
 	loaded, err := Load(root, "")
 	require.NoError(t, err)
 	assert.Equal(t, "npm", loaded.Config.Frontend.PackageManager)
-	assert.Equal(t, []string{"npm", "install"}, loaded.Config.Frontend.Install)
+	// Unset frontend commands are left to the detected package manager.
+	assert.Empty(t, loaded.Config.Frontend.Install)
 	assert.Equal(t, "dist", loaded.Config.Frontend.OutputDirectory)
 	assert.Equal(t, "bin", loaded.Config.Build.OutputDirectory)
 	assert.Equal(t, 9245, loaded.Config.Dev.Port)

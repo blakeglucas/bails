@@ -35,7 +35,7 @@ tasks:
 
       Rebuilds dist/ first, so it always installs current sources.
 
-      Undo with `npm install @bails/runtime@latest` in the same directory.
+      Undo with `<package manager> add @bails/runtime@latest` in the same directory.
     silent: true
     deps:
       - runtime:build:package
@@ -54,7 +54,12 @@ tasks:
           fi
           PKG="{{.TASKFILE_DIR}}/internal/runtime/desktop/@bails/runtime"
           cd "$TARGET"
-          npm install "file:$PKG"
+          # The app's own package manager (lockfile), else bun, else npm.
+          PM=$(go run "{{.TASKFILE_DIR}}/cmd/bails" tool package-manager -dir .)
+          case "$PM" in
+            npm) npm install "file:$PKG" ;;
+            *) "$PM" add "file:$PKG" ;;
+          esac
           echo "Installed @bails/runtime from $PKG"
 
   install:

@@ -170,7 +170,8 @@ func main() {
 	tool.NewSubCommandFunction("docker-mounts", "Generate Docker volume mount flags for cross-compilation", commands.ToolDockerMounts)
 	tool.NewSubCommandFunction("prepare-macos-output", "Keep macOS app bundles signable in file-provider-backed projects", commands.ToolPrepareMacOSOutput)
 	tool.NewSubCommandFunction("has", "Check if a tool is available in PATH (e.g. bails tool has git, bails tool has gcc|clang)", commands.ToolHas)
-	tool.NewSubCommandFunction("has-cc", "Deprecated: use 'bails tool has gcc|clang' instead", commands.ToolHasCC)
+	tool.NewSubCommandFunction("package-manager", "Print the frontend's JavaScript package manager (detected; falls back to bun, then npm)", commands.ToolPackageManager)
+	tool.NewSubCommandFunction("has-cc","Deprecated: use 'bails tool has gcc|clang' instead", commands.ToolHasCC)
 
 	// Low-level sign tool (used by Taskfiles)
 	toolSign := tool.NewSubCommand("sign", "Sign a binary or package directly")

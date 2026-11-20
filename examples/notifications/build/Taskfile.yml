@@ -13,13 +13,14 @@ tasks:
     sources:
       - package.json
       - package-lock.json
+      - bun.lock
+      - bun.lockb
+      - pnpm-lock.yaml
+      - yarn.lock
     generates:
       - node_modules/*
-    preconditions:
-      - sh: npm version
-        msg: "Looks like npm isn't installed. Npm is part of the Node installer: https://nodejs.org/en/download/"
     cmds:
-      - npm install
+      - 'PM=$(bails tool package-manager -dir .) && "$PM" install'
 
   build:frontend:
     label: build:frontend (PRODUCTION={{.PRODUCTION}})
@@ -37,7 +38,7 @@ tasks:
           BUILD_FLAGS:
             ref: .BUILD_FLAGS
     cmds:
-      - npm run {{.BUILD_COMMAND}} -q
+      - 'PM=$(bails tool package-manager -dir .) && "$PM" run {{.BUILD_COMMAND}}'
     env:
       PRODUCTION: '{{.PRODUCTION | default "false"}}'
     vars:
@@ -78,7 +79,7 @@ tasks:
     deps:
       - task: install:frontend:deps
     cmds:
-      - npm run dev -- --port {{.VITE_PORT}} --strictPort
+      - 'PM=$(bails tool package-manager -dir .) && if [ "$PM" = npm ]; then npm run dev -- --port {{.VITE_PORT}} --strictPort; else "$PM" run dev --port {{.VITE_PORT}} --strictPort; fi'
 
   update:build-assets:
     summary: Updates the build assets

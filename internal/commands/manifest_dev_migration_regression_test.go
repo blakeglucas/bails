@@ -24,7 +24,7 @@ func TestManifestRegressionDevUsesDiscoveredRoot(t *testing.T) {
 }
 func TestManifestRegressionMigrationDoesNotLoseTaskfileEnvironment(t *testing.T) {
 	root := t.TempDir()
-	if err := copyMigrationFixture(filepath.Join("..", "..", "examples", "badge"), root); err != nil {
+	if err := copyMigrationFixture(filepath.Join("testdata", "migration", "badge-stock"), root); err != nil {
 		t.Fatal(err)
 	}
 	file := filepath.Join(root, "Taskfile.yml")
@@ -50,7 +50,7 @@ func TestManifestRegressionMigrationDoesNotLoseTaskfileEnvironment(t *testing.T)
 }
 func TestManifestRegressionMigrationDoesNotLosePort(t *testing.T) {
 	root := t.TempDir()
-	if err := copyMigrationFixture(filepath.Join("..", "..", "examples", "badge"), root); err != nil {
+	if err := copyMigrationFixture(filepath.Join("testdata", "migration", "badge-stock"), root); err != nil {
 		t.Fatal(err)
 	}
 	file := filepath.Join(root, "Taskfile.yml")

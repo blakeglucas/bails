@@ -27,9 +27,6 @@ func encodeInitialYAML(state InitialState) []byte {
 	yamlSet(root, "project", project)
 	frontend := yamlMap()
 	yamlSetString(frontend, "directory", "frontend")
-	yamlSet(frontend, "install", yamlStrings([]string{"npm", "install"}))
-	yamlSet(frontend, "build", yamlStrings([]string{"npm", "run", "build"}))
-	yamlSet(frontend, "dev", yamlStrings([]string{"npm", "run", "dev"}))
 	yamlSetString(frontend, "output", "frontend/dist")
 	bindings := yamlMap()
 	yamlSet(bindings, "typescript", yamlBool(state.TypeScript))
@@ -61,9 +58,15 @@ func encodeConfigYAML(config Config, header string) ([]byte, error) {
 	frontend := yamlMap()
 	yamlSet(frontend, "disabled", yamlBool(config.Frontend.Disabled))
 	yamlSetString(frontend, "directory", config.Frontend.Directory)
-	yamlSet(frontend, "install", yamlStrings(config.Frontend.Install))
-	yamlSet(frontend, "build", yamlStrings(config.Frontend.Build))
-	yamlSet(frontend, "dev", yamlStrings(config.Frontend.Dev))
+	// Unset commands stay unset so the package manager is detected per machine.
+	for _, command := range []struct {
+		key  string
+		argv []string
+	}{{"install", config.Frontend.Install}, {"build", config.Frontend.Build}, {"dev", config.Frontend.Dev}} {
+		if len(command.argv) > 0 {
+			yamlSet(frontend, command.key, yamlStrings(command.argv))
+		}
+	}
 	yamlSetString(frontend, "output", config.Frontend.OutputDirectory)
 	yamlSetOptionalStringMap(frontend, "environment", config.Frontend.Environment)
 	bindings := yamlMap()

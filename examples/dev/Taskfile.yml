@@ -17,13 +17,14 @@ tasks:
     sources:
       - package.json
       - package-lock.json
+      - bun.lock
+      - bun.lockb
+      - pnpm-lock.yaml
+      - yarn.lock
     generates:
       - node_modules/*
-    preconditions:
-      - sh: npm version
-        msg: "Looks like npm isn't installed. Npm is part of the Node installer: https://nodejs.org/en/download/"
     cmds:
-      - npm install
+      - 'PM=$(bails tool package-manager -dir .) && "$PM" install'
 
   build-frontend:
     summary: Build the frontend project
@@ -35,7 +36,7 @@ tasks:
     deps:
       - install-frontend-deps
     cmds:
-      - npm run build
+      - 'PM=$(bails tool package-manager -dir .) && "$PM" run build'
 
   build:darwin:
     summary: Builds the application
@@ -127,7 +128,7 @@ tasks:
       - task: install-frontend-deps
     dir: frontend
     cmds:
-      - npm run dev
+      - 'PM=$(bails tool package-manager -dir .) && "$PM" run dev'
 
   run:
     summary: Runs the application

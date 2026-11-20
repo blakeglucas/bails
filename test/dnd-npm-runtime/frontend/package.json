@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@bails/runtime": "^3.0.0-alpha.79"
+    "@bails/runtime": "^0.1.0"
   },
   "devDependencies": {
     "vite": "^8.0.13"

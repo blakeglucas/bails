@@ -279,16 +279,19 @@ func applyLegacyFrontendConfiguration(root, taskPackageManager string, report *M
 		manager = managerNames[0]
 	}
 	if manager == "" {
-		manager = "npm"
-	}
-	if !containsString([]string{"npm", "pnpm", "yarn", "bun"}, manager) {
+		// No project signal: leave the commands unset so each machine detects
+		// its package manager when the manifest loads (bun, else npm).
+		doc.Frontend.PackageManager = ""
+		doc.Frontend.Install, doc.Frontend.Build, doc.Frontend.Dev = nil, nil, nil
+	} else if !containsString([]string{"npm", "pnpm", "yarn", "bun"}, manager) {
 		blockMigration(report, "package-manager", "frontend", "", "unsupported package manager "+manager)
 		return nil
+	} else {
+		doc.Frontend.PackageManager = manager
+		doc.Frontend.Install = []string{manager, "install"}
+		doc.Frontend.Build = []string{manager, "run", "build"}
+		doc.Frontend.Dev = []string{manager, "run", "dev"}
 	}
-	doc.Frontend.PackageManager = manager
-	doc.Frontend.Install = []string{manager, "install"}
-	doc.Frontend.Build = []string{manager, "run", "build"}
-	doc.Frontend.Dev = []string{manager, "run", "dev"}
 
 	tsconfig := filepath.Join(frontend, "tsconfig.json")
 	if info, statErr := os.Stat(tsconfig); statErr == nil && !info.IsDir() {

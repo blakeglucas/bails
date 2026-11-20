@@ -5,6 +5,9 @@ Copies v3/ (tracked and untracked-but-not-ignored files) into DEST as the new
 root, removes upstream-only material, and renames Wails to bails throughout
 file contents and paths. Re-run it against a newer Wails checkout to sync.
 
+Bails-owned new files live in overlay/; bails-owned changes to upstream files
+live in patches/*.patch (git diffs against the renamed tree, applied in order).
+
 Usage: split.py --source ~/Projects/wails --dest ~/Projects/bails.new
 """
 
@@ -20,6 +23,7 @@ import sys
 NAME = "bails"                        # lowercase name; CLI binary is the same
 MODULE = "github.com/blakeglucas/bails"  # Go module path
 NPM_SCOPE = "@bails"                  # npm scope for the runtime package
+NPM_REGISTRY = "https://npm.bgcl.dev/"  # registry serving NPM_SCOPE (needs credentials)
 VERSION = "v0.1.0"                    # initial version (version.txt)
 RELEASE_API = "https://api.github.com/repos/blakeglucas/bails"  # update/release-notes
 REPO_URL = "https://github.com/blakeglucas/bails"
@@ -227,6 +231,15 @@ def patch_upstream_specifics(dest):
         ('clir.NewCli("wails", "The Wails3 CLI", "v3")',
          'clir.NewCli("wails", "The Wails CLI", version.String())'),
     ])
+    patch_file(dest, "internal/templates/_common/README.md", [
+        ("1. Navigate to your project directory in the terminal.\n",
+         "1. Navigate to your project directory in the terminal.\n\n"
+         f"   The frontend installs `{NPM_SCOPE}/runtime` from a private registry\n"
+         "   (see `frontend/.npmrc`). If you haven't yet, authenticate once:\n\n"
+         "   ```\n"
+         f"   npm login --registry={NPM_REGISTRY} --scope={NPM_SCOPE}\n"
+         "   ```\n"),
+    ])
     patch_file(dest, "scripts/generate-manifest-json-schema.go", [
         ('"../docs/mpress/static/schemas/wails.v3.json"', '"manifest.schema.json"'),
     ])
@@ -333,6 +346,77 @@ def set_versions(dest):
                     f.writelines(kept)
 
 
+NPMRC_SCOPE = f"""# {NPM_SCOPE} packages come from a private registry. Authenticate once with:
+#   npm login --registry={NPM_REGISTRY} --scope={NPM_SCOPE}
+# Never commit the token here; npm keeps it in your user ~/.npmrc.
+{NPM_SCOPE}:registry={NPM_REGISTRY}
+"""
+
+
+def configure_npm(dest):
+    import json
+    runtime = f"{NPM_SCOPE}/runtime"
+    # Generated projects: init renames frontend/npmrc to frontend/.npmrc. This
+    # replaces upstream's minimum-release-age setting, which would hold back
+    # freshly published @bails/runtime releases.
+    npmrc = os.path.join(dest, "internal/templates/_common/frontend/npmrc")
+    with open(npmrc, "w", encoding="utf-8") as f:
+        f.write(NPMRC_SCOPE)
+    # The runtime package publishes to the scope's registry.
+    pkg_path = os.path.join(dest, f"internal/runtime/desktop/{runtime}/package.json")
+    with open(pkg_path, encoding="utf-8") as f:
+        pkg = json.load(f)
+    pkg["bugs"] = {"url": REPO_URL + "/issues"}
+    pkg["publishConfig"] = {"registry": NPM_REGISTRY}
+    with open(pkg_path, "w", encoding="utf-8") as f:
+        f.write(json.dumps(pkg, indent=2, ensure_ascii=False) + "\n")
+    # Example and test frontends that install the runtime from the registry.
+    major = VERSION.lstrip("v").split(".")[0]
+    for root, dirs, names in os.walk(dest):
+        dirs[:] = [d for d in dirs if d not in ("node_modules", ".git")]
+        if "package.json" not in names or root.startswith(os.path.join(dest, "internal")):
+            continue
+        path = os.path.join(root, "package.json")
+        text = read_text(path)
+        m = re.search(r'"' + re.escape(runtime) + r'":\s*"([^"]*)"', text or "")
+        if not m or m.group(1).startswith(("file:", "link:", "workspace:")):
+            continue
+        # Pins to upstream's v3 line can never resolve against bails versions.
+        pinned = re.match(r"[\^~]?(\d+)", m.group(1))
+        if pinned and pinned.group(1) != major:
+            text = text.replace(m.group(0), f'"{runtime}": "^{VERSION.lstrip("v")}"')
+            with open(path, "w", encoding="utf-8") as f:
+                f.write(text)
+        rc = os.path.join(root, ".npmrc")
+        if not os.path.exists(rc):
+            with open(rc, "w", encoding="utf-8") as f:
+                f.write(NPMRC_SCOPE)
+
+
+def freeze_migration_fixture(dest):
+    # Upstream's examples/badge Taskfiles are byte-identical to historical
+    # generated projects, and migration tests use them as such. bails edits the
+    # examples, so keep the original as a frozen fixture for those tests.
+    shutil.copytree(os.path.join(dest, "examples/badge"),
+                    os.path.join(dest, "internal/commands/testdata/migration/badge-stock"))
+
+
+def apply_patches(dest, patches_dir):
+    # bails-owned code changes to upstream files, as git diffs against the
+    # renamed tree. On conflict after a sync, fix the patch and rerun.
+    if not os.path.isdir(patches_dir):
+        return
+    env = dict(os.environ, GIT_CEILING_DIRECTORIES=os.path.dirname(dest))
+    for name in sorted(os.listdir(patches_dir)):
+        if not name.endswith(".patch"):
+            continue
+        result = subprocess.run(["git", "apply", "--binary", "--whitespace=nowarn",
+                                 os.path.join(patches_dir, name)],
+                                cwd=dest, env=env, capture_output=True, text=True)
+        if result.returncode != 0:
+            sys.exit(f"patch {name} does not apply:\n{result.stderr}")
+
+
 def regenerate_goldens(dest):
     # Binding IDs hash fully-qualified Go names, which include the module path.
     gen = os.path.join(dest, "internal/generator")
@@ -376,10 +460,13 @@ def main():
     patch_upstream_specifics(dest)
     rename_tree(dest)
     set_versions(dest)
+    configure_npm(dest)
+    here = os.path.dirname(os.path.abspath(__file__))
+    freeze_migration_fixture(dest)
+    apply_patches(dest, os.path.join(here, "patches"))
     regenerate_goldens(dest)
     rebuild_runtime_bundles(dest)
     # Bails-owned files (README etc.) live in overlay/ next to this script.
-    here = os.path.dirname(os.path.abspath(__file__))
     overlay = os.path.join(here, "overlay")
     if os.path.isdir(overlay):
         shutil.copytree(overlay, dest, dirs_exist_ok=True)
@@ -388,6 +475,8 @@ def main():
     shutil.copy2(os.path.abspath(__file__), os.path.join(self_dst, "split.py"))
     if os.path.isdir(overlay):
         shutil.copytree(overlay, os.path.join(self_dst, "overlay"), dirs_exist_ok=True)
+    if os.path.isdir(os.path.join(here, "patches")):
+        shutil.copytree(os.path.join(here, "patches"), os.path.join(self_dst, "patches"), dirs_exist_ok=True)
     print(f"Generated {dest}")
 
 

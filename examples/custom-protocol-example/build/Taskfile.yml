@@ -13,10 +13,12 @@ tasks:
     sources:
       - package.json
       - package-lock.json
+      - bun.lock
+      - bun.lockb
+      - pnpm-lock.yaml
+      - yarn.lock
     generates:
       - node_modules/*
-    preconditions:
-     - sh: npm version
     cmds:
       - echo "Skipping frontend dependencies installation"
 
@@ -36,7 +38,7 @@ tasks:
           BUILD_FLAGS:
             ref: .BUILD_FLAGS
     cmds:
-      - npm run {{.BUILD_COMMAND}} -q
+      - 'PM=$(bails tool package-manager -dir .) && "$PM" run {{.BUILD_COMMAND}}'
     env:
       PRODUCTION: '{{.PRODUCTION | default "false"}}'
     vars:

@@ -461,7 +461,7 @@ func stockMigrationVariables(rootTask, path string, variables map[string]*wakeas
 				continue
 			}
 		}
-		if name == "PACKAGE_MANAGER" && value.Static == `{{.PACKAGE_MANAGER | default "npm"}}` ||
+		if name == "PACKAGE_MANAGER" && (value.Static == `{{.PACKAGE_MANAGER | default "npm"}}` || value.Static == `{{.PACKAGE_MANAGER}}`) ||
 			name == "VITE_PORT" && value.Static == `{{.BAILS_VITE_PORT | default 9245}}` ||
 			name == "GOOS" && value.Static == `{{.GOOS | default OS}}` {
 			continue

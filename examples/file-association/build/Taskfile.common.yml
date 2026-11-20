@@ -17,13 +17,14 @@ tasks:
     sources:
       - package.json
       - package-lock.json
+      - bun.lock
+      - bun.lockb
+      - pnpm-lock.yaml
+      - yarn.lock
     generates:
       - node_modules/*
-    preconditions:
-      - sh: npm version
-        msg: "Looks like npm isn't installed. Npm is part of the Node installer: https://nodejs.org/en/download/"
     cmds:
-      - npm install
+      - 'PM=$(bails tool package-manager -dir .) && "$PM" install'
 
   build:frontend:
     summary: Build the frontend project
@@ -37,7 +38,7 @@ tasks:
       - task: install:frontend:deps
       - task: generate:bindings
     cmds:
-      - npm run build -q
+      - 'PM=$(bails tool package-manager -dir .) && "$PM" run build'
 
   generate:bindings:
     summary: Generates bindings for the frontend
@@ -67,7 +68,7 @@ tasks:
     deps:
       - task: install:frontend:deps
     cmds:
-      - npm run dev
+      - 'PM=$(bails tool package-manager -dir .) && "$PM" run dev'
 
   update:build-assets:
     summary: Updates the build assets

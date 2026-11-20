@@ -186,7 +186,7 @@ func TestApplyWakeInitPreservesScaffoldAndDrivesBuild(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if loaded.Config.Project.ProductName != "Probe" || loaded.Config.Frontend.Build[0] != "npm" || loaded.Config.Selected.Targets[0].Formats[0] != "msix" {
+	if loaded.Config.Project.ProductName != "Probe" || loaded.Config.Frontend.PackageManager != "npm" || loaded.Config.Selected.Targets[0].Formats[0] != "msix" {
 		t.Fatal("scaffold metadata/frontend or selections lost")
 	}
 	plan, err := pipeline.PlanBuild(loaded.Config, pipeline.Request{Verb: "build"})

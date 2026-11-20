@@ -1,0 +1,1338 @@
+diff --git a/Taskfile.yaml b/Taskfile.yaml
+index 39f52a2cc..cb311fcfc 100644
+--- a/Taskfile.yaml
++++ b/Taskfile.yaml
+@@ -35,7 +35,7 @@ tasks:
+ 
+       Rebuilds dist/ first, so it always installs current sources.
+ 
+-      Undo with `npm install @bails/runtime@latest` in the same directory.
++      Undo with `<package manager> add @bails/runtime@latest` in the same directory.
+     silent: true
+     deps:
+       - runtime:build:package
+@@ -54,7 +54,12 @@ tasks:
+           fi
+           PKG="{{.TASKFILE_DIR}}/internal/runtime/desktop/@bails/runtime"
+           cd "$TARGET"
+-          npm install "file:$PKG"
++          # The app's own package manager (lockfile), else bun, else npm.
++          PM=$(go run "{{.TASKFILE_DIR}}/cmd/bails" tool package-manager -dir .)
++          case "$PM" in
++            npm) npm install "file:$PKG" ;;
++            *) "$PM" add "file:$PKG" ;;
++          esac
+           echo "Installed @bails/runtime from $PKG"
+ 
+   install:
+diff --git a/cmd/bails/main.go b/cmd/bails/main.go
+index 043e3c1bf..36826ecd7 100644
+--- a/cmd/bails/main.go
++++ b/cmd/bails/main.go
+@@ -170,7 +170,8 @@ func main() {
+ 	tool.NewSubCommandFunction("docker-mounts", "Generate Docker volume mount flags for cross-compilation", commands.ToolDockerMounts)
+ 	tool.NewSubCommandFunction("prepare-macos-output", "Keep macOS app bundles signable in file-provider-backed projects", commands.ToolPrepareMacOSOutput)
+ 	tool.NewSubCommandFunction("has", "Check if a tool is available in PATH (e.g. bails tool has git, bails tool has gcc|clang)", commands.ToolHas)
+-	tool.NewSubCommandFunction("has-cc", "Deprecated: use 'bails tool has gcc|clang' instead", commands.ToolHasCC)
++	tool.NewSubCommandFunction("package-manager", "Print the frontend's JavaScript package manager (detected; falls back to bun, then npm)", commands.ToolPackageManager)
++	tool.NewSubCommandFunction("has-cc","Deprecated: use 'bails tool has gcc|clang' instead", commands.ToolHasCC)
+ 
+ 	// Low-level sign tool (used by Taskfiles)
+ 	toolSign := tool.NewSubCommand("sign", "Sign a binary or package directly")
+diff --git a/examples/android/build/Taskfile.yml b/examples/android/build/Taskfile.yml
+index 23d76d6f9..cf4f36b85 100644
+--- a/examples/android/build/Taskfile.yml
++++ b/examples/android/build/Taskfile.yml
+@@ -13,13 +13,14 @@ tasks:
+     sources:
+       - package.json
+       - package-lock.json
++      - bun.lock
++      - bun.lockb
++      - pnpm-lock.yaml
++      - yarn.lock
+     generates:
+       - node_modules/*
+-    preconditions:
+-      - sh: npm version
+-        msg: "Looks like npm isn't installed. Npm is part of the Node installer: https://nodejs.org/en/download/"
+     cmds:
+-      - npm install
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" install'
+ 
+   build:frontend:
+     label: build:frontend (PRODUCTION={{.PRODUCTION}})
+@@ -37,7 +38,7 @@ tasks:
+           BUILD_FLAGS:
+             ref: .BUILD_FLAGS
+     cmds:
+-      - npm run {{.BUILD_COMMAND}} -q
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run {{.BUILD_COMMAND}}'
+     env:
+       PRODUCTION: '{{.PRODUCTION | default "false"}}'
+     vars:
+@@ -105,7 +106,7 @@ tasks:
+     deps:
+       - task: install:frontend:deps
+     cmds:
+-      - npm run dev
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run dev'
+ 
+   update:build-assets:
+     summary: Updates the build assets
+diff --git a/examples/badge-custom/build/Taskfile.yml b/examples/badge-custom/build/Taskfile.yml
+index d48152fe9..4f80da7c4 100644
+--- a/examples/badge-custom/build/Taskfile.yml
++++ b/examples/badge-custom/build/Taskfile.yml
+@@ -13,13 +13,14 @@ tasks:
+     sources:
+       - package.json
+       - package-lock.json
++      - bun.lock
++      - bun.lockb
++      - pnpm-lock.yaml
++      - yarn.lock
+     generates:
+       - node_modules/*
+-    preconditions:
+-      - sh: npm version
+-        msg: "Looks like npm isn't installed. Npm is part of the Node installer: https://nodejs.org/en/download/"
+     cmds:
+-      - npm install
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" install'
+ 
+   build:frontend:
+     label: build:frontend (PRODUCTION={{.PRODUCTION}})
+@@ -37,7 +38,7 @@ tasks:
+           BUILD_FLAGS:
+             ref: .BUILD_FLAGS
+     cmds:
+-      - npm run {{.BUILD_COMMAND}} -q
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run {{.BUILD_COMMAND}}'
+     env:
+       PRODUCTION: '{{.PRODUCTION | default "false"}}'
+     vars:
+@@ -78,7 +79,7 @@ tasks:
+     deps:
+       - task: install:frontend:deps
+     cmds:
+-      - npm run dev
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run dev'
+ 
+   update:build-assets:
+     summary: Updates the build assets
+diff --git a/examples/badge/build/Taskfile.yml b/examples/badge/build/Taskfile.yml
+index d48152fe9..4f80da7c4 100644
+--- a/examples/badge/build/Taskfile.yml
++++ b/examples/badge/build/Taskfile.yml
+@@ -13,13 +13,14 @@ tasks:
+     sources:
+       - package.json
+       - package-lock.json
++      - bun.lock
++      - bun.lockb
++      - pnpm-lock.yaml
++      - yarn.lock
+     generates:
+       - node_modules/*
+-    preconditions:
+-      - sh: npm version
+-        msg: "Looks like npm isn't installed. Npm is part of the Node installer: https://nodejs.org/en/download/"
+     cmds:
+-      - npm install
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" install'
+ 
+   build:frontend:
+     label: build:frontend (PRODUCTION={{.PRODUCTION}})
+@@ -37,7 +38,7 @@ tasks:
+           BUILD_FLAGS:
+             ref: .BUILD_FLAGS
+     cmds:
+-      - npm run {{.BUILD_COMMAND}} -q
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run {{.BUILD_COMMAND}}'
+     env:
+       PRODUCTION: '{{.PRODUCTION | default "false"}}'
+     vars:
+@@ -78,7 +79,7 @@ tasks:
+     deps:
+       - task: install:frontend:deps
+     cmds:
+-      - npm run dev
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run dev'
+ 
+   update:build-assets:
+     summary: Updates the build assets
+diff --git a/examples/custom-protocol-example/build/Taskfile.yml b/examples/custom-protocol-example/build/Taskfile.yml
+index d6a1155dc..3253c9f23 100644
+--- a/examples/custom-protocol-example/build/Taskfile.yml
++++ b/examples/custom-protocol-example/build/Taskfile.yml
+@@ -13,10 +13,12 @@ tasks:
+     sources:
+       - package.json
+       - package-lock.json
++      - bun.lock
++      - bun.lockb
++      - pnpm-lock.yaml
++      - yarn.lock
+     generates:
+       - node_modules/*
+-    preconditions:
+-     - sh: npm version
+     cmds:
+       - echo "Skipping frontend dependencies installation"
+ 
+@@ -36,7 +38,7 @@ tasks:
+           BUILD_FLAGS:
+             ref: .BUILD_FLAGS
+     cmds:
+-      - npm run {{.BUILD_COMMAND}} -q
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run {{.BUILD_COMMAND}}'
+     env:
+       PRODUCTION: '{{.PRODUCTION | default "false"}}'
+     vars:
+diff --git a/examples/dev/Taskfile.yml b/examples/dev/Taskfile.yml
+index 430511bd1..7e0b3ce01 100644
+--- a/examples/dev/Taskfile.yml
++++ b/examples/dev/Taskfile.yml
+@@ -17,13 +17,14 @@ tasks:
+     sources:
+       - package.json
+       - package-lock.json
++      - bun.lock
++      - bun.lockb
++      - pnpm-lock.yaml
++      - yarn.lock
+     generates:
+       - node_modules/*
+-    preconditions:
+-      - sh: npm version
+-        msg: "Looks like npm isn't installed. Npm is part of the Node installer: https://nodejs.org/en/download/"
+     cmds:
+-      - npm install
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" install'
+ 
+   build-frontend:
+     summary: Build the frontend project
+@@ -35,7 +36,7 @@ tasks:
+     deps:
+       - install-frontend-deps
+     cmds:
+-      - npm run build
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run build'
+ 
+   build:darwin:
+     summary: Builds the application
+@@ -127,7 +128,7 @@ tasks:
+       - task: install-frontend-deps
+     dir: frontend
+     cmds:
+-      - npm run dev
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run dev'
+ 
+   run:
+     summary: Runs the application
+diff --git a/examples/dock/build/Taskfile.yml b/examples/dock/build/Taskfile.yml
+index d48152fe9..4f80da7c4 100644
+--- a/examples/dock/build/Taskfile.yml
++++ b/examples/dock/build/Taskfile.yml
+@@ -13,13 +13,14 @@ tasks:
+     sources:
+       - package.json
+       - package-lock.json
++      - bun.lock
++      - bun.lockb
++      - pnpm-lock.yaml
++      - yarn.lock
+     generates:
+       - node_modules/*
+-    preconditions:
+-      - sh: npm version
+-        msg: "Looks like npm isn't installed. Npm is part of the Node installer: https://nodejs.org/en/download/"
+     cmds:
+-      - npm install
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" install'
+ 
+   build:frontend:
+     label: build:frontend (PRODUCTION={{.PRODUCTION}})
+@@ -37,7 +38,7 @@ tasks:
+           BUILD_FLAGS:
+             ref: .BUILD_FLAGS
+     cmds:
+-      - npm run {{.BUILD_COMMAND}} -q
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run {{.BUILD_COMMAND}}'
+     env:
+       PRODUCTION: '{{.PRODUCTION | default "false"}}'
+     vars:
+@@ -78,7 +79,7 @@ tasks:
+     deps:
+       - task: install:frontend:deps
+     cmds:
+-      - npm run dev
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run dev'
+ 
+   update:build-assets:
+     summary: Updates the build assets
+diff --git a/examples/file-association/build/Taskfile.common.yml b/examples/file-association/build/Taskfile.common.yml
+index b21ed207e..bcafc0d07 100644
+--- a/examples/file-association/build/Taskfile.common.yml
++++ b/examples/file-association/build/Taskfile.common.yml
+@@ -17,13 +17,14 @@ tasks:
+     sources:
+       - package.json
+       - package-lock.json
++      - bun.lock
++      - bun.lockb
++      - pnpm-lock.yaml
++      - yarn.lock
+     generates:
+       - node_modules/*
+-    preconditions:
+-      - sh: npm version
+-        msg: "Looks like npm isn't installed. Npm is part of the Node installer: https://nodejs.org/en/download/"
+     cmds:
+-      - npm install
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" install'
+ 
+   build:frontend:
+     summary: Build the frontend project
+@@ -37,7 +38,7 @@ tasks:
+       - task: install:frontend:deps
+       - task: generate:bindings
+     cmds:
+-      - npm run build -q
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run build'
+ 
+   generate:bindings:
+     summary: Generates bindings for the frontend
+@@ -67,7 +68,7 @@ tasks:
+     deps:
+       - task: install:frontend:deps
+     cmds:
+-      - npm run dev
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run dev'
+ 
+   update:build-assets:
+     summary: Updates the build assets
+diff --git a/examples/ios/build/Taskfile.yml b/examples/ios/build/Taskfile.yml
+index 23d76d6f9..cf4f36b85 100644
+--- a/examples/ios/build/Taskfile.yml
++++ b/examples/ios/build/Taskfile.yml
+@@ -13,13 +13,14 @@ tasks:
+     sources:
+       - package.json
+       - package-lock.json
++      - bun.lock
++      - bun.lockb
++      - pnpm-lock.yaml
++      - yarn.lock
+     generates:
+       - node_modules/*
+-    preconditions:
+-      - sh: npm version
+-        msg: "Looks like npm isn't installed. Npm is part of the Node installer: https://nodejs.org/en/download/"
+     cmds:
+-      - npm install
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" install'
+ 
+   build:frontend:
+     label: build:frontend (PRODUCTION={{.PRODUCTION}})
+@@ -37,7 +38,7 @@ tasks:
+           BUILD_FLAGS:
+             ref: .BUILD_FLAGS
+     cmds:
+-      - npm run {{.BUILD_COMMAND}} -q
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run {{.BUILD_COMMAND}}'
+     env:
+       PRODUCTION: '{{.PRODUCTION | default "false"}}'
+     vars:
+@@ -105,7 +106,7 @@ tasks:
+     deps:
+       - task: install:frontend:deps
+     cmds:
+-      - npm run dev
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run dev'
+ 
+   update:build-assets:
+     summary: Updates the build assets
+diff --git a/examples/mac-window-tabs/build/Taskfile.yml b/examples/mac-window-tabs/build/Taskfile.yml
+index 0611cbddb..661d07927 100644
+--- a/examples/mac-window-tabs/build/Taskfile.yml
++++ b/examples/mac-window-tabs/build/Taskfile.yml
+@@ -21,13 +21,14 @@ tasks:
+     sources:
+       - package.json
+       - package-lock.json
++      - bun.lock
++      - bun.lockb
++      - pnpm-lock.yaml
++      - yarn.lock
+     generates:
+       - node_modules
+-    preconditions:
+-      - sh: npm version
+-        msg: "Looks like npm isn't installed. Npm is part of the Node installer: https://nodejs.org/en/download/"
+     cmds:
+-      - npm install
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" install'
+ 
+   build:frontend:
+     label: build:frontend (DEV={{.DEV}})
+@@ -44,7 +45,7 @@ tasks:
+           BUILD_FLAGS:
+             ref: .BUILD_FLAGS
+     cmds:
+-      - npm run {{.BUILD_COMMAND}} -q
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run {{.BUILD_COMMAND}}'
+     env:
+       PRODUCTION: '{{if eq .DEV "true"}}false{{else}}true{{end}}'
+     vars:
+@@ -126,7 +127,7 @@ tasks:
+       # localhost hostname to ::1 first, but the bails dev proxy dials tcp4
+       # (to dodge IPv6 issues on Windows), so an IPv6-only vite causes
+       # "connection refused" in the WebView.
+-      - npm run dev -- --port {{.VITE_PORT}} --strictPort --host 127.0.0.1
++      - 'PM=$(bails tool package-manager -dir .) && if [ "$PM" = npm ]; then npm run dev -- --port {{.VITE_PORT}} --strictPort --host 127.0.0.1; else "$PM" run dev --port {{.VITE_PORT}} --strictPort --host 127.0.0.1; fi'
+ 
+   update:build-assets:
+     summary: Updates the build assets
+diff --git a/examples/mac-window-tabs/build/docker/Dockerfile.cross b/examples/mac-window-tabs/build/docker/Dockerfile.cross
+index 3c7812e24..80f2624e0 100644
+--- a/examples/mac-window-tabs/build/docker/Dockerfile.cross
++++ b/examples/mac-window-tabs/build/docker/Dockerfile.cross
+@@ -24,6 +24,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
+     libgtk-4-dev libwebkitgtk-6.0-dev \
+     && rm -rf /var/lib/apt/lists/*
+ 
++# bun is the default frontend package manager when a project has no lockfile.
++RUN npm install -g bun && bun --version
++
+ # Install Zig - automatically selects correct binary for host architecture
+ ARG ZIG_VERSION=0.14.0
+ RUN ZIG_ARCH=$(case "${TARGETARCH}" in arm64) echo "aarch64" ;; *) echo "x86_64" ;; esac) && \
+@@ -174,7 +177,31 @@ export CGO_CFLAGS="-w"
+ 
+ # Build frontend if exists and not already built (host may have built it)
+ if [ -d "frontend" ] && [ -f "frontend/package.json" ] && [ ! -d "frontend/dist" ]; then
+-    (cd frontend && npm install --silent && npm run build --silent)
++    # Same order as `bails tool package-manager`: PACKAGE_MANAGER, package.json
++    # "packageManager", lockfile, then bun, then npm.
++    PM="${PACKAGE_MANAGER:-}"
++    if [ -z "$PM" ]; then
++        PM=$(sed -n 's/.*"packageManager"[[:space:]]*:[[:space:]]*"\([a-z]*\)@.*/\1/p' frontend/package.json | head -n 1)
++    fi
++    if [ -z "$PM" ]; then
++        if [ -f frontend/bun.lock ] || [ -f frontend/bun.lockb ]; then PM=bun
++        elif [ -f frontend/pnpm-lock.yaml ]; then PM=pnpm
++        elif [ -f frontend/yarn.lock ]; then PM=yarn
++        elif [ -f frontend/package-lock.json ] || [ -f frontend/npm-shrinkwrap.json ]; then PM=npm
++        elif command -v bun >/dev/null 2>&1; then PM=bun
++        elif command -v npm >/dev/null 2>&1; then PM=npm
++        else echo "error: no JavaScript package manager found: install bun or npm" >&2; exit 1
++        fi
++    fi
++    if ! command -v "$PM" >/dev/null 2>&1; then
++        echo "error: the frontend uses $PM, but $PM is not installed in this image" >&2
++        exit 1
++    fi
++    case "$PM" in
++        npm) (cd frontend && npm install --silent && npm run build --silent) ;;
++        yarn) (cd frontend && yarn install && yarn build) ;;
++        *) (cd frontend && "$PM" install && "$PM" run build) ;;
++    esac
+ fi
+ 
+ # Build
+diff --git a/examples/mobile/build/Taskfile.yml b/examples/mobile/build/Taskfile.yml
+index 23d76d6f9..cf4f36b85 100644
+--- a/examples/mobile/build/Taskfile.yml
++++ b/examples/mobile/build/Taskfile.yml
+@@ -13,13 +13,14 @@ tasks:
+     sources:
+       - package.json
+       - package-lock.json
++      - bun.lock
++      - bun.lockb
++      - pnpm-lock.yaml
++      - yarn.lock
+     generates:
+       - node_modules/*
+-    preconditions:
+-      - sh: npm version
+-        msg: "Looks like npm isn't installed. Npm is part of the Node installer: https://nodejs.org/en/download/"
+     cmds:
+-      - npm install
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" install'
+ 
+   build:frontend:
+     label: build:frontend (PRODUCTION={{.PRODUCTION}})
+@@ -37,7 +38,7 @@ tasks:
+           BUILD_FLAGS:
+             ref: .BUILD_FLAGS
+     cmds:
+-      - npm run {{.BUILD_COMMAND}} -q
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run {{.BUILD_COMMAND}}'
+     env:
+       PRODUCTION: '{{.PRODUCTION | default "false"}}'
+     vars:
+@@ -105,7 +106,7 @@ tasks:
+     deps:
+       - task: install:frontend:deps
+     cmds:
+-      - npm run dev
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run dev'
+ 
+   update:build-assets:
+     summary: Updates the build assets
+diff --git a/examples/notifications/build/Taskfile.yml b/examples/notifications/build/Taskfile.yml
+index 89911816e..9e5c0be91 100644
+--- a/examples/notifications/build/Taskfile.yml
++++ b/examples/notifications/build/Taskfile.yml
+@@ -13,13 +13,14 @@ tasks:
+     sources:
+       - package.json
+       - package-lock.json
++      - bun.lock
++      - bun.lockb
++      - pnpm-lock.yaml
++      - yarn.lock
+     generates:
+       - node_modules/*
+-    preconditions:
+-      - sh: npm version
+-        msg: "Looks like npm isn't installed. Npm is part of the Node installer: https://nodejs.org/en/download/"
+     cmds:
+-      - npm install
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" install'
+ 
+   build:frontend:
+     label: build:frontend (PRODUCTION={{.PRODUCTION}})
+@@ -37,7 +38,7 @@ tasks:
+           BUILD_FLAGS:
+             ref: .BUILD_FLAGS
+     cmds:
+-      - npm run {{.BUILD_COMMAND}} -q
++      - 'PM=$(bails tool package-manager -dir .) && "$PM" run {{.BUILD_COMMAND}}'
+     env:
+       PRODUCTION: '{{.PRODUCTION | default "false"}}'
+     vars:
+@@ -78,7 +79,7 @@ tasks:
+     deps:
+       - task: install:frontend:deps
+     cmds:
+-      - npm run dev -- --port {{.VITE_PORT}} --strictPort
++      - 'PM=$(bails tool package-manager -dir .) && if [ "$PM" = npm ]; then npm run dev -- --port {{.VITE_PORT}} --strictPort; else "$PM" run dev --port {{.VITE_PORT}} --strictPort; fi'
+ 
+   update:build-assets:
+     summary: Updates the build assets
+diff --git a/internal/commands/build_assets/Taskfile.tmpl.yml b/internal/commands/build_assets/Taskfile.tmpl.yml
+index db7bde197..35235a04c 100644
+--- a/internal/commands/build_assets/Taskfile.tmpl.yml
++++ b/internal/commands/build_assets/Taskfile.tmpl.yml
+@@ -15,6 +15,11 @@ tasks:
+     run: once
+     cmds:
+       - task: install:frontend:deps:{{.Opn}}.PACKAGE_MANAGER{{.Cls}}
++    vars:
++      PACKAGE_MANAGER:
++        # Detected from package.json/lockfile; falls back to bun, then npm.
++        # Override with PACKAGE_MANAGER=<bun|pnpm|yarn|npm>.
++        sh: '{{.Opn}}if .PACKAGE_MANAGER{{.Cls}}echo {{.Opn}}.PACKAGE_MANAGER{{.Cls}}{{.Opn}}else{{.Cls}}bails tool package-manager -dir frontend{{.Opn}}end{{.Cls}}'
+ 
+   install:frontend:deps:npm:
+     dir: frontend
+@@ -70,7 +75,7 @@ tasks:
+       - yarn install
+ 
+   build:frontend:
+-    label: build:frontend (DEV={{.Opn}}.DEV{{.Cls}} RUNNER={{.Opn}}.PACKAGE_MANAGER{{.Cls}})
++    label: build:frontend (DEV={{.Opn}}.DEV{{.Cls}} RUNNER={{.Opn}}.PACKAGE_MANAGER | default "auto"{{.Cls}})
+     summary: Build the frontend project
+     # darwin:build:universal runs its per-arch builds as parallel deps, each of
+     # which depends on this task. Without run:once the two executions race:
+@@ -107,6 +112,10 @@ tasks:
+           SCRIPT: "{{.Opn}}.SCRIPT{{.Cls}}"
+     vars:
+       SCRIPT: "{{.Opn}}.SCRIPT{{.Cls}}"
++      PACKAGE_MANAGER:
++        # Detected from package.json/lockfile; falls back to bun, then npm.
++        # Override with PACKAGE_MANAGER=<bun|pnpm|yarn|npm>.
++        sh: '{{.Opn}}if .PACKAGE_MANAGER{{.Cls}}echo {{.Opn}}.PACKAGE_MANAGER{{.Cls}}{{.Opn}}else{{.Cls}}bails tool package-manager -dir frontend{{.Opn}}end{{.Cls}}'
+ 
+   frontend:run:npm:
+     dir: frontend
+@@ -209,6 +218,11 @@ tasks:
+       - task: install:frontend:deps
+     cmds:
+       - task: frontend:dev:{{.Opn}}.PACKAGE_MANAGER{{.Cls}}
++    vars:
++      PACKAGE_MANAGER:
++        # Detected from package.json/lockfile; falls back to bun, then npm.
++        # Override with PACKAGE_MANAGER=<bun|pnpm|yarn|npm>.
++        sh: '{{.Opn}}if .PACKAGE_MANAGER{{.Cls}}echo {{.Opn}}.PACKAGE_MANAGER{{.Cls}}{{.Opn}}else{{.Cls}}bails tool package-manager -dir frontend{{.Opn}}end{{.Cls}}'
+ 
+   frontend:dev:npm:
+     dir: frontend
+diff --git a/internal/commands/build_assets/docker/Dockerfile.cross b/internal/commands/build_assets/docker/Dockerfile.cross
+index 99969b3c5..2b7e86261 100644
+--- a/internal/commands/build_assets/docker/Dockerfile.cross
++++ b/internal/commands/build_assets/docker/Dockerfile.cross
+@@ -32,6 +32,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
+ 
+ RUN go install mvdan.cc/garble@${GARBLE_VERSION}
+ 
++# bun is the default frontend package manager when a project has no lockfile.
++RUN npm install -g bun && bun --version
++
+ # Install Zig - automatically selects correct binary for host architecture.
+ # The SHA-256 is fetched from Zig's official download manifest and verified
+ # before extraction to protect against MITM or corrupted downloads.
+@@ -190,7 +193,31 @@ export CGO_CFLAGS="-w"
+ 
+ # Build frontend if exists and not already built (host may have built it)
+ if [ -d "frontend" ] && [ -f "frontend/package.json" ] && [ ! -d "frontend/dist" ]; then
+-    (cd frontend && npm install --silent && npm run build --silent)
++    # Same order as `bails tool package-manager`: PACKAGE_MANAGER, package.json
++    # "packageManager", lockfile, then bun, then npm.
++    PM="${PACKAGE_MANAGER:-}"
++    if [ -z "$PM" ]; then
++        PM=$(sed -n 's/.*"packageManager"[[:space:]]*:[[:space:]]*"\([a-z]*\)@.*/\1/p' frontend/package.json | head -n 1)
++    fi
++    if [ -z "$PM" ]; then
++        if [ -f frontend/bun.lock ] || [ -f frontend/bun.lockb ]; then PM=bun
++        elif [ -f frontend/pnpm-lock.yaml ]; then PM=pnpm
++        elif [ -f frontend/yarn.lock ]; then PM=yarn
++        elif [ -f frontend/package-lock.json ] || [ -f frontend/npm-shrinkwrap.json ]; then PM=npm
++        elif command -v bun >/dev/null 2>&1; then PM=bun
++        elif command -v npm >/dev/null 2>&1; then PM=npm
++        else echo "error: no JavaScript package manager found: install bun or npm" >&2; exit 1
++        fi
++    fi
++    if ! command -v "$PM" >/dev/null 2>&1; then
++        echo "error: the frontend uses $PM, but $PM is not installed in this image" >&2
++        exit 1
++    fi
++    case "$PM" in
++        npm) (cd frontend && npm install --silent && npm run build --silent) ;;
++        yarn) (cd frontend && yarn install && yarn build) ;;
++        *) (cd frontend && "$PM" install && "$PM" run build) ;;
++    esac
+ fi
+ 
+ # Build
+diff --git a/internal/commands/manifest_dev_migration_regression_test.go b/internal/commands/manifest_dev_migration_regression_test.go
+index 7daa836d1..846239aaa 100644
+--- a/internal/commands/manifest_dev_migration_regression_test.go
++++ b/internal/commands/manifest_dev_migration_regression_test.go
+@@ -24,7 +24,7 @@ func TestManifestRegressionDevUsesDiscoveredRoot(t *testing.T) {
+ }
+ func TestManifestRegressionMigrationDoesNotLoseTaskfileEnvironment(t *testing.T) {
+ 	root := t.TempDir()
+-	if err := copyMigrationFixture(filepath.Join("..", "..", "examples", "badge"), root); err != nil {
++	if err := copyMigrationFixture(filepath.Join("testdata", "migration", "badge-stock"), root); err != nil {
+ 		t.Fatal(err)
+ 	}
+ 	file := filepath.Join(root, "Taskfile.yml")
+@@ -50,7 +50,7 @@ func TestManifestRegressionMigrationDoesNotLoseTaskfileEnvironment(t *testing.T)
+ }
+ func TestManifestRegressionMigrationDoesNotLosePort(t *testing.T) {
+ 	root := t.TempDir()
+-	if err := copyMigrationFixture(filepath.Join("..", "..", "examples", "badge"), root); err != nil {
++	if err := copyMigrationFixture(filepath.Join("testdata", "migration", "badge-stock"), root); err != nil {
+ 		t.Fatal(err)
+ 	}
+ 	file := filepath.Join(root, "Taskfile.yml")
+diff --git a/internal/commands/manifest_migrate.go b/internal/commands/manifest_migrate.go
+index d452d7520..90048743b 100644
+--- a/internal/commands/manifest_migrate.go
++++ b/internal/commands/manifest_migrate.go
+@@ -461,7 +461,7 @@ func stockMigrationVariables(rootTask, path string, variables map[string]*wakeas
+ 				continue
+ 			}
+ 		}
+-		if name == "PACKAGE_MANAGER" && value.Static == `{{.PACKAGE_MANAGER | default "npm"}}` ||
++		if name == "PACKAGE_MANAGER" && (value.Static == `{{.PACKAGE_MANAGER | default "npm"}}` || value.Static == `{{.PACKAGE_MANAGER}}`) ||
+ 			name == "VITE_PORT" && value.Static == `{{.BAILS_VITE_PORT | default 9245}}` ||
+ 			name == "GOOS" && value.Static == `{{.GOOS | default OS}}` {
+ 			continue
+diff --git a/internal/commands/manifest_migrate_config.go b/internal/commands/manifest_migrate_config.go
+index c6b650102..a629679de 100644
+--- a/internal/commands/manifest_migrate_config.go
++++ b/internal/commands/manifest_migrate_config.go
+@@ -279,16 +279,19 @@ func applyLegacyFrontendConfiguration(root, taskPackageManager string, report *M
+ 		manager = managerNames[0]
+ 	}
+ 	if manager == "" {
+-		manager = "npm"
+-	}
+-	if !containsString([]string{"npm", "pnpm", "yarn", "bun"}, manager) {
++		// No project signal: leave the commands unset so each machine detects
++		// its package manager when the manifest loads (bun, else npm).
++		doc.Frontend.PackageManager = ""
++		doc.Frontend.Install, doc.Frontend.Build, doc.Frontend.Dev = nil, nil, nil
++	} else if !containsString([]string{"npm", "pnpm", "yarn", "bun"}, manager) {
+ 		blockMigration(report, "package-manager", "frontend", "", "unsupported package manager "+manager)
+ 		return nil
++	} else {
++		doc.Frontend.PackageManager = manager
++		doc.Frontend.Install = []string{manager, "install"}
++		doc.Frontend.Build = []string{manager, "run", "build"}
++		doc.Frontend.Dev = []string{manager, "run", "dev"}
+ 	}
+-	doc.Frontend.PackageManager = manager
+-	doc.Frontend.Install = []string{manager, "install"}
+-	doc.Frontend.Build = []string{manager, "run", "build"}
+-	doc.Frontend.Dev = []string{manager, "run", "dev"}
+ 
+ 	tsconfig := filepath.Join(frontend, "tsconfig.json")
+ 	if info, statErr := os.Stat(tsconfig); statErr == nil && !info.IsDir() {
+diff --git a/internal/commands/manifest_migrate_test.go b/internal/commands/manifest_migrate_test.go
+index 74c72bbe1..e4003538d 100644
+--- a/internal/commands/manifest_migrate_test.go
++++ b/internal/commands/manifest_migrate_test.go
+@@ -251,7 +251,7 @@ func TestMigrateGoldenFixtures(t *testing.T) {
+ 		source   string
+ 		rootName string
+ 	}{
+-		{name: "stock-generated", source: filepath.Join("..", "..", "examples", "badge"), rootName: "badge"},
++		{name: "stock-generated", source: filepath.Join("testdata", "migration", "badge-stock"), rootName: "badge"},
+ 		{name: "customised", source: filepath.Join("testdata", "migration", "customised", "input"), rootName: "customised"},
+ 		{name: "included", source: filepath.Join("testdata", "migration", "included", "input"), rootName: "included"},
+ 		{name: "partial", source: filepath.Join("testdata", "migration", "partial", "input"), rootName: "partial"},
+@@ -909,7 +909,7 @@ func TestLegacyBindingOptionsRecogniseTypedAndInterfaceFlags(t *testing.T) {
+ }
+ 
+ func TestMigrationAcceptsStockGeneratedExampleDeterministically(t *testing.T) {
+-	root, err := filepath.Abs(filepath.Join("..", "..", "examples", "badge"))
++	root, err := filepath.Abs(filepath.Join("testdata", "migration", "badge-stock"))
+ 	require.NoError(t, err)
+ 	firstReport, firstDocument, err := analyseMigration(root)
+ 	require.NoError(t, err)
+@@ -932,7 +932,7 @@ func TestMigrationAcceptsStockGeneratedExampleDeterministically(t *testing.T) {
+ 
+ func TestMigrationHistoricalDefaultsAcceptCRLFButRejectEdits(t *testing.T) {
+ 	root := t.TempDir()
+-	require.NoError(t, os.CopyFS(root, os.DirFS(filepath.Join("..", "..", "examples", "badge"))))
++	require.NoError(t, os.CopyFS(root, os.DirFS(filepath.Join("testdata", "migration", "badge-stock"))))
+ 	require.NoError(t, filepath.WalkDir(root, func(path string, entry fs.DirEntry, err error) error {
+ 		if err != nil {
+ 			return err
+@@ -966,7 +966,7 @@ func TestMigrationHistoricalDefaultsAcceptCRLFButRejectEdits(t *testing.T) {
+ }
+ 
+ func TestMigrationAnalysisIsConcurrentAndDeterministic(t *testing.T) {
+-	root, err := filepath.Abs(filepath.Join("..", "..", "examples", "badge"))
++	root, err := filepath.Abs(filepath.Join("testdata", "migration", "badge-stock"))
+ 	require.NoError(t, err)
+ 	wantReport, wantDocument, err := analyseMigration(root)
+ 	require.NoError(t, err)
+@@ -1004,7 +1004,7 @@ func migrationDiagnosticCodes(report MigrationReport) []string {
+ }
+ 
+ func BenchmarkAnalyseMigration(b *testing.B) {
+-	root, err := filepath.Abs(filepath.Join("..", "..", "examples", "badge"))
++	root, err := filepath.Abs(filepath.Join("testdata", "migration", "badge-stock"))
+ 	if err != nil {
+ 		b.Fatal(err)
+ 	}
+diff --git a/internal/commands/package_manager_default_test.go b/internal/commands/package_manager_default_test.go
+new file mode 100644
+index 000000000..05318b41a
+--- /dev/null
++++ b/internal/commands/package_manager_default_test.go
+@@ -0,0 +1,9 @@
++package commands
++
++import "github.com/blakeglucas/bails/internal/wake/manifest"
++
++// Pin frontend package-manager detection so results do not depend on which
++// managers the test host has installed. internal/jspm covers detection itself.
++func init() {
++	manifest.DetectPackageManager = func(string) (string, error) { return "npm", nil }
++}
+diff --git a/internal/commands/testdata/migration/customised/bails.migrated.golden.sha256 b/internal/commands/testdata/migration/customised/bails.migrated.golden.sha256
+index 5f72f67d6..9a004ec6c 100644
+--- a/internal/commands/testdata/migration/customised/bails.migrated.golden.sha256
++++ b/internal/commands/testdata/migration/customised/bails.migrated.golden.sha256
+@@ -1 +1 @@
+-a5a33c13d25c2051ae863a875071e15e40c2b261b83cf23dbecb78537fc00be9
++368432c852a0fc4cfeda5fb8e130a3543229a26130dc520a0acd9cbe768438d1
+diff --git a/internal/commands/testdata/migration/customised/bails.migrated.golden.yaml b/internal/commands/testdata/migration/customised/bails.migrated.golden.yaml
+index 89b54ea5d..c4f9da61b 100644
+--- a/internal/commands/testdata/migration/customised/bails.migrated.golden.yaml
++++ b/internal/commands/testdata/migration/customised/bails.migrated.golden.yaml
+@@ -13,9 +13,6 @@ project:
+ frontend:
+   disabled: false
+   directory: frontend
+-  install: [npm, install]
+-  build: [npm, run, build]
+-  dev: [npm, run, dev]
+   output: dist
+   bindings:
+     typescript: false
+diff --git a/internal/commands/testdata/migration/included/bails.migrated.golden.sha256 b/internal/commands/testdata/migration/included/bails.migrated.golden.sha256
+index 43a53bbf8..86404332b 100644
+--- a/internal/commands/testdata/migration/included/bails.migrated.golden.sha256
++++ b/internal/commands/testdata/migration/included/bails.migrated.golden.sha256
+@@ -1 +1 @@
+-688614af68fd71ab557618cc7d700879ca19695e2d466b989a3570b92546da5b
++ac343f177f889cec0ba9dd3b6162bc61e2da75944a77a7a13abc9a8de879d647
+diff --git a/internal/commands/testdata/migration/included/bails.migrated.golden.yaml b/internal/commands/testdata/migration/included/bails.migrated.golden.yaml
+index 766cff4dd..61ed50367 100644
+--- a/internal/commands/testdata/migration/included/bails.migrated.golden.yaml
++++ b/internal/commands/testdata/migration/included/bails.migrated.golden.yaml
+@@ -13,9 +13,6 @@ project:
+ frontend:
+   disabled: false
+   directory: frontend
+-  install: [npm, install]
+-  build: [npm, run, build]
+-  dev: [npm, run, dev]
+   output: dist
+   bindings:
+     typescript: false
+diff --git a/internal/commands/testdata/migration/partial/bails.migrated.golden.sha256 b/internal/commands/testdata/migration/partial/bails.migrated.golden.sha256
+index 7158cbda5..f143f93eb 100644
+--- a/internal/commands/testdata/migration/partial/bails.migrated.golden.sha256
++++ b/internal/commands/testdata/migration/partial/bails.migrated.golden.sha256
+@@ -1 +1 @@
+-058ae9ac52641916de6fc9e915f2b932dbf68fc5d1ed245d5114949b7bd017dc
++afbc302bd4704e245b2f64ccb1ee7b0a91b46f63b5d1f17900eda5d28af9ff7e
+diff --git a/internal/commands/testdata/migration/partial/bails.migrated.golden.yaml b/internal/commands/testdata/migration/partial/bails.migrated.golden.yaml
+index 23a6c88b8..9e2516b24 100644
+--- a/internal/commands/testdata/migration/partial/bails.migrated.golden.yaml
++++ b/internal/commands/testdata/migration/partial/bails.migrated.golden.yaml
+@@ -13,9 +13,6 @@ project:
+ frontend:
+   disabled: false
+   directory: frontend
+-  install: [npm, install]
+-  build: [npm, run, build]
+-  dev: [npm, run, dev]
+   output: dist
+   bindings:
+     typescript: false
+diff --git a/internal/commands/testdata/migration/stock-generated/bails.migrated.golden.sha256 b/internal/commands/testdata/migration/stock-generated/bails.migrated.golden.sha256
+index 2a73c2cf1..e847a3cef 100644
+--- a/internal/commands/testdata/migration/stock-generated/bails.migrated.golden.sha256
++++ b/internal/commands/testdata/migration/stock-generated/bails.migrated.golden.sha256
+@@ -1 +1 @@
+-2c58ebabd1b0332ce19f36844ea634a7300cb7a8379bbdb078d2309f3584e377
++71135cf976eb734fbae0f0619dc9afa45f11f80d919b03c95ce452bcca5952ba
+diff --git a/internal/commands/testdata/migration/stock-generated/bails.migrated.golden.yaml b/internal/commands/testdata/migration/stock-generated/bails.migrated.golden.yaml
+index a28be06dd..9ce2d9123 100644
+--- a/internal/commands/testdata/migration/stock-generated/bails.migrated.golden.yaml
++++ b/internal/commands/testdata/migration/stock-generated/bails.migrated.golden.yaml
+@@ -16,9 +16,6 @@ project:
+ frontend:
+   disabled: false
+   directory: frontend
+-  install: [npm, install]
+-  build: [npm, run, build]
+-  dev: [npm, run, dev]
+   output: frontend/dist
+   bindings:
+     typescript: true
+diff --git a/internal/commands/testdata/migration/stock-generated/report.golden.json b/internal/commands/testdata/migration/stock-generated/report.golden.json
+index 0fb24dc68..4d735646e 100644
+--- a/internal/commands/testdata/migration/stock-generated/report.golden.json
++++ b/internal/commands/testdata/migration/stock-generated/report.golden.json
+@@ -15,9 +15,9 @@
+     "build/darwin/icons.icns": "0f62562b785f3ef33816d6a3ad06968505ce146da6ea75eb92c02905a4dfcf58",
+     "build/linux/Taskfile.yml": "d35775aad675b0c5fb33ba0d299b2473ea70c2a0447a00247fb87956f536c28c",
+     "build/windows/Taskfile.yml": "63aee516a0529f1f1e6187cd244e80af8109040998f51fceb4eee0b190f31d6f",
++    "build/windows/bails.exe.manifest": "ba4b4b51e37f3b0f3280770b730e791ff0f1dbe05b75324093e295b7f29cc490",
+     "build/windows/icon.ico": "126f9c6bb544d001921fc60ac1fd21550940fdada477e3f41d46c73e08ae84a7",
+     "build/windows/nsis/project.nsi": "5f80d6ac8a2d159a2e380f07366ed732aa74defbaff4d41ef844b88353d73f4b",
+-    "build/windows/bails.exe.manifest": "ba4b4b51e37f3b0f3280770b730e791ff0f1dbe05b75324093e295b7f29cc490",
+     "frontend/package.json": "29397cd30cdbfddb84666ebb02c2462187643ea38e4d2df21cec10c046e69ca8",
+     "frontend/tsconfig.json": "503f05a0821c13fba639dd3870619cf2b01f8f6fa8735705c1eebad94f0c10d0"
+   },
+diff --git a/internal/commands/testdata/migration/unsupported/bails.migrated.golden.sha256 b/internal/commands/testdata/migration/unsupported/bails.migrated.golden.sha256
+index 28d0e0c6d..28cdfb04d 100644
+--- a/internal/commands/testdata/migration/unsupported/bails.migrated.golden.sha256
++++ b/internal/commands/testdata/migration/unsupported/bails.migrated.golden.sha256
+@@ -1 +1 @@
+-140ad2c0e8ea43039976586ccf941c1334cabf2227fc3064c775da30fac4136b
++ccfbff70396972fad644244a591ffd6c3b00b09b477da8c68a1e47d58f158eb9
+diff --git a/internal/commands/testdata/migration/unsupported/bails.migrated.golden.yaml b/internal/commands/testdata/migration/unsupported/bails.migrated.golden.yaml
+index 7260ec931..b198f5f34 100644
+--- a/internal/commands/testdata/migration/unsupported/bails.migrated.golden.yaml
++++ b/internal/commands/testdata/migration/unsupported/bails.migrated.golden.yaml
+@@ -12,9 +12,6 @@ project:
+ frontend:
+   disabled: false
+   directory: frontend
+-  install: [npm, install]
+-  build: [npm, run, build]
+-  dev: [npm, run, dev]
+   output: dist
+   bindings:
+     typescript: false
+diff --git a/internal/commands/tool_package_manager.go b/internal/commands/tool_package_manager.go
+new file mode 100644
+index 000000000..3e578a048
+--- /dev/null
++++ b/internal/commands/tool_package_manager.go
+@@ -0,0 +1,35 @@
++package commands
++
++import (
++	"fmt"
++	"os"
++
++	"github.com/blakeglucas/bails/internal/jspm"
++)
++
++// PackageManagerOptions holds options for `bails tool package-manager`.
++type PackageManagerOptions struct {
++	Dir     string `name:"dir" description:"Frontend directory to inspect" default:"frontend"`
++	Verbose bool   `name:"v" description:"Explain why the package manager was chosen (on stderr)"`
++}
++
++// ToolPackageManager prints the frontend's package manager (bun, pnpm, yarn or
++// npm) so Taskfiles and scripts can dispatch on it. On failure it reports the
++// reason on stderr and exits non-zero, leaving stdout empty.
++func ToolPackageManager(opts *PackageManagerOptions) error {
++	DisableFooter = true
++	dir := opts.Dir
++	if dir == "" {
++		dir = "frontend"
++	}
++	result, err := jspm.Detect(dir)
++	if err != nil {
++		fmt.Fprintln(os.Stderr, "error:", err)
++		return &applicationExitError{err: err, code: 1}
++	}
++	if opts.Verbose {
++		fmt.Fprintf(os.Stderr, "%s: %s\n", result.Name, result.Reason)
++	}
++	fmt.Print(result.Name)
++	return nil
++}
+diff --git a/internal/jspm/jspm.go b/internal/jspm/jspm.go
+new file mode 100644
+index 000000000..2e1e2f177
+--- /dev/null
++++ b/internal/jspm/jspm.go
+@@ -0,0 +1,109 @@
++// Package jspm detects which JavaScript package manager a frontend uses.
++//
++// Detection order:
++//  1. the PACKAGE_MANAGER environment variable (explicit override);
++//  2. the "packageManager" field of package.json (e.g. "pnpm@9.12.0");
++//  3. a lockfile in the frontend directory;
++//  4. bun, when it is installed;
++//  5. npm, when it is installed.
++//
++// When none applies, or the detected manager is not installed, Detect fails:
++// silently switching managers would ignore the project's lockfile.
++package jspm
++
++import (
++	"encoding/json"
++	"errors"
++	"fmt"
++	"os"
++	"os/exec"
++	"path/filepath"
++	"slices"
++	"strings"
++)
++
++// EnvOverride names the environment variable that forces a package manager.
++const EnvOverride = "PACKAGE_MANAGER"
++
++// Supported lists the package managers bails can drive.
++var Supported = []string{"bun", "pnpm", "yarn", "npm"}
++
++// lockfiles maps lockfile names to their package manager, in precedence order
++// for directories that (unusually) contain more than one.
++var lockfiles = []struct{ file, manager string }{
++	{"bun.lock", "bun"},
++	{"bun.lockb", "bun"},
++	{"pnpm-lock.yaml", "pnpm"},
++	{"yarn.lock", "yarn"},
++	{"package-lock.json", "npm"},
++	{"npm-shrinkwrap.json", "npm"},
++}
++
++// ErrNotFound reports that no supported package manager is installed.
++var ErrNotFound = errors.New("no JavaScript package manager found: install bun (https://bun.sh) or npm (https://nodejs.org)")
++
++// Result is a detected package manager and why it was chosen.
++type Result struct {
++	Name   string
++	Reason string
++}
++
++// Environment abstracts process lookups so detection is testable.
++type Environment struct {
++	LookPath func(string) (string, error)
++	Getenv   func(string) string
++	ReadFile func(string) ([]byte, error)
++	Stat     func(string) (os.FileInfo, error)
++}
++
++// System is the real process environment.
++var System = Environment{LookPath: exec.LookPath, Getenv: os.Getenv, ReadFile: os.ReadFile, Stat: os.Stat}
++
++// Detect returns the package manager for the frontend in dir.
++func Detect(dir string) (Result, error) { return System.Detect(dir) }
++
++// Detect returns the package manager for the frontend in dir.
++func (env Environment) Detect(dir string) (Result, error) {
++	if name := strings.TrimSpace(env.Getenv(EnvOverride)); name != "" {
++		return env.require(name, EnvOverride+" is set")
++	}
++	if name, ok := env.declared(dir); ok {
++		return env.require(name, `package.json declares "packageManager"`)
++	}
++	for _, lock := range lockfiles {
++		if _, err := env.Stat(filepath.Join(dir, lock.file)); err == nil {
++			return env.require(lock.manager, "found "+lock.file)
++		}
++	}
++	for _, name := range []string{"bun", "npm"} {
++		if _, err := env.LookPath(name); err == nil {
++			return Result{Name: name, Reason: "no lockfile; using installed " + name}, nil
++		}
++	}
++	return Result{}, ErrNotFound
++}
++
++func (env Environment) declared(dir string) (string, bool) {
++	data, err := env.ReadFile(filepath.Join(dir, "package.json"))
++	if err != nil {
++		return "", false
++	}
++	var pkg struct {
++		PackageManager string `json:"packageManager"`
++	}
++	if json.Unmarshal(data, &pkg) != nil || pkg.PackageManager == "" {
++		return "", false
++	}
++	name, _, _ := strings.Cut(pkg.PackageManager, "@")
++	return name, true
++}
++
++func (env Environment) require(name, reason string) (Result, error) {
++	if !slices.Contains(Supported, name) {
++		return Result{}, fmt.Errorf("unsupported package manager %q (%s); supported: %s", name, reason, strings.Join(Supported, ", "))
++	}
++	if _, err := env.LookPath(name); err != nil {
++		return Result{}, fmt.Errorf("the frontend uses %s (%s), but %s is not installed", name, reason, name)
++	}
++	return Result{Name: name, Reason: reason}, nil
++}
+diff --git a/internal/jspm/jspm_test.go b/internal/jspm/jspm_test.go
+new file mode 100644
+index 000000000..43abd5e3f
+--- /dev/null
++++ b/internal/jspm/jspm_test.go
+@@ -0,0 +1,77 @@
++package jspm
++
++import (
++	"errors"
++	"os"
++	"path/filepath"
++	"strings"
++	"testing"
++)
++
++func fakeEnv(installed []string, env map[string]string) Environment {
++	return Environment{
++		LookPath: func(name string) (string, error) {
++			for _, n := range installed {
++				if n == name {
++					return "/usr/bin/" + name, nil
++				}
++			}
++			return "", errors.New("not found")
++		},
++		Getenv:   func(k string) string { return env[k] },
++		ReadFile: os.ReadFile,
++		Stat:     os.Stat,
++	}
++}
++
++func write(t *testing.T, dir, name, content string) {
++	t.Helper()
++	if err := os.WriteFile(filepath.Join(dir, name), []byte(content), 0o644); err != nil {
++		t.Fatal(err)
++	}
++}
++
++func TestDetect(t *testing.T) {
++	all := []string{"bun", "pnpm", "yarn", "npm"}
++	tests := []struct {
++		name      string
++		files     map[string]string
++		installed []string
++		env       map[string]string
++		want      string
++		wantErr   string
++	}{
++		{name: "fallback prefers bun", installed: all, want: "bun"},
++		{name: "fallback to npm without bun", installed: []string{"npm", "pnpm"}, want: "npm"},
++		{name: "nothing installed", installed: nil, wantErr: ErrNotFound.Error()},
++		{name: "pnpm lockfile", files: map[string]string{"pnpm-lock.yaml": ""}, installed: all, want: "pnpm"},
++		{name: "yarn lockfile", files: map[string]string{"yarn.lock": ""}, installed: all, want: "yarn"},
++		{name: "npm lockfile beats bun fallback", files: map[string]string{"package-lock.json": "{}"}, installed: all, want: "npm"},
++		{name: "bun text lockfile", files: map[string]string{"bun.lock": ""}, installed: all, want: "bun"},
++		{name: "packageManager field beats lockfile", files: map[string]string{"package.json": `{"packageManager":"yarn@4.5.0"}`, "package-lock.json": "{}"}, installed: all, want: "yarn"},
++		{name: "env override beats everything", files: map[string]string{"pnpm-lock.yaml": ""}, installed: all, env: map[string]string{EnvOverride: "npm"}, want: "npm"},
++		{name: "detected but missing", files: map[string]string{"pnpm-lock.yaml": ""}, installed: []string{"bun", "npm"}, wantErr: "uses pnpm (found pnpm-lock.yaml), but pnpm is not installed"},
++		{name: "unsupported override", installed: all, env: map[string]string{EnvOverride: "deno"}, wantErr: `unsupported package manager "deno"`},
++	}
++	for _, tt := range tests {
++		t.Run(tt.name, func(t *testing.T) {
++			dir := t.TempDir()
++			for name, content := range tt.files {
++				write(t, dir, name, content)
++			}
++			got, err := fakeEnv(tt.installed, tt.env).Detect(dir)
++			if tt.wantErr != "" {
++				if err == nil || !strings.Contains(err.Error(), tt.wantErr) {
++					t.Fatalf("Detect() error = %v, want containing %q", err, tt.wantErr)
++				}
++				return
++			}
++			if err != nil {
++				t.Fatalf("Detect() error = %v", err)
++			}
++			if got.Name != tt.want {
++				t.Fatalf("Detect() = %q (%s), want %q", got.Name, got.Reason, tt.want)
++			}
++		})
++	}
++}
+diff --git a/internal/setupwizard/package_manager_default_test.go b/internal/setupwizard/package_manager_default_test.go
+new file mode 100644
+index 000000000..ecadd2683
+--- /dev/null
++++ b/internal/setupwizard/package_manager_default_test.go
+@@ -0,0 +1,9 @@
++package setupwizard
++
++import "github.com/blakeglucas/bails/internal/wake/manifest"
++
++// Pin frontend package-manager detection so results do not depend on which
++// managers the test host has installed. internal/jspm covers detection itself.
++func init() {
++	manifest.DetectPackageManager = func(string) (string, error) { return "npm", nil }
++}
+diff --git a/internal/setupwizard/wake_setup_test.go b/internal/setupwizard/wake_setup_test.go
+index 9d3f81364..933277f19 100644
+--- a/internal/setupwizard/wake_setup_test.go
++++ b/internal/setupwizard/wake_setup_test.go
+@@ -186,7 +186,7 @@ func TestApplyWakeInitPreservesScaffoldAndDrivesBuild(t *testing.T) {
+ 	if err != nil {
+ 		t.Fatal(err)
+ 	}
+-	if loaded.Config.Project.ProductName != "Probe" || loaded.Config.Frontend.Build[0] != "npm" || loaded.Config.Selected.Targets[0].Formats[0] != "msix" {
++	if loaded.Config.Project.ProductName != "Probe" || loaded.Config.Frontend.PackageManager != "npm" || loaded.Config.Selected.Targets[0].Formats[0] != "msix" {
+ 		t.Fatal("scaffold metadata/frontend or selections lost")
+ 	}
+ 	plan, err := pipeline.PlanBuild(loaded.Config, pipeline.Request{Verb: "build"})
+diff --git a/internal/templates/_legacy/Taskfile.tmpl.yml b/internal/templates/_legacy/Taskfile.tmpl.yml
+index b8b97609d..42c7713b3 100644
+--- a/internal/templates/_legacy/Taskfile.tmpl.yml
++++ b/internal/templates/_legacy/Taskfile.tmpl.yml
+@@ -3,7 +3,8 @@ version: '3'
+ vars:
+   APP_NAME: "{{.BinaryName}}"
+   BIN_DIR: "bin"
+-  PACKAGE_MANAGER: '{{.Opn}}.PACKAGE_MANAGER | default "npm"{{.Cls}}'
++  # Empty means auto-detect per frontend (see `bails tool package-manager`).
++  PACKAGE_MANAGER: '{{.Opn}}.PACKAGE_MANAGER{{.Cls}}'
+   VITE_PORT: '{{.Opn}}.BAILS_VITE_PORT | default 9245{{.Cls}}'
+   # Target OS for build/package/run. Defaults to the host OS, and is overridden
+   # by `bails build GOOS=...` (or the GOOS env var) for cross-compilation. The
+diff --git a/internal/wake/manifest/load.go b/internal/wake/manifest/load.go
+index 00aed6450..4645b256e 100644
+--- a/internal/wake/manifest/load.go
++++ b/internal/wake/manifest/load.go
+@@ -218,7 +218,8 @@ func validateConfig(config Config) error {
+ 	if config.Project.BinaryName != filepath.Base(config.Project.BinaryName) || strings.ContainsAny(config.Project.BinaryName, `/\\`) || config.Project.BinaryName == "." || config.Project.BinaryName == ".." {
+ 		return fieldValidationError("project.binary_name", "must be a plain file name, got %q", config.Project.BinaryName)
+ 	}
+-	if len(config.Frontend.Install) == 0 && !contains([]string{"npm", "pnpm", "yarn", "bun"}, config.Frontend.PackageManager) {
++	// An empty package manager means auto-detect; Load resolves it before use.
++	if config.Frontend.PackageManager != "" && len(config.Frontend.Install) == 0 && !contains([]string{"npm", "pnpm", "yarn", "bun"}, config.Frontend.PackageManager) {
+ 		return fieldValidationError("frontend.install", "unsupported package manager %q", config.Frontend.PackageManager)
+ 	}
+ 	for field, value := range map[string]string{
+diff --git a/internal/wake/manifest/manifest_schema.go b/internal/wake/manifest/manifest_schema.go
+index c7f534811..ca4d7e669 100644
+--- a/internal/wake/manifest/manifest_schema.go
++++ b/internal/wake/manifest/manifest_schema.go
+@@ -73,9 +73,9 @@ type manifestFrontend struct {
+ 	Disabled *bool `manifest:"disabled,optional" default:"false"`
+ 
+ 	Directory   *string            `manifest:"directory,optional" default:"frontend"`
+-	Install     *[]string          `manifest:"install,optional" default:"[\"npm\",\"install\"]"`
+-	Build       *[]string          `manifest:"build,optional" default:"[\"npm\",\"run\",\"build\"]"`
+-	Dev         *[]string          `manifest:"dev,optional" default:"[\"npm\",\"run\",\"dev\"]"`
++	Install     *[]string          `manifest:"install,optional"`
++	Build       *[]string          `manifest:"build,optional"`
++	Dev         *[]string          `manifest:"dev,optional"`
+ 	Output      *string            `manifest:"output,optional" default:"dist"`
+ 	Environment *map[string]string `manifest:"environment,optional" default:"{}"`
+ 	Bindings    *manifestBindings  `manifest:"bindings,block"`
+@@ -226,6 +226,9 @@ func decodeYAML(root, filename string, src []byte, selectedProfile string) (*Loa
+ 		return nil, attachValidationRange(err, origins)
+ 	}
+ 	config := configFromDocument(root, selectedProfile, doc)
++	if err := resolvePackageManager(&config); err != nil {
++		return nil, err
++	}
+ 	for field, origin := range origins {
+ 		config.Origins[field] = origin
+ 	}
+diff --git a/internal/wake/manifest/package_manager.go b/internal/wake/manifest/package_manager.go
+new file mode 100644
+index 000000000..8432bed56
+--- /dev/null
++++ b/internal/wake/manifest/package_manager.go
+@@ -0,0 +1,31 @@
++package manifest
++
++import (
++	"fmt"
++	"path/filepath"
++
++	"github.com/blakeglucas/bails/internal/jspm"
++)
++
++// DetectPackageManager resolves the frontend package manager when bails.yaml
++// leaves frontend.install, frontend.build and frontend.dev unset. Tests may
++// replace it for deterministic results.
++var DetectPackageManager = func(dir string) (string, error) {
++	result, err := jspm.Detect(dir)
++	return result.Name, err
++}
++
++// resolvePackageManager fills in the package manager for frontends without
++// explicit commands: the project's own (package.json packageManager or
++// lockfile), else bun, else npm. No usable manager is a load error.
++func resolvePackageManager(config *Config) error {
++	if config.Frontend.Disabled || config.Frontend.PackageManager != "" {
++		return nil
++	}
++	name, err := DetectPackageManager(filepath.Join(config.Root, config.Frontend.Directory))
++	if err != nil {
++		return fmt.Errorf("frontend: %w", err)
++	}
++	config.Frontend.PackageManager = name
++	return nil
++}
+diff --git a/internal/wake/manifest/package_manager_default_test.go b/internal/wake/manifest/package_manager_default_test.go
+new file mode 100644
+index 000000000..a7ee84e19
+--- /dev/null
++++ b/internal/wake/manifest/package_manager_default_test.go
+@@ -0,0 +1,9 @@
++package manifest_test
++
++import "github.com/blakeglucas/bails/internal/wake/manifest"
++
++// Pin frontend package-manager detection so results do not depend on which
++// managers the test host has installed. internal/jspm covers detection itself.
++func init() {
++	manifest.DetectPackageManager = func(string) (string, error) { return "npm", nil }
++}
+diff --git a/internal/wake/manifest/schema.go b/internal/wake/manifest/schema.go
+index c3ee16220..5bbf6f2cb 100644
+--- a/internal/wake/manifest/schema.go
++++ b/internal/wake/manifest/schema.go
+@@ -150,7 +150,7 @@ var schemaAttributeDescriptions = map[string]string{
+ 	"background":                   "User-owned DMG background image.",
+ 	"background_modes":             "iOS background execution modes.",
+ 	"binary_name":                  "Base name of the native executable.",
+-	"build":                        "Frontend production build command and arguments.",
++	"build":                        "Frontend production build command and arguments. Unset: run the detected package manager (package.json packageManager, lockfile, else bun, else npm).",
+ 	"cache":                        "Allow this hook to use the artifact cache; complete inputs and outputs are required.",
+ 	"build_number":                 "Platform build number.",
+ 	"bundle_id":                    "iOS bundle identifier.",
+@@ -171,7 +171,7 @@ var schemaAttributeDescriptions = map[string]string{
+ 	"description":                  "Human-readable description.",
+ 	"desktop_entry":                "User-owned Linux desktop-entry file.",
+ 	"destination":                  "Mobile build destination.",
+-	"dev":                          "Frontend development-server command and arguments.",
++	"dev":                          "Frontend development-server command and arguments. Unset: run the detected package manager (package.json packageManager, lockfile, else bun, else npm).",
+ 	"directory":                    "Project-relative frontend source directory.",
+ 	"display_name":                 "Name displayed by the mobile platform.",
+ 	"entitlements":                 "Project-relative Apple entitlements file.",
+@@ -188,7 +188,7 @@ var schemaAttributeDescriptions = map[string]string{
+ 	"identity":                     "Signing identity selected through the platform toolchain.",
+ 	"index_filename":               "Base filename for generated binding exports.",
+ 	"info_plist":                   "User-owned Apple Info.plist file.",
+-	"install":                      "Frontend dependency installation command and arguments.",
++	"install":                      "Frontend dependency installation command and arguments. Unset: run the detected package manager (package.json packageManager, lockfile, else bun, else npm).",
+ 	"install_scope":                "NSIS installation scope.",
+ 	"inputs":                       "Project-relative files or directories that determine a cached hook result.",
+ 	"interfaces":                   "Generate TypeScript interfaces instead of classes where supported.",
+diff --git a/internal/wake/manifest/yaml_encode.go b/internal/wake/manifest/yaml_encode.go
+index 5edef236c..00f6b1733 100644
+--- a/internal/wake/manifest/yaml_encode.go
++++ b/internal/wake/manifest/yaml_encode.go
+@@ -27,9 +27,6 @@ func encodeInitialYAML(state InitialState) []byte {
+ 	yamlSet(root, "project", project)
+ 	frontend := yamlMap()
+ 	yamlSetString(frontend, "directory", "frontend")
+-	yamlSet(frontend, "install", yamlStrings([]string{"npm", "install"}))
+-	yamlSet(frontend, "build", yamlStrings([]string{"npm", "run", "build"}))
+-	yamlSet(frontend, "dev", yamlStrings([]string{"npm", "run", "dev"}))
+ 	yamlSetString(frontend, "output", "frontend/dist")
+ 	bindings := yamlMap()
+ 	yamlSet(bindings, "typescript", yamlBool(state.TypeScript))
+@@ -61,9 +58,15 @@ func encodeConfigYAML(config Config, header string) ([]byte, error) {
+ 	frontend := yamlMap()
+ 	yamlSet(frontend, "disabled", yamlBool(config.Frontend.Disabled))
+ 	yamlSetString(frontend, "directory", config.Frontend.Directory)
+-	yamlSet(frontend, "install", yamlStrings(config.Frontend.Install))
+-	yamlSet(frontend, "build", yamlStrings(config.Frontend.Build))
+-	yamlSet(frontend, "dev", yamlStrings(config.Frontend.Dev))
++	// Unset commands stay unset so the package manager is detected per machine.
++	for _, command := range []struct {
++		key  string
++		argv []string
++	}{{"install", config.Frontend.Install}, {"build", config.Frontend.Build}, {"dev", config.Frontend.Dev}} {
++		if len(command.argv) > 0 {
++			yamlSet(frontend, command.key, yamlStrings(command.argv))
++		}
++	}
+ 	yamlSetString(frontend, "output", config.Frontend.OutputDirectory)
+ 	yamlSetOptionalStringMap(frontend, "environment", config.Frontend.Environment)
+ 	bindings := yamlMap()
+diff --git a/internal/wake/manifest/yaml_happy_path_test.go b/internal/wake/manifest/yaml_happy_path_test.go
+index 39a9c255c..36a8a0dfa 100644
+--- a/internal/wake/manifest/yaml_happy_path_test.go
++++ b/internal/wake/manifest/yaml_happy_path_test.go
+@@ -360,7 +360,8 @@ project:
+ 	loaded, err := Load(root, "")
+ 	require.NoError(t, err)
+ 	assert.Equal(t, "npm", loaded.Config.Frontend.PackageManager)
+-	assert.Equal(t, []string{"npm", "install"}, loaded.Config.Frontend.Install)
++	// Unset frontend commands are left to the detected package manager.
++	assert.Empty(t, loaded.Config.Frontend.Install)
+ 	assert.Equal(t, "dist", loaded.Config.Frontend.OutputDirectory)
+ 	assert.Equal(t, "bin", loaded.Config.Build.OutputDirectory)
+ 	assert.Equal(t, 9245, loaded.Config.Dev.Port)
+diff --git a/internal/wake/pipeline/package_manager_default_test.go b/internal/wake/pipeline/package_manager_default_test.go
+new file mode 100644
+index 000000000..1bb0dfa82
+--- /dev/null
++++ b/internal/wake/pipeline/package_manager_default_test.go
+@@ -0,0 +1,9 @@
++package pipeline
++
++import "github.com/blakeglucas/bails/internal/wake/manifest"
++
++// Pin frontend package-manager detection so results do not depend on which
++// managers the test host has installed. internal/jspm covers detection itself.
++func init() {
++	manifest.DetectPackageManager = func(string) (string, error) { return "npm", nil }
++}

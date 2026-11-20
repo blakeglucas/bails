@@ -73,9 +73,9 @@ type manifestFrontend struct {
 	Disabled *bool `manifest:"disabled,optional" default:"false"`
 
 	Directory   *string            `manifest:"directory,optional" default:"frontend"`
-	Install     *[]string          `manifest:"install,optional" default:"[\"npm\",\"install\"]"`
-	Build       *[]string          `manifest:"build,optional" default:"[\"npm\",\"run\",\"build\"]"`
-	Dev         *[]string          `manifest:"dev,optional" default:"[\"npm\",\"run\",\"dev\"]"`
+	Install     *[]string          `manifest:"install,optional"`
+	Build       *[]string          `manifest:"build,optional"`
+	Dev         *[]string          `manifest:"dev,optional"`
 	Output      *string            `manifest:"output,optional" default:"dist"`
 	Environment *map[string]string `manifest:"environment,optional" default:"{}"`
 	Bindings    *manifestBindings  `manifest:"bindings,block"`
@@ -226,6 +226,9 @@ func decodeYAML(root, filename string, src []byte, selectedProfile string) (*Loa
 		return nil, attachValidationRange(err, origins)
 	}
 	config := configFromDocument(root, selectedProfile, doc)
+	if err := resolvePackageManager(&config); err != nil {
+		return nil, err
+	}
 	for field, origin := range origins {
 		config.Origins[field] = origin
 	}
