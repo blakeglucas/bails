@@ -39,8 +39,7 @@ The token lands in your user `~/.npmrc`; never commit it to a project. In CI,
 write `//npm.bgcl.dev/:_authToken=${NPM_TOKEN}` to the user `.npmrc` from a
 secret.
 
-Publish from `internal/runtime/desktop/@bails/runtime` with `npm publish`
-(`publishConfig` already targets the registry).
+To publish it as part of a release, see [RELEASING.md](RELEASING.md).
 
 ## Frontend package manager
 
