@@ -8,8 +8,8 @@ import (
 	"sync"
 	"time"
 
-	"example.com/bails/internal/report"
-	"example.com/bails/internal/report/pulse/ansi"
+	"github.com/blakeglucas/bails/internal/report"
+	"github.com/blakeglucas/bails/internal/report/pulse/ansi"
 )
 
 // Reporter renders a wake build as the "Pulse" TUI.

@@ -3,7 +3,7 @@ package version
 import (
 	"testing"
 
-	"example.com/bails/internal/debug"
+	"github.com/blakeglucas/bails/internal/debug"
 )
 
 func TestStringTrimsEmbeddedVersionWhitespace(t *testing.T) {

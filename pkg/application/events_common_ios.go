@@ -2,7 +2,7 @@
 
 package application
 
-import "example.com/bails/pkg/events"
+import "github.com/blakeglucas/bails/pkg/events"
 
 // Map platform events → common events (same pattern as macOS & others).
 // setupCommonEvents copies the source event's context, so any data attached on

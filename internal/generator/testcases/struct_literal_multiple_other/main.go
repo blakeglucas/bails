@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"example.com/bails/internal/generator/testcases/struct_literal_multiple_other/services"
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/internal/generator/testcases/struct_literal_multiple_other/services"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // GreetService is great

@@ -10,7 +10,7 @@ import (
 	"slices"
 	"strings"
 
-	"example.com/bails/internal/buildmeta"
+	"github.com/blakeglucas/bails/internal/buildmeta"
 )
 
 type File struct {

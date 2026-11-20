@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/pkg/updater"
-	"example.com/bails/pkg/updater/providers/keygen"
+	"github.com/blakeglucas/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater/providers/keygen"
 )
 
 // TestLive_KeygenIntegration drives the keygen.sh provider against the real

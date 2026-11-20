@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/report"
-	"example.com/bails/internal/report/pulse/ansi"
+	"github.com/blakeglucas/bails/internal/report"
+	"github.com/blakeglucas/bails/internal/report/pulse/ansi"
 )
 
 // repaintLocked rebuilds the pinned region from current state and atomically

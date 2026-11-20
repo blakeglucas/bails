@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/runtime"
+	"github.com/blakeglucas/bails/internal/runtime"
 )
 
 func TestRuntimeScriptIfMissing(t *testing.T) {

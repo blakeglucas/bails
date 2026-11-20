@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 type TestService struct {
@@ -166,7 +166,7 @@ func TestBoundMethodCall(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			callOptions := &application.CallOptions{
-				MethodName: "example.com/bails/pkg/application_test.TestService." + tt.method,
+				MethodName: "github.com/blakeglucas/bails/pkg/application_test.TestService." + tt.method,
 			}
 
 			method := bindings.Get(callOptions)
@@ -257,7 +257,7 @@ func TestBoundMethodPanic(t *testing.T) {
 	for _, method := range []string{"Panic", "PanicNilDeref"} {
 		t.Run(method, func(t *testing.T) {
 			bound := bindings.Get(&application.CallOptions{
-				MethodName: "example.com/bails/pkg/application_test.TestService." + method,
+				MethodName: "github.com/blakeglucas/bails/pkg/application_test.TestService." + method,
 			})
 			if bound == nil {
 				t.Fatalf("bound method not found: %s", method)

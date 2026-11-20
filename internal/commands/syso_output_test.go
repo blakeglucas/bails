@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/iconfile"
+	"github.com/blakeglucas/bails/internal/iconfile"
 )
 
 func TestGenerateSysoWithGeneratedIcon(t *testing.T) {

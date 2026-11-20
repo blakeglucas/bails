@@ -2,7 +2,7 @@
 
 package main
 
-import "example.com/bails/pkg/w32"
+import "github.com/blakeglucas/bails/pkg/w32"
 
 func init() {
 	getExStyle = func() int {

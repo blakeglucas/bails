@@ -5,8 +5,8 @@ import (
 	"log/slog"
 	"os"
 
-	"example.com/bails/pkg/application"
 	"gin-service/services"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 //go:embed assets/*

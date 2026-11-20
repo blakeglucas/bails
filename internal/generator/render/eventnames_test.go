@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/generator/collect"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/generator/collect"
 )
 
 // TestEventNamesEscapeComments guards comment terminators in discoverable names.

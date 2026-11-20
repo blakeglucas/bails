@@ -5,7 +5,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/flags"
 	"github.com/stretchr/testify/require"
 )
 

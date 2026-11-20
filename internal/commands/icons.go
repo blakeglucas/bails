@@ -14,8 +14,8 @@ import (
 	"strconv"
 	"strings"
 
-	"example.com/bails/internal/iconfile"
-	"example.com/bails/internal/operatingsystem"
+	"github.com/blakeglucas/bails/internal/iconfile"
+	"github.com/blakeglucas/bails/internal/operatingsystem"
 	"howett.net/plist"
 )
 

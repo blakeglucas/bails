@@ -6,7 +6,7 @@ package edge
 import (
 	"log"
 
-	"example.com/bails/internal/webview2/internal/w32"
+	"github.com/blakeglucas/bails/internal/webview2/internal/w32"
 )
 
 func (e *Chromium) SetSize(bounds w32.Rect) {

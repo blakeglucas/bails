@@ -82,7 +82,7 @@ static void fix_signal(int signum) {
 fix_signal_error:
     fprintf(stderr, "error fixing handler for signal %d, please "
             "report this issue to "
-            "https://example.com/bails: %s\n",
+            "https://github.com/blakeglucas/bails: %s\n",
             signum, strerror(errno));
 }
 

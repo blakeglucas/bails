@@ -18,7 +18,7 @@ try {
     bails init -n msix-smoke -t vanilla -skipgomodtidy
     if ($LASTEXITCODE -ne 0) { throw 'Project initialization failed' }
     Set-Location msix-smoke
-    go mod edit "-replace=example.com/bails=$repo/v3"
+    go mod edit "-replace=github.com/blakeglucas/bails=$repo/v3"
     if ($LASTEXITCODE -ne 0) { throw 'Local module replacement failed' }
     # Repeat to ensure replacing an existing output never prompts in CI.
     foreach ($attempt in 1..2) {

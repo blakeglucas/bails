@@ -13,8 +13,8 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func wakeRequest(t *testing.T, w *Wizard, method, path string, value any) *httptest.ResponseRecorder {

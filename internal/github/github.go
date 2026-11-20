@@ -28,7 +28,7 @@ func getWithTimeout(endpoint string) (*http.Response, error) {
 
 // GetReleaseNotes fetches release Markdown, including its version heading.
 func GetReleaseNotes(tagVersion string) (string, error) {
-	resp, err := getWithTimeout("https://example.com/bails/api/releases/tags/" + url.PathEscape(tagVersion))
+	resp, err := getWithTimeout("https://api.github.com/repos/blakeglucas/bails/releases/tags/" + url.PathEscape(tagVersion))
 	if err != nil {
 		return "", errors.New("Unable to retrieve release notes. Please check your network connection")
 	}
@@ -66,7 +66,7 @@ func GetVersionTags() ([]*SemanticVersion, error) {
 	result := []*SemanticVersion{}
 
 	for page := 1; page <= 10; page++ {
-		resp, err := getWithTimeout(fmt.Sprintf("https://example.com/bails/api/tags?per_page=100&page=%d", page))
+		resp, err := getWithTimeout(fmt.Sprintf("https://api.github.com/repos/blakeglucas/bails/tags?per_page=100&page=%d", page))
 		if err != nil {
 			return result, err
 		}

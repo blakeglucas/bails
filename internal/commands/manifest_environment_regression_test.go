@@ -2,8 +2,8 @@ package commands
 
 import (
 	"context"
-	"example.com/bails/internal/wake/cache"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/cache"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 	"os"
 	"path/filepath"
 	"testing"

@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/generator/config"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/generator/config"
 )
 
 func TestGeneratedJavaScriptCanBeImportedWithGenericModels(t *testing.T) {
@@ -67,7 +67,7 @@ func testGeneratedJavaScript(t *testing.T, node, name, assertions string) {
 	}
 
 	generator := NewGenerator(options, config.DirCreator(outputDir), config.NullLogger)
-	packagePath := "example.com/bails/internal/generator/testcases/" + name
+	packagePath := "github.com/blakeglucas/bails/internal/generator/testcases/" + name
 	_, err := generator.Generate(packagePath)
 	if err != nil {
 		t.Fatal(err)

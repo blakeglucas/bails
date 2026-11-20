@@ -5,10 +5,10 @@ package dev
 import (
 	"context"
 	"errors"
-	"example.com/bails/internal/report"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
 	"fmt"
+	"github.com/blakeglucas/bails/internal/report"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 	"github.com/rjeczalik/notify"
 	"io"
 	"maps"

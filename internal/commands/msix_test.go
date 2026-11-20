@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/flags"
 	"gopkg.in/yaml.v3"
 )
 

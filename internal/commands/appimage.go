@@ -3,16 +3,16 @@ package commands
 import (
 	_ "embed"
 	"errors"
-	"example.com/bails/internal/term"
 	"fmt"
+	"github.com/blakeglucas/bails/internal/term"
 	"os"
 	"path/filepath"
 	"runtime"
 	"slices"
 	"strings"
 
-	"example.com/bails/internal/appimage"
-	"example.com/bails/internal/s"
+	"github.com/blakeglucas/bails/internal/appimage"
+	"github.com/blakeglucas/bails/internal/s"
 	"github.com/pterm/pterm"
 )
 

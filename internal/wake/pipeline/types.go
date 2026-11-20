@@ -9,10 +9,10 @@ import (
 	"path/filepath"
 	"sort"
 
-	"example.com/bails/internal/report"
-	"example.com/bails/internal/wake/buildinfo"
-	"example.com/bails/internal/wake/cache"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/report"
+	"github.com/blakeglucas/bails/internal/wake/buildinfo"
+	"github.com/blakeglucas/bails/internal/wake/cache"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 type NodeKey string

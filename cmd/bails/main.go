@@ -4,18 +4,18 @@ import (
 	"os"
 	"runtime/debug"
 
-	"example.com/bails/internal/browser"
-	"example.com/bails/internal/features"
+	"github.com/blakeglucas/bails/internal/browser"
+	"github.com/blakeglucas/bails/internal/features"
 
-	"example.com/bails/internal/lo"
+	"github.com/blakeglucas/bails/internal/lo"
 	"github.com/pterm/pterm"
 
-	"example.com/bails/internal/commands"
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/report"
-	"example.com/bails/internal/term"
-	"example.com/bails/internal/version"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/commands"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/report"
+	"github.com/blakeglucas/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/version"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 	"github.com/leaanthony/clir"
 )
 

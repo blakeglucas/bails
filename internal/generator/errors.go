@@ -7,7 +7,7 @@ import (
 	"slices"
 	"sync"
 
-	"example.com/bails/internal/generator/config"
+	"github.com/blakeglucas/bails/internal/generator/config"
 )
 
 // ErrNoContextPackage indicates that

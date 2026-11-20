@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/templates"
+	"github.com/blakeglucas/bails/internal/templates"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

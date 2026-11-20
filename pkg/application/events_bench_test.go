@@ -8,7 +8,7 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // mockWindowDispatcher implements a no-op dispatcher for benchmarking

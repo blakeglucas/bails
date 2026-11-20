@@ -6,10 +6,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/generator"
-	"example.com/bails/internal/generator/config"
-	"example.com/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/generator"
+	"github.com/blakeglucas/bails/internal/generator/config"
+	"github.com/blakeglucas/bails/internal/term"
 )
 
 func GenerateBindings(options *flags.GenerateBindingsOptions, patterns []string) error {

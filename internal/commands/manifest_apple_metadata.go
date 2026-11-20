@@ -4,7 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 	"howett.net/plist"
 )
 

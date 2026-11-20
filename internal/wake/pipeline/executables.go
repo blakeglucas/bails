@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"example.com/bails/internal/buildmeta"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/buildmeta"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 func resolveBuildConfig(config manifest.Config, request Request) (manifest.Config, error) {

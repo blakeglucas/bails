@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strconv"
 
-	"example.com/bails/internal/wake/buildinfo"
+	"github.com/blakeglucas/bails/internal/wake/buildinfo"
 )
 
 const JSONSchemaURL = "https://v3.wails.io/schemas/wails.v3.json"

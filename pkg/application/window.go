@@ -3,7 +3,7 @@ package application
 import (
 	"unsafe"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 type Window interface {

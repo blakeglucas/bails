@@ -7,7 +7,7 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"example.com/bails/internal/mailbox"
+	"github.com/blakeglucas/bails/internal/mailbox"
 	"github.com/coder/websocket"
 	"github.com/coder/websocket/wsjson"
 )

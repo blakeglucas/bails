@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // WindowTestService provides methods for testing window visibility scenarios

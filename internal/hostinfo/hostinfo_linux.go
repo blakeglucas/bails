@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"strings"
 
-	"example.com/bails/internal/pcinames"
+	"github.com/blakeglucas/bails/internal/pcinames"
 )
 
 func Processors() ([]Processor, error) {

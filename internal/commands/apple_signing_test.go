@@ -13,11 +13,11 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/internal/applesign"
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/notaryservice"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/applesign"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/notaryservice"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func TestPortableAppleSigningCommandAndWakePreserveInputs(t *testing.T) {

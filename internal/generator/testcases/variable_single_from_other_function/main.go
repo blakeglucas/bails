@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	"example.com/bails/internal/generator/testcases/variable_single_from_other_function/services"
+	"github.com/blakeglucas/bails/internal/generator/testcases/variable_single_from_other_function/services"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // GreetService is great

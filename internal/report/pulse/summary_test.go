@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/internal/report"
-	"example.com/bails/internal/report/pulse/ansi"
+	"github.com/blakeglucas/bails/internal/report"
+	"github.com/blakeglucas/bails/internal/report/pulse/ansi"
 )
 
 func TestUnknownExitCodeShowsUnderlyingError(t *testing.T) {

@@ -15,10 +15,10 @@ import (
 	"time"
 	_ "unsafe"
 
-	"example.com/bails/internal/uuid"
-	"example.com/bails/pkg/application"
-	"example.com/bails/pkg/w32"
 	wintoast "git.sr.ht/~jackmordaunt/go-toast/v2/wintoast"
+	"github.com/blakeglucas/bails/internal/uuid"
+	"github.com/blakeglucas/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/w32"
 	"golang.org/x/sys/windows/registry"
 )
 

@@ -7,11 +7,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/flags"
 
-	"example.com/bails/internal/gosod"
+	"github.com/blakeglucas/bails/internal/gosod"
 
-	"example.com/bails/internal/lo"
+	"github.com/blakeglucas/bails/internal/lo"
 )
 
 //go:embed template

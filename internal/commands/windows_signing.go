@@ -11,9 +11,9 @@ import (
 	"slices"
 	"strings"
 
-	"example.com/bails/internal/codesignature"
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/windowsign"
+	"github.com/blakeglucas/bails/internal/codesignature"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/windowsign"
 	"github.com/pterm/pterm"
 )
 

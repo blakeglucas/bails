@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/internal/defaults"
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/defaults"
+	"github.com/blakeglucas/bails/internal/flags"
 )
 
 func TestGitURLToModulePath(t *testing.T) {

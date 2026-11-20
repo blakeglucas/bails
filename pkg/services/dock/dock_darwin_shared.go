@@ -5,7 +5,7 @@ package dock
 import (
 	"context"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // GetBadge returns the badge label on the application icon.

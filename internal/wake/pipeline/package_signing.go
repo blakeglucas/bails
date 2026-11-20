@@ -1,6 +1,6 @@
 package pipeline
 
-import "example.com/bails/internal/wake/manifest"
+import "github.com/blakeglucas/bails/internal/wake/manifest"
 
 func packageSigningPolicy(config manifest.Config, request Request, format, assets string) (CachePolicy, *manifest.SigningPlatform) {
 	if request.TargetOS == "ios" {

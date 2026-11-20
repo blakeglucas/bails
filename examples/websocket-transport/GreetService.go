@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // GreetService is a service that demonstrates bound methods over WebSocket transport

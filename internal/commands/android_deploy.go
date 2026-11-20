@@ -12,8 +12,8 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/term"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 	"github.com/charmbracelet/huh"
 	"github.com/pterm/pterm"
 )

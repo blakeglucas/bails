@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"example.com/bails/internal/semver"
+	"github.com/blakeglucas/bails/internal/semver"
 )
 
 const majorVersion = 3

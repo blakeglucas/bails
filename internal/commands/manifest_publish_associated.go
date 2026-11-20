@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 type stagedPublication struct {

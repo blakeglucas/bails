@@ -2,7 +2,7 @@
 
 package application
 
-import "example.com/bails/pkg/events"
+import "github.com/blakeglucas/bails/pkg/events"
 
 var commonApplicationEventMap = map[events.ApplicationEventType]events.ApplicationEventType{
 	events.Windows.SystemThemeChanged: events.Common.ThemeChanged,

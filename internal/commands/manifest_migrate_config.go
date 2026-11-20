@@ -11,8 +11,8 @@ import (
 	"sort"
 	"strings"
 
-	"example.com/bails/internal/templates"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/templates"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 	"gopkg.in/yaml.v3"
 )
 

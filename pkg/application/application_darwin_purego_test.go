@@ -5,7 +5,7 @@ package application
 import (
 	"testing"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 func TestMacosAppOnRecordsListener(t *testing.T) {

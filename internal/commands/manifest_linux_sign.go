@@ -4,10 +4,10 @@ import (
 	"context"
 	"path/filepath"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/keychain"
-	"example.com/bails/internal/packagesign"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/keychain"
+	"github.com/blakeglucas/bails/internal/packagesign"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func signExportedPackage(options *flags.Sign, format, key string) error {

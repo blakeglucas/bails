@@ -12,7 +12,7 @@ import (
 	"sync"
 	"time"
 
-	"example.com/bails/internal/devruntime"
+	"github.com/blakeglucas/bails/internal/devruntime"
 )
 
 // Readiness is unique to one candidate launch; an old application cannot mark

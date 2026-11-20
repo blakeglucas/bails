@@ -10,11 +10,11 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/bundlearchive"
-	"example.com/bails/internal/defaults"
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/keychain"
-	"example.com/bails/internal/packagesign"
+	"github.com/blakeglucas/bails/internal/bundlearchive"
+	"github.com/blakeglucas/bails/internal/defaults"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/keychain"
+	"github.com/blakeglucas/bails/internal/packagesign"
 	"github.com/pterm/pterm"
 )
 

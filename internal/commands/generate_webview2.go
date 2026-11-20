@@ -2,8 +2,8 @@ package commands
 
 import (
 	_ "embed"
-	"example.com/bails/internal/term"
 	"fmt"
+	"github.com/blakeglucas/bails/internal/term"
 	"os"
 	"path/filepath"
 )

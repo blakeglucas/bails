@@ -12,7 +12,7 @@ import (
 	"time"
 	"unsafe"
 
-	"example.com/bails/internal/webview2/internal/w32"
+	"github.com/blakeglucas/bails/internal/webview2/internal/w32"
 	"golang.org/x/sys/windows"
 )
 

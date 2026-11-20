@@ -8,10 +8,10 @@ import (
 	"strconv"
 	"time"
 
-	"example.com/bails/internal/lo"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/internal/lo"
+	"github.com/blakeglucas/bails/pkg/events"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 func main() {

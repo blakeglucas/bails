@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 
 	"github.com/stretchr/testify/require"
 )

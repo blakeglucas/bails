@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater"
 )
 
 // workflowReproHost is a minimal in-memory Host. It never opens a window.

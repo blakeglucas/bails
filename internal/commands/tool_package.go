@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/packager"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/packager"
 	"github.com/leaanthony/dmg/dmg"
 )
 

@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"example.com/bails/internal/stagefile"
+	"github.com/blakeglucas/bails/internal/stagefile"
 )
 
 type Options struct {

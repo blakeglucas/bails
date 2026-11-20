@@ -6,7 +6,7 @@ import (
 	"log/slog"
 	"sync/atomic"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // A Level is the importance or severity of a log event.
@@ -56,7 +56,7 @@ func NewWithConfig(config *Config) *LogService {
 // ServiceName returns the name of the plugin.
 // You should use the go module format e.g. github.com/myuser/myplugin
 func (l *LogService) ServiceName() string {
-	return "example.com/bails/plugins/log"
+	return "github.com/blakeglucas/bails/plugins/log"
 }
 
 // Configure reconfigures the logger dynamically.

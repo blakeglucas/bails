@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"example.com/bails/internal/github"
+	"github.com/blakeglucas/bails/internal/github"
 )
 
 type ToolVersionOptions struct {

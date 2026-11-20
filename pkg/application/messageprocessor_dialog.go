@@ -3,7 +3,7 @@ package application
 import (
 	"runtime"
 
-	"example.com/bails/pkg/errs"
+	"github.com/blakeglucas/bails/pkg/errs"
 )
 
 const (

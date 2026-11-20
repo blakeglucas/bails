@@ -11,9 +11,9 @@ import (
 	"runtime"
 	"testing"
 
-	"example.com/bails/internal/appimage"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/appimage"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func fixtureELF(arch string, image bool) []byte {

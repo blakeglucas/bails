@@ -4,9 +4,9 @@ import (
 	"encoding"
 	"log"
 
-	"example.com/bails/internal/generator/testcases/aliases/subpkg"
-	nobindingshere "example.com/bails/internal/generator/testcases/no_bindings_here"
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/internal/generator/testcases/aliases/subpkg"
+	nobindingshere "github.com/blakeglucas/bails/internal/generator/testcases/no_bindings_here"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // GreetService is great

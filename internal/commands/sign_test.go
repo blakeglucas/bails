@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/flags"
 )
 
 // TestResolveSigningDefaults verifies that signing options unset via flags are

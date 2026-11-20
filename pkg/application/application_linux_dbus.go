@@ -6,7 +6,7 @@ import (
 	"context"
 	"time"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 	"github.com/godbus/dbus/v5"
 )
 

@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater"
 )
 
 // TestRestartHelperProcess re-executes the real helper entry point after

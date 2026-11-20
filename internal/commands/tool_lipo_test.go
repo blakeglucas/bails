@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"debug/macho"
 	"encoding/binary"
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/flags"
 	"os"
 	"path/filepath"
 	"testing"

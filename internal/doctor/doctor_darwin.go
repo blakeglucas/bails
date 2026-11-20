@@ -4,7 +4,7 @@ package doctor
 
 import (
 	"bytes"
-	"example.com/bails/internal/lo"
+	"github.com/blakeglucas/bails/internal/lo"
 	"os/exec"
 	"strings"
 	"syscall"

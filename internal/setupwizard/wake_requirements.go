@@ -14,11 +14,11 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/packagesign"
-	"example.com/bails/internal/signingconfig"
-	"example.com/bails/internal/wake/buildinfo"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/packagesign"
+	"github.com/blakeglucas/bails/internal/signingconfig"
+	"github.com/blakeglucas/bails/internal/wake/buildinfo"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func (w *Wizard) handleWakeRequirements(rw http.ResponseWriter, r *http.Request) {

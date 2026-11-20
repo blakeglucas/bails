@@ -3,7 +3,7 @@ package application
 import (
 	"slices"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 // EventManager manages event-related operations

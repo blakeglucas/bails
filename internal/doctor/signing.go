@@ -7,7 +7,7 @@ import (
 	"runtime"
 	"strings"
 
-	"example.com/bails/internal/defaults"
+	"github.com/blakeglucas/bails/internal/defaults"
 )
 
 type SigningStatus struct {

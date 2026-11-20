@@ -9,7 +9,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 const indexHTML = `<!doctype html><html><head><meta charset="utf-8"><title>nested worker repro</title>

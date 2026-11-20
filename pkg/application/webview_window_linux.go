@@ -8,11 +8,11 @@ import (
 
 	"unsafe"
 
-	"example.com/bails/internal/assetserver"
-	"example.com/bails/internal/capabilities"
-	"example.com/bails/internal/debounce"
-	"example.com/bails/internal/runtime"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/internal/assetserver"
+	"github.com/blakeglucas/bails/internal/capabilities"
+	"github.com/blakeglucas/bails/internal/debounce"
+	"github.com/blakeglucas/bails/internal/runtime"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 func init() {

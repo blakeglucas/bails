@@ -9,7 +9,7 @@ import (
 	"errors"
 	"time"
 
-	"example.com/bails/internal/codesignature"
+	"github.com/blakeglucas/bails/internal/codesignature"
 	"howett.net/plist"
 )
 

@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // GreetService is great

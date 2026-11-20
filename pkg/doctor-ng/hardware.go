@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"example.com/bails/internal/hostinfo"
+	"github.com/blakeglucas/bails/internal/hostinfo"
 )
 
 func collectHardwareInfo() HardwareInfo {

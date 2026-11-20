@@ -9,9 +9,9 @@ import (
 	"sync"
 	"unsafe"
 
-	"example.com/bails/internal/assetserver/webview"
+	"github.com/blakeglucas/bails/internal/assetserver/webview"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 /*
@@ -211,7 +211,7 @@ static void fix_signal(int signum) {
 fix_signal_error:
         fprintf(stderr, "error fixing handler for signal %d, please "
                 "report this issue to "
-                "https://example.com/bails: %s\n",
+                "https://github.com/blakeglucas/bails: %s\n",
                 signum, strerror(errno));
 }
 

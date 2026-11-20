@@ -15,9 +15,9 @@ import (
 	"os"
 	"time"
 
-	"example.com/bails/pkg/application"
-	"example.com/bails/pkg/updater"
-	"example.com/bails/pkg/updater/providers/github"
+	"github.com/blakeglucas/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater/providers/github"
 )
 
 // A deliberately minimal custom UI that looks NOTHING like the builtin

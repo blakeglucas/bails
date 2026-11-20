@@ -2,7 +2,7 @@
 
 package main
 
-import "example.com/bails/pkg/application"
+import "github.com/blakeglucas/bails/pkg/application"
 
 // modifyOptionsForIOS adjusts the application options for iOS
 func modifyOptionsForIOS(opts *application.Options) {

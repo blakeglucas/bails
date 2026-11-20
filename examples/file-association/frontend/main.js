@@ -1,4 +1,4 @@
-import {GreetService} from "./bindings/example.com/bails/examples/file-association";
+import {GreetService} from "./bindings/github.com/blakeglucas/bails/examples/file-association";
 import {Events} from "@bails/runtime";
 
 const resultElement = document.getElementById('result');

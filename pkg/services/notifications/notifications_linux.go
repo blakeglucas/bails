@@ -14,7 +14,7 @@ import (
 
 	"encoding/json"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 	"github.com/godbus/dbus/v5"
 )
 

@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 // ProjectMetadataState is the setup wizard's editable project metadata.

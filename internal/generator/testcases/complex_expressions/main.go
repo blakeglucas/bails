@@ -4,8 +4,8 @@ import (
 	"log"
 	"slices"
 
-	"example.com/bails/internal/generator/testcases/complex_expressions/config"
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/internal/generator/testcases/complex_expressions/config"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 type Service1 struct{}

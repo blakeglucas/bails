@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater"
 )
 
 // TestEventConstants_MatchRuntimeTS guards against drift between the

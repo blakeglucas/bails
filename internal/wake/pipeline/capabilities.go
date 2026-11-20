@@ -3,7 +3,7 @@ package pipeline
 import (
 	"fmt"
 
-	"example.com/bails/internal/wake/buildinfo"
+	"github.com/blakeglucas/bails/internal/wake/buildinfo"
 )
 
 type targetCapability = buildinfo.TargetCapability

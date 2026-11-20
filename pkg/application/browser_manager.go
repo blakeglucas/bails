@@ -1,7 +1,7 @@
 package application
 
 import (
-	"example.com/bails/internal/browser"
+	"github.com/blakeglucas/bails/internal/browser"
 )
 
 // BrowserManager manages browser-related operations

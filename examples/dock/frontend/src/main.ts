@@ -1,4 +1,4 @@
-import { DockService } from "../bindings/example.com/bails/pkg/services/dock"
+import { DockService } from "../bindings/github.com/blakeglucas/bails/pkg/services/dock"
 
 const showButton = document.getElementById('show')! as HTMLButtonElement;
 const hideButton = document.getElementById('hide')! as HTMLButtonElement;

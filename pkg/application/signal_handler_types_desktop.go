@@ -2,7 +2,7 @@
 
 package application
 
-import "example.com/bails/internal/signal"
+import "github.com/blakeglucas/bails/internal/signal"
 
 // platformSignalHandler holds the signal handler for desktop platforms
 type platformSignalHandler struct {

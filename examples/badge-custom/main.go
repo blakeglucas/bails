@@ -7,8 +7,8 @@ import (
 	"log"
 	"time"
 
-	"example.com/bails/pkg/application"
-	"example.com/bails/pkg/services/dock"
+	"github.com/blakeglucas/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/services/dock"
 )
 
 // Bails uses Go's `embed` package to embed the frontend files into the binary.

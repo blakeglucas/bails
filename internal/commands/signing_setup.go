@@ -8,12 +8,12 @@ import (
 	"runtime"
 	"strings"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/keychain"
-	"example.com/bails/internal/wake/manifest"
 	"github.com/ProtonMail/go-crypto/openpgp"
 	"github.com/ProtonMail/go-crypto/openpgp/armor"
 	"github.com/ProtonMail/go-crypto/openpgp/packet"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/keychain"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 	"github.com/charmbracelet/huh"
 	"github.com/pterm/pterm"
 )

@@ -1,8 +1,8 @@
 package events_only
 
 import (
-	"example.com/bails/internal/generator/testcases/no_bindings_here/more"
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/internal/generator/testcases/no_bindings_here/more"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 const eventPrefix = "events_only" + `:`

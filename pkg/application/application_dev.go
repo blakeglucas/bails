@@ -8,9 +8,9 @@ import (
 	"os"
 	"time"
 
-	"example.com/bails/internal/assetserver"
-	"example.com/bails/internal/devruntime"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/internal/assetserver"
+	"github.com/blakeglucas/bails/internal/devruntime"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 var devMode = false

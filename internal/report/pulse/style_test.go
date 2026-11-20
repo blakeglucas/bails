@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/report/pulse/ansi"
+	"github.com/blakeglucas/bails/internal/report/pulse/ansi"
 )
 
 func TestVisibleWidth(t *testing.T) {

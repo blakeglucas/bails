@@ -10,7 +10,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/github"
+	"github.com/blakeglucas/bails/internal/github"
 )
 
 func TestUpdateCLIInstall(t *testing.T) {
@@ -54,7 +54,7 @@ func TestUpdateCLIInstall(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			want := "install example.com/bails/cmd/bails@" + tc.target + "\n"
+			want := "install github.com/blakeglucas/bails/cmd/bails@" + tc.target + "\n"
 			if string(data) != want {
 				t.Errorf("installer invocations=%q, want exactly %q", strings.TrimSpace(string(data)), strings.TrimSpace(want))
 			}

@@ -5,7 +5,7 @@ package application
 import (
 	"os"
 
-	"example.com/bails/internal/signal"
+	"github.com/blakeglucas/bails/internal/signal"
 )
 
 // setupSignalHandler sets up signal handling for desktop platforms

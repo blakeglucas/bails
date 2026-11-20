@@ -9,14 +9,14 @@ import (
 	"regexp"
 	"strings"
 
-	"example.com/bails/internal/defaults"
-	"example.com/bails/internal/features"
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/git"
-	"example.com/bails/internal/setupwizard"
-	"example.com/bails/internal/templates"
-	"example.com/bails/internal/term"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/defaults"
+	"github.com/blakeglucas/bails/internal/features"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/git"
+	"github.com/blakeglucas/bails/internal/setupwizard"
+	"github.com/blakeglucas/bails/internal/templates"
+	"github.com/blakeglucas/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 	"github.com/pterm/pterm"
 )
 

@@ -2,7 +2,7 @@ module mac-window-tabs
 
 go 1.26.0
 
-require example.com/bails v0.0.0
+require github.com/blakeglucas/bails v0.0.0
 
 require (
 	github.com/coder/websocket v1.8.14 // indirect
@@ -12,4 +12,4 @@ require (
 	golang.org/x/term v0.46.0 // indirect
 )
 
-replace example.com/bails => ../../
+replace github.com/blakeglucas/bails => ../../

@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 // IsGlobalPath requires the field's current value to match its recorded origin.

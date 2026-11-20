@@ -3,9 +3,9 @@ package commands
 import (
 	"context"
 
-	"example.com/bails/internal/packagesign"
-	"example.com/bails/internal/signingconfig"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/packagesign"
+	"github.com/blakeglucas/bails/internal/signingconfig"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func (h *manifestHandler) signArch(ctx context.Context, spec pipeline.SignSpec) (pipeline.RunResult, error) {

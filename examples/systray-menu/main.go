@@ -2,14 +2,14 @@ package main
 
 import (
 	_ "embed"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 	"log"
 	"os"
 	"runtime"
 	"time"
 
-	"example.com/bails/pkg/application"
-	"example.com/bails/pkg/icons"
+	"github.com/blakeglucas/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/icons"
 )
 
 //go:embed logo-dark-xsmall.png

@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"example.com/bails/internal/assetserver"
+	"github.com/blakeglucas/bails/internal/assetserver"
 )
 
 // Options contains the options for the application

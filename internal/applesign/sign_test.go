@@ -14,8 +14,8 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/codesignature"
-	"example.com/bails/internal/universalbinary"
+	"github.com/blakeglucas/bails/internal/codesignature"
+	"github.com/blakeglucas/bails/internal/universalbinary"
 )
 
 func fixture(t testing.TB, name string) []byte {

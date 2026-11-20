@@ -3,7 +3,7 @@ package pulse
 import (
 	"strings"
 
-	"example.com/bails/internal/report/pulse/ansi"
+	"github.com/blakeglucas/bails/internal/report/pulse/ansi"
 )
 
 // styler binds a Profile so call sites can paint without naming the profile

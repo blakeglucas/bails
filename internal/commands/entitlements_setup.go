@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/flags"
 	"github.com/charmbracelet/huh"
 	"github.com/pterm/pterm"
 )

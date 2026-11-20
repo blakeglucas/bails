@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 	"github.com/gin-gonic/gin"
 )
 

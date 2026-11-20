@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func TestVoidAdapterPackagesExecutablesAndDesktopAssets(t *testing.T) {

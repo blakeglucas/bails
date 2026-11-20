@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func TestArchSignaturePipelineWithIndependentGPGVerification(t *testing.T) {

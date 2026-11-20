@@ -28,7 +28,7 @@ export default function BailsTypedEvents(bindingsRoot: string): Plugin {
     return {
         name: "bails-typed-events",
         async buildStart() {
-            const bindingsPath = `${bindingsRoot}/example.com/bails/internal/eventcreate`;
+            const bindingsPath = `${bindingsRoot}/github.com/blakeglucas/bails/internal/eventcreate`;
             let resolution = await this.resolve(bindingsPath);
             if (!resolution || resolution.external) {
                 this.error(`Event bindings module not found at import specifier '${bindingsPath}'. Please verify that the bails tool is up to date and the binding generator runs successfully. If you moved the bindings to a custom location, ensure you supplied the correct root path as the first argument to \`bailsTypedEventsPlugin\``);

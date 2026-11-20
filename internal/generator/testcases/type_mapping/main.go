@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // TypeMappingService is a service for testing type mappings.

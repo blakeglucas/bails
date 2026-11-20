@@ -3,9 +3,9 @@ package main
 import (
 	"log"
 
-	nobindingshere "example.com/bails/internal/generator/testcases/no_bindings_here"
-	"example.com/bails/internal/generator/testcases/no_bindings_here/other"
-	"example.com/bails/pkg/application"
+	nobindingshere "github.com/blakeglucas/bails/internal/generator/testcases/no_bindings_here"
+	"github.com/blakeglucas/bails/internal/generator/testcases/no_bindings_here/other"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // GreetService is great

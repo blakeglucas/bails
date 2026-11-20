@@ -9,7 +9,7 @@ import (
 	"go/types"
 	"iter"
 
-	"example.com/bails/internal/typeconstraints"
+	"github.com/blakeglucas/bails/internal/typeconstraints"
 )
 
 // Cached interface types.

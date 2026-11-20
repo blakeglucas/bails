@@ -8,10 +8,10 @@ import (
 	"syscall"
 	"unsafe"
 
-	"example.com/bails/pkg/icons"
+	"github.com/blakeglucas/bails/pkg/icons"
 
-	"example.com/bails/pkg/events"
-	"example.com/bails/pkg/w32"
+	"github.com/blakeglucas/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/w32"
 )
 
 const (

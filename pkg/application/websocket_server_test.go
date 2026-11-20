@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/internal/mailbox"
+	"github.com/blakeglucas/bails/internal/mailbox"
 	"github.com/coder/websocket"
 )
 

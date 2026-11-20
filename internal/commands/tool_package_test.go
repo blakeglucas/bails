@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/flags"
 	"github.com/leaanthony/dmg/dmg"
 )
 

@@ -1,8 +1,8 @@
 package commands
 
 import (
-	"example.com/bails/internal/buildinfo"
 	"fmt"
+	"github.com/blakeglucas/bails/internal/buildinfo"
 )
 
 type BuildInfoOptions struct{}

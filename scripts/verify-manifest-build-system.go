@@ -16,9 +16,9 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/wake/benchmark"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/benchmark"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 type acceptanceCommand struct {

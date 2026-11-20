@@ -14,7 +14,7 @@ import (
 	"net/url"
 	"testing"
 
-	"example.com/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater"
 )
 
 func checkReq() updater.CheckRequest {

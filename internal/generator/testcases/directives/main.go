@@ -13,8 +13,8 @@ package main
 import (
 	"log"
 
-	"example.com/bails/internal/generator/testcases/directives/otherpackage"
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/internal/generator/testcases/directives/otherpackage"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 type IgnoredType struct {

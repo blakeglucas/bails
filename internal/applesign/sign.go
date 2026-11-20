@@ -14,7 +14,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"example.com/bails/internal/universalbinary"
+	"github.com/blakeglucas/bails/internal/universalbinary"
 )
 
 type Options struct {

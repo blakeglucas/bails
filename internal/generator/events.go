@@ -3,7 +3,7 @@ package generator
 import (
 	"path/filepath"
 
-	"example.com/bails/internal/generator/collect"
+	"github.com/blakeglucas/bails/internal/generator/collect"
 )
 
 func (generator *Generator) generateEvents(events *collect.EventMap) {

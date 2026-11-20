@@ -4,7 +4,7 @@ import (
 	"slices"
 	"testing"
 
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/flags"
 )
 
 func TestPackageTagsReachManifestAndLegacyBuilds(t *testing.T) {

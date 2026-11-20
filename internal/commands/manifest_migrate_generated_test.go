@@ -10,10 +10,10 @@ import (
 
 	"gopkg.in/yaml.v3"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/templates"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/templates"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func TestGeneratedLegacyTemplatesMigrateWithoutBuilding(t *testing.T) {

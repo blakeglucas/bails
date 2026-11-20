@@ -7,7 +7,7 @@ import (
 	"sort"
 	"unsafe"
 
-	"example.com/bails/pkg/w32"
+	"github.com/blakeglucas/bails/pkg/w32"
 )
 
 var (

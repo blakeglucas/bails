@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/term"
 	"github.com/pterm/pterm"
 )
 

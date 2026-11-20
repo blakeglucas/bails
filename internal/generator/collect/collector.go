@@ -5,8 +5,8 @@ import (
 	"go/types"
 	"sync"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/generator/config"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/generator/config"
 	"golang.org/x/tools/go/packages"
 )
 

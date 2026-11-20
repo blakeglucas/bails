@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/internal/report"
+	"github.com/blakeglucas/bails/internal/report"
 )
 
 type testProcess struct{ done chan struct{} }

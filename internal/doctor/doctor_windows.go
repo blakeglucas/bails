@@ -6,8 +6,8 @@ import (
 	"os/exec"
 	"strings"
 
-	"example.com/bails/internal/lo"
-	"example.com/bails/internal/webview2/webviewloader"
+	"github.com/blakeglucas/bails/internal/lo"
+	"github.com/blakeglucas/bails/internal/webview2/webviewloader"
 )
 
 func getInfo() (map[string]string, bool) {

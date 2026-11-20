@@ -10,7 +10,7 @@ import (
 	"sync"
 	"testing"
 
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 // BenchmarkManifestLinuxPackageParallelism measures complete format adapters,

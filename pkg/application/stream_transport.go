@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"example.com/bails/internal/assetserver/bundledassets"
+	"github.com/blakeglucas/bails/internal/assetserver/bundledassets"
 )
 
 // The desktop transport. Two endpoints on the asset server the app already

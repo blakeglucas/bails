@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater"
 )
 
 func TestCheckAndInstall_BuiltinWindow_OpensClosesOnSuccess(t *testing.T) {

@@ -3,8 +3,8 @@ package application
 import (
 	"runtime"
 
-	"example.com/bails/internal/fileexplorer"
-	"example.com/bails/internal/operatingsystem"
+	"github.com/blakeglucas/bails/internal/fileexplorer"
+	"github.com/blakeglucas/bails/internal/operatingsystem"
 )
 
 // EnvironmentManager manages environment-related operations

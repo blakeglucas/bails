@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"os"
 
-	"example.com/bails/internal/devruntime"
+	"github.com/blakeglucas/bails/internal/devruntime"
 )
 
 func notifyDevRuntimeReady() { devruntime.Notify() }

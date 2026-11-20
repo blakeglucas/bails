@@ -13,11 +13,11 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/universalbinary"
-	"example.com/bails/internal/wake/cache"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/universalbinary"
+	"github.com/blakeglucas/bails/internal/wake/cache"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func buildPrebuiltFixture(t *testing.T, target pipeline.Target, value string) []byte {

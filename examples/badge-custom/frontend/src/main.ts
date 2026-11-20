@@ -1,5 +1,5 @@
 import {Events} from "@bails/runtime";
-import {SetBadge, RemoveBadge, SetCustomBadge} from "../bindings/example.com/bails/pkg/services/dock/dockservice";
+import {SetBadge, RemoveBadge, SetCustomBadge} from "../bindings/github.com/blakeglucas/bails/pkg/services/dock/dockservice";
 import { RGBA } from "../bindings/image/color/models";
 
 const setCustomButton = document.getElementById('set-custom')! as HTMLButtonElement;

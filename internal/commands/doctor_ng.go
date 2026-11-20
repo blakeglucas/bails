@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"example.com/bails/pkg/doctor-ng/tui"
+	"github.com/blakeglucas/bails/pkg/doctor-ng/tui"
 )
 
 type DoctorNgOptions struct {

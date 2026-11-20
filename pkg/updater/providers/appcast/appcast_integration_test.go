@@ -16,7 +16,7 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater"
 )
 
 // TestIntegration_FeedToInstall stands up a real HTTP server serving a

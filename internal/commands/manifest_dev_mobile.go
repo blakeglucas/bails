@@ -13,10 +13,10 @@ import (
 	"sync"
 	"time"
 
-	"example.com/bails/internal/dev"
-	"example.com/bails/internal/wake/cache"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/dev"
+	"github.com/blakeglucas/bails/internal/wake/cache"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 // mobileDevProcess owns the installed application and its log attachment.

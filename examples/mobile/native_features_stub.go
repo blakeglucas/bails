@@ -2,7 +2,7 @@
 
 package main
 
-import "example.com/bails/pkg/application"
+import "github.com/blakeglucas/bails/pkg/application"
 
 // registerNativeFeatures is a no-op on desktop: the "common:*" mobile features
 // are only available on iOS and Android.

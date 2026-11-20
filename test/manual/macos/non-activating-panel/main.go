@@ -9,8 +9,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"example.com/bails/pkg/application"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 func main() {

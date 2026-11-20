@@ -4,8 +4,8 @@ import (
 	"embed"
 	"log"
 
-	"example.com/bails/pkg/application"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 //go:embed frontend/dist

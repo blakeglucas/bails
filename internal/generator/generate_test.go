@@ -12,13 +12,13 @@ import (
 	"sync"
 	"testing"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/generator/config"
-	"example.com/bails/internal/generator/render"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/generator/config"
+	"github.com/blakeglucas/bails/internal/generator/render"
 	"github.com/stretchr/testify/assert"
 )
 
-const testcases = "example.com/bails/internal/generator/testcases/..."
+const testcases = "github.com/blakeglucas/bails/internal/generator/testcases/..."
 
 type testParams struct {
 	name      string

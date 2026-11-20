@@ -9,10 +9,10 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/bundlearchive"
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/notaryservice"
-	"example.com/bails/internal/notaryticket"
+	"github.com/blakeglucas/bails/internal/bundlearchive"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/notaryservice"
+	"github.com/blakeglucas/bails/internal/notaryticket"
 	"github.com/pterm/pterm"
 )
 

@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"example.com/bails/internal/version"
+	"github.com/blakeglucas/bails/internal/version"
 )
 
 type VersionOptions struct{}

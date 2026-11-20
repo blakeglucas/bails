@@ -24,7 +24,7 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater"
 )
 
 const (

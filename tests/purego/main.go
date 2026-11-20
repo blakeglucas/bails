@@ -14,7 +14,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 type Probe struct{}

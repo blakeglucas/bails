@@ -8,12 +8,12 @@ import (
 	"slices"
 	"strings"
 
-	"example.com/bails/internal/buildwarnings"
-	"example.com/bails/internal/features"
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/term"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/buildwarnings"
+	"github.com/blakeglucas/bails/internal/features"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 	"github.com/google/shlex"
 )
 

@@ -2,7 +2,7 @@
 
 package main
 
-import "example.com/bails/pkg/application"
+import "github.com/blakeglucas/bails/pkg/application"
 
 // modifyOptionsForIOS is a no-op on non-iOS platforms
 func modifyOptionsForIOS(opts *application.Options) {

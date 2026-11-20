@@ -6,9 +6,9 @@ import (
 	"os"
 	"path/filepath"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/signingconfig"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/signingconfig"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func (h *manifestHandler) appleSignFlags(signing pipeline.SignSpec, input string) (*flags.Sign, error) {

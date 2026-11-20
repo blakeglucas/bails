@@ -1,7 +1,7 @@
 package setupwizard
 
 import (
-	"example.com/bails/internal/defaults"
+	"github.com/blakeglucas/bails/internal/defaults"
 )
 
 type GlobalDefaults = defaults.GlobalDefaults

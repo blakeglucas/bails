@@ -3,7 +3,7 @@ package commands
 import (
 	"context"
 	"errors"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 	"os"
 	"path/filepath"
 	"strings"

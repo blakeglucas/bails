@@ -1,9 +1,9 @@
 package commands
 
 import (
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/service"
-	"example.com/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/service"
+	"github.com/blakeglucas/bails/internal/term"
 	"strings"
 )
 

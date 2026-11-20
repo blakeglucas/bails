@@ -7,7 +7,7 @@ import (
 	"sync"
 	"testing"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 // Note: This file uses internal package access to benchmark window internals

@@ -8,7 +8,7 @@ import (
 	"time"
 	"unsafe"
 
-	"example.com/bails/internal/webview2/internal/w32"
+	"github.com/blakeglucas/bails/internal/webview2/internal/w32"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/sys/windows"

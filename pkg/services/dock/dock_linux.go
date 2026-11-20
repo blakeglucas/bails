@@ -5,7 +5,7 @@ package dock
 import (
 	"context"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 type linuxDock struct{}

@@ -1,4 +1,4 @@
-module example.com/bails
+module github.com/blakeglucas/bails
 
 go 1.26.0
 

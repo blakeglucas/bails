@@ -20,11 +20,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"example.com/bails/internal/browser"
-	"example.com/bails/internal/doctor"
-	"example.com/bails/internal/features"
-	"example.com/bails/internal/operatingsystem"
-	"example.com/bails/internal/version"
+	"github.com/blakeglucas/bails/internal/browser"
+	"github.com/blakeglucas/bails/internal/doctor"
+	"github.com/blakeglucas/bails/internal/features"
+	"github.com/blakeglucas/bails/internal/operatingsystem"
+	"github.com/blakeglucas/bails/internal/version"
 )
 
 //go:embed frontend/dist/*

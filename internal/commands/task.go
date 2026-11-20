@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/buildwarnings"
-	"example.com/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/buildwarnings"
+	"github.com/blakeglucas/bails/internal/term"
 
 	"github.com/wailsapp/task/v3"
 	"github.com/wailsapp/task/v3/taskfile/ast"

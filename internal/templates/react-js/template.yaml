@@ -3,7 +3,7 @@ name: "React + Vite (JavaScript)"
 shortname: react-js
 author: Lea Anthony
 description: "React + JavaScript + Vite"
-helpurl: https://wails.io
+helpurl: https://github.com/blakeglucas/bails
 version: v0.0.1
 bailsVersion: 3
 typescript: false

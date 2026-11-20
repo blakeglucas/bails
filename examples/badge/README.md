@@ -23,8 +23,8 @@ Omit `-tags private_mac_apis` from the build command to run with public macOS AP
 First, initialize the badge service:
 
 ```go
-import "example.com/bails/pkg/application"
-import "example.com/bails/pkg/services/badge"
+import "github.com/blakeglucas/bails/pkg/application"
+import "github.com/blakeglucas/bails/pkg/services/badge"
 
 // Create a new badge service
 badgeService := badge.New()
@@ -57,7 +57,7 @@ badgeService.SetBadge("New")
 
 #### JS
 ```js
-import {SetBadge} from "../bindings/example.com/bails/pkg/services/badge/service";
+import {SetBadge} from "../bindings/github.com/blakeglucas/bails/pkg/services/badge/service";
 
 // Set a default badge
 SetBadge("")
@@ -80,7 +80,7 @@ badgeService.RemoveBadge()
 
 #### JS
 ```js
-import {RemoveBadge} from "../bindings/example.com/bails/pkg/services/badge/service";
+import {RemoveBadge} from "../bindings/github.com/blakeglucas/bails/pkg/services/badge/service";
 
 RemoveBadge()
 ```

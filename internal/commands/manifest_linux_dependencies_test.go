@@ -10,9 +10,9 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/wake/cache"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/cache"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func TestLinuxPackageRuntimeDependencies(t *testing.T) {

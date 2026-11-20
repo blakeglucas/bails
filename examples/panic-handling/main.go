@@ -2,8 +2,8 @@ package main
 
 import (
 	"embed"
-	"example.com/bails/pkg/application"
 	"fmt"
+	"github.com/blakeglucas/bails/pkg/application"
 	"log"
 )
 

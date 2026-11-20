@@ -1,6 +1,6 @@
 package main
 
-import "example.com/bails/pkg/application"
+import "github.com/blakeglucas/bails/pkg/application"
 
 func ServiceInitialiser[T any]() func(*T) application.Service {
 	return application.NewService[T]

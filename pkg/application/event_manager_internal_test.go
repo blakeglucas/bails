@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 func newEventManagerTestApp() *App {

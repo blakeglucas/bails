@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/pkg/application/internal/mainthreadharness"
+	"github.com/blakeglucas/bails/pkg/application/internal/mainthreadharness"
 )
 
 const (

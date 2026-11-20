@@ -19,11 +19,11 @@ import (
 	"sync"
 	"text/template"
 
-	"example.com/bails/internal/version"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/migration"
-	"example.com/bails/internal/wake/migration/taskfile"
-	wakeast "example.com/bails/internal/wake/migration/taskfile/ast"
+	"github.com/blakeglucas/bails/internal/version"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/migration"
+	"github.com/blakeglucas/bails/internal/wake/migration/taskfile"
+	wakeast "github.com/blakeglucas/bails/internal/wake/migration/taskfile/ast"
 )
 
 type MigrateOptions struct {

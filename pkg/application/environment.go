@@ -1,6 +1,6 @@
 package application
 
-import "example.com/bails/internal/operatingsystem"
+import "github.com/blakeglucas/bails/internal/operatingsystem"
 
 // EnvironmentInfo represents information about the current environment.
 //

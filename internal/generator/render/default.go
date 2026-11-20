@@ -6,7 +6,7 @@ import (
 	"strings"
 	"text/template"
 
-	"example.com/bails/internal/generator/collect"
+	"github.com/blakeglucas/bails/internal/generator/collect"
 )
 
 // JSDefault renders the Javascript representation

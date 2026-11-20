@@ -3,8 +3,8 @@ package events_only
 import (
 	"fmt"
 
-	nobindingshere "example.com/bails/internal/generator/testcases/no_bindings_here"
-	"example.com/bails/pkg/application"
+	nobindingshere "github.com/blakeglucas/bails/internal/generator/testcases/no_bindings_here"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // SomeClass renders as a TS class.

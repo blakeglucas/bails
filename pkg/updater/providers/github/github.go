@@ -18,8 +18,8 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/pkg/updater"
-	"example.com/bails/pkg/updater/internal/semver"
+	"github.com/blakeglucas/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater/internal/semver"
 )
 
 const (

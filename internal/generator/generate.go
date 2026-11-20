@@ -12,10 +12,10 @@ import (
 
 	"golang.org/x/tools/go/packages"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/generator/collect"
-	"example.com/bails/internal/generator/config"
-	"example.com/bails/internal/generator/render"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/generator/collect"
+	"github.com/blakeglucas/bails/internal/generator/config"
+	"github.com/blakeglucas/bails/internal/generator/render"
 )
 
 // Generator wraps all bookkeeping data structures that are needed

@@ -9,8 +9,8 @@ import (
 	"slices"
 	"strings"
 
-	"example.com/bails/internal/operatingsystem"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/internal/operatingsystem"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 func (a *linuxApp) getApplicationMenu() *Menu {

@@ -8,7 +8,7 @@ import (
 	"testing"
 	"text/template"
 
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/flags"
 )
 
 func BenchmarkServiceModuleTemplate(b *testing.B) {

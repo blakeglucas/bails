@@ -17,8 +17,8 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/internal/dev"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/dev"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

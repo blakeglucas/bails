@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // This example demonstrates how to create a Spotlight-like launcher window

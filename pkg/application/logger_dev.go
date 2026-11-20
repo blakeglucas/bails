@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"example.com/bails/internal/tint"
+	"github.com/blakeglucas/bails/internal/tint"
 	"golang.org/x/term"
 )
 

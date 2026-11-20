@@ -12,7 +12,7 @@ import (
 	"strconv"
 	"strings"
 
-	"example.com/bails/internal/stagefile"
+	"github.com/blakeglucas/bails/internal/stagefile"
 )
 
 func (options Options) resultName() string {

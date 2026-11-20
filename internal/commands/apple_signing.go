@@ -10,9 +10,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"example.com/bails/internal/applesign"
-	"example.com/bails/internal/codesignature"
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/applesign"
+	"github.com/blakeglucas/bails/internal/codesignature"
+	"github.com/blakeglucas/bails/internal/flags"
 )
 
 func portableAppleSigning(options *flags.Sign) bool {

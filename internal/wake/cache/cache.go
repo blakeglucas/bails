@@ -25,8 +25,8 @@ import (
 	"sync"
 	"time"
 
-	"example.com/bails/internal/dirscan"
-	"example.com/bails/internal/sourceignore"
+	"github.com/blakeglucas/bails/internal/dirscan"
+	"github.com/blakeglucas/bails/internal/sourceignore"
 )
 
 const (

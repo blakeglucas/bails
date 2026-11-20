@@ -4,7 +4,7 @@ import (
 	"context"
 	"image/color"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 type platformDock interface {
@@ -39,7 +39,7 @@ type BadgeOptions struct {
 
 // ServiceName returns the name of the service.
 func (d *DockService) ServiceName() string {
-	return "example.com/bails/pkg/services/dock"
+	return "github.com/blakeglucas/bails/pkg/services/dock"
 }
 
 // ServiceStartup is called when the service is loaded.

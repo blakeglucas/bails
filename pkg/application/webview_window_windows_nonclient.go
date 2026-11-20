@@ -7,8 +7,8 @@ import (
 	"sync"
 	"unsafe"
 
-	"example.com/bails/internal/webview2/pkg/edge"
-	"example.com/bails/pkg/w32"
+	"github.com/blakeglucas/bails/internal/webview2/pkg/edge"
+	"github.com/blakeglucas/bails/pkg/w32"
 )
 
 type nonClientHitTestState struct {

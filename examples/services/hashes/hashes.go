@@ -7,7 +7,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 type Hashes = struct {

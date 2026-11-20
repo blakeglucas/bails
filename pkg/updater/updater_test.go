@@ -24,7 +24,7 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater"
 )
 
 func removeAllOS(p string) error { return os.RemoveAll(p) }

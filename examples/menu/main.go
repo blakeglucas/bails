@@ -5,7 +5,7 @@ import (
 	"log"
 	"runtime"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 //go:embed icon.png

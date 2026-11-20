@@ -1,6 +1,6 @@
 package other
 
-import "example.com/bails/pkg/application"
+import "github.com/blakeglucas/bails/pkg/application"
 
 func CustomNewService[T any](srv T) application.Service {
 	return application.NewService(&srv)

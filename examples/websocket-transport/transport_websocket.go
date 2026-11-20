@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"sync"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 	"github.com/coder/websocket"
 	"github.com/coder/websocket/wsjson"
 )

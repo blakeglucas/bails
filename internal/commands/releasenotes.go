@@ -1,10 +1,10 @@
 package commands
 
 import (
-	"example.com/bails/internal/github"
-	"example.com/bails/internal/releasenotes"
-	"example.com/bails/internal/term"
-	"example.com/bails/internal/version"
+	"github.com/blakeglucas/bails/internal/github"
+	"github.com/blakeglucas/bails/internal/releasenotes"
+	"github.com/blakeglucas/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/version"
 )
 
 type ReleaseNotesOptions struct {

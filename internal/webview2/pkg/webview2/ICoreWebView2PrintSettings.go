@@ -3,7 +3,7 @@
 package webview2
 
 import (
-	"example.com/bails/internal/webview2/pkg/doublecall"
+	"github.com/blakeglucas/bails/internal/webview2/pkg/doublecall"
 	"golang.org/x/sys/windows"
 	"syscall"
 	"unsafe"

@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"testing"
 
-	"example.com/bails/internal/wake/cache"
+	"github.com/blakeglucas/bails/internal/wake/cache"
 )
 
 func TestExecutableInputsFollowImportsAndEmbeddedFiles(t *testing.T) {

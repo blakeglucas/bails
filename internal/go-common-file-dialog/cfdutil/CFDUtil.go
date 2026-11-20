@@ -1,7 +1,7 @@
 package cfdutil
 
 import (
-	"example.com/bails/internal/go-common-file-dialog/cfd"
+	"github.com/blakeglucas/bails/internal/go-common-file-dialog/cfd"
 )
 
 // TODO doc

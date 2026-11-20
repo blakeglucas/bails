@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func (h *manifestHandler) packageDMG(ctx context.Context, s pipeline.PackageSpec) (pipeline.RunResult, error) {

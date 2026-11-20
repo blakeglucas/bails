@@ -11,7 +11,7 @@ import (
 	"slices"
 	"testing"
 
-	"example.com/bails/internal/wake/cache"
+	"github.com/blakeglucas/bails/internal/wake/cache"
 )
 
 type frontendCompileHandler struct {

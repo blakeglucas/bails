@@ -1,9 +1,9 @@
 package main
 
 import (
-	"example.com/bails/pkg/application"
-	"example.com/bails/pkg/events"
-	"example.com/bails/pkg/icons"
+	"github.com/blakeglucas/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/icons"
 	"log"
 	"runtime"
 )

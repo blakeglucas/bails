@@ -4,7 +4,7 @@ import (
 	"io"
 	"strings"
 
-	"example.com/bails/internal/report/pulse/ansi"
+	"github.com/blakeglucas/bails/internal/report/pulse/ansi"
 )
 
 // liveRegion is a re-paintable bottom-of-terminal pane that sits *below* the

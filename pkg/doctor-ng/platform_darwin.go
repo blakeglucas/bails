@@ -8,7 +8,7 @@ import (
 	"strings"
 	"syscall"
 
-	"example.com/bails/internal/lo"
+	"github.com/blakeglucas/bails/internal/lo"
 )
 
 type macPackageManager int

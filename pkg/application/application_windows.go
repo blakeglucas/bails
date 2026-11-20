@@ -14,12 +14,12 @@ import (
 	"time"
 	"unsafe"
 
-	"example.com/bails/internal/webview2/webviewloader"
+	"github.com/blakeglucas/bails/internal/webview2/webviewloader"
 
-	"example.com/bails/internal/operatingsystem"
+	"github.com/blakeglucas/bails/internal/operatingsystem"
 
-	"example.com/bails/pkg/events"
-	"example.com/bails/pkg/w32"
+	"github.com/blakeglucas/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/w32"
 )
 
 var (

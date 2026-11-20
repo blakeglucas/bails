@@ -5,7 +5,7 @@ import (
 	"strings"
 	"sync/atomic"
 
-	"example.com/bails/internal/generator/config"
+	"github.com/blakeglucas/bails/internal/generator/config"
 )
 
 // SpecialTypeCache caches types that are handled as special cases in the generation process.

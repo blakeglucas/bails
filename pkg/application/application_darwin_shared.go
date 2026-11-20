@@ -6,8 +6,8 @@ import (
 	"time"
 	"unsafe"
 
-	"example.com/bails/internal/assetserver/webview"
-	"example.com/bails/internal/operatingsystem"
+	"github.com/blakeglucas/bails/internal/assetserver/webview"
+	"github.com/blakeglucas/bails/internal/operatingsystem"
 )
 
 type macosApp struct {

@@ -7,12 +7,12 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"example.com/bails/examples/services/hashes"
-	"example.com/bails/pkg/application"
-	"example.com/bails/pkg/services/fileserver"
-	"example.com/bails/pkg/services/kvstore"
-	"example.com/bails/pkg/services/log"
-	"example.com/bails/pkg/services/sqlite"
+	"github.com/blakeglucas/bails/examples/services/hashes"
+	"github.com/blakeglucas/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/services/fileserver"
+	"github.com/blakeglucas/bails/pkg/services/kvstore"
+	"github.com/blakeglucas/bails/pkg/services/log"
+	"github.com/blakeglucas/bails/pkg/services/sqlite"
 )
 
 //go:embed assets/*

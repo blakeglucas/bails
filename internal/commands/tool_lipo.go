@@ -3,8 +3,8 @@ package commands
 import (
 	"fmt"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/universalbinary"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/universalbinary"
 )
 
 func ToolLipo(options *flags.Lipo) error {

@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"sync"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 var (

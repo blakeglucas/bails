@@ -1,7 +1,7 @@
 package pipeline
 
 import (
-	"example.com/bails/internal/wake/cache"
+	"github.com/blakeglucas/bails/internal/wake/cache"
 	"os"
 	"path/filepath"
 	"testing"

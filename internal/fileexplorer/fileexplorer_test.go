@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/fileexplorer"
+	"github.com/blakeglucas/bails/internal/fileexplorer"
 )
 
 // Credit: https://stackoverflow.com/a/50631395

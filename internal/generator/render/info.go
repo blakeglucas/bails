@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"strings"
 
-	"example.com/bails/internal/generator/collect"
+	"github.com/blakeglucas/bails/internal/generator/collect"
 )
 
 // modelInfo gathers useful information about a model.

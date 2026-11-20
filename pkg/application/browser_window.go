@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 // BrowserWindow represents a browser client connection in server mode.

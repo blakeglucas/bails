@@ -5,7 +5,7 @@ import (
 	"io"
 	"os"
 
-	"example.com/bails/internal/report"
+	"github.com/blakeglucas/bails/internal/report"
 )
 
 // underWake reports whether this process was spawned by a wake build. When true,

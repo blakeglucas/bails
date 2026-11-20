@@ -11,8 +11,8 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"example.com/bails/pkg/updater"
-	"example.com/bails/pkg/updater/providers/appcast"
+	"github.com/blakeglucas/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater/providers/appcast"
 )
 
 const feedTemplate = `<?xml version="1.0" encoding="utf-8"?>

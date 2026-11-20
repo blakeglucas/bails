@@ -36,9 +36,9 @@ Now that you have your project set up, it's time to explore the features that Ba
 
    Note: Some examples may be under development during the alpha phase.
 
-3. **Explore the documentation**: Visit the [Bails documentation](https://v3.wails.io/) for in-depth guides and API references.
+3. **Explore the documentation**: Visit the [Bails documentation](https://github.com/blakeglucas/bails) for in-depth guides and API references.
 
-4. **Join the community**: Have questions or want to share your progress? Join the [Bails Discord](https://discord.gg/JDdSxwjhGf) or visit the [Bails discussions on GitHub](https://github.com/wailsapp/wails/discussions).
+4. **Join the community**: Have questions or want to share your progress? Open an issue on the [Bails repository](https://github.com/blakeglucas/bails/issues).
 
 ## Project Structure
 

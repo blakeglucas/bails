@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/wake/benchmark"
+	"github.com/blakeglucas/bails/internal/wake/benchmark"
 )
 
 func main() {

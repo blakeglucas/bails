@@ -11,7 +11,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func linuxPackageFixture(t testing.TB) (*manifestHandler, pipeline.PackageSpec) {

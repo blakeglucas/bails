@@ -3,7 +3,7 @@ name: "Vue + Vite (JavaScript)"
 shortname: vue-js
 author: Lea Anthony
 description: "Vue + JavaScript + Vite"
-helpurl: https://wails.io
+helpurl: https://github.com/blakeglucas/bails
 version: v0.0.1
 bailsVersion: 3
 typescript: false

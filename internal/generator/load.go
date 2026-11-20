@@ -5,7 +5,7 @@ import (
 	"go/parser"
 	"go/token"
 
-	"example.com/bails/internal/generator/config"
+	"github.com/blakeglucas/bails/internal/generator/config"
 	"golang.org/x/tools/go/packages"
 )
 

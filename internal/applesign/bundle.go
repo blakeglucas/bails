@@ -13,7 +13,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"example.com/bails/internal/stagefile"
+	"github.com/blakeglucas/bails/internal/stagefile"
 	"howett.net/plist"
 )
 

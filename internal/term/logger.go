@@ -3,7 +3,7 @@ package term
 import (
 	"fmt"
 
-	"example.com/bails/internal/generator/config"
+	"github.com/blakeglucas/bails/internal/generator/config"
 	"github.com/pterm/pterm"
 )
 

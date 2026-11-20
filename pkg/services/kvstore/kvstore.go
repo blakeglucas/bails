@@ -7,8 +7,8 @@ import (
 	"sync"
 
 	"encoding/json"
-	"example.com/bails/pkg/application"
 	"fmt"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 type Config struct {
@@ -50,7 +50,7 @@ func NewWithConfig(config *Config) *KVStoreService {
 
 // ServiceName returns the name of the plugin.
 func (kvs *KVStoreService) ServiceName() string {
-	return "example.com/bails/plugins/kvstore"
+	return "github.com/blakeglucas/bails/plugins/kvstore"
 }
 
 // ServiceStartup loads the store from disk if it is associated with a file.

@@ -1,7 +1,7 @@
 package assetserver
 
 import (
-	"example.com/bails/internal/assetserver/bundledassets"
+	"github.com/blakeglucas/bails/internal/assetserver/bundledassets"
 	"io/fs"
 	"net/http"
 	"strconv"

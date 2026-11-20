@@ -18,12 +18,12 @@ import (
 	"syscall"
 	"time"
 
-	"example.com/bails/internal/dev"
-	"example.com/bails/internal/report"
-	"example.com/bails/internal/sourceignore"
-	"example.com/bails/internal/wake/cache"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/dev"
+	"github.com/blakeglucas/bails/internal/report"
+	"github.com/blakeglucas/bails/internal/sourceignore"
+	"github.com/blakeglucas/bails/internal/wake/cache"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 	"github.com/rjeczalik/notify"
 )
 

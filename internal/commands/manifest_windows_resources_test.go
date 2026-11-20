@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 	"github.com/stretchr/testify/require"
 	"github.com/tc-hib/winres"
 	"github.com/tc-hib/winres/version"

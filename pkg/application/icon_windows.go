@@ -5,7 +5,7 @@ package application
 import (
 	"fmt"
 
-	"example.com/bails/pkg/w32"
+	"github.com/blakeglucas/bails/pkg/w32"
 )
 
 // NewIconFromResource loads an icon from an embedded Windows resource. It is

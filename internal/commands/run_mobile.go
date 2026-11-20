@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func configureRunTarget(options *RunOptions, goos, arch string, settings manifest.Run, build *manifestRunOptions) error {

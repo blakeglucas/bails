@@ -1,8 +1,8 @@
 package application
 
 import (
-	"example.com/bails/internal/browser"
-	"example.com/bails/pkg/errs"
+	"github.com/blakeglucas/bails/internal/browser"
+	"github.com/blakeglucas/bails/pkg/errs"
 )
 
 const (

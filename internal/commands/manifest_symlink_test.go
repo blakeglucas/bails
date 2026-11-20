@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/flags"
 )
 
 func TestBuildDoesNotRunTaskfileForDanglingManifest(t *testing.T) {

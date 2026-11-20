@@ -1165,10 +1165,10 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"example.com/bails/internal/assetserver"
-	"example.com/bails/internal/runtime"
+	"github.com/blakeglucas/bails/internal/assetserver"
+	"github.com/blakeglucas/bails/internal/runtime"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 // macosWindowNative is empty: the cgo backend keeps a window's native state

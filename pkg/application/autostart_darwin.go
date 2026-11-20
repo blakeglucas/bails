@@ -12,7 +12,7 @@ import (
 	"strconv"
 	"strings"
 
-	"example.com/bails/pkg/mac"
+	"github.com/blakeglucas/bails/pkg/mac"
 )
 
 type darwinAutostart struct {

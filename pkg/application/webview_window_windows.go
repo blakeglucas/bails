@@ -14,17 +14,17 @@ import (
 	"time"
 	"unsafe"
 
-	"example.com/bails/internal/assetserver"
-	"example.com/bails/internal/assetserver/webview"
-	"example.com/bails/internal/capabilities"
-	"example.com/bails/internal/debounce"
-	"example.com/bails/internal/runtime"
-	"example.com/bails/internal/sliceutil"
-	"example.com/bails/internal/webview2/webviewloader"
+	"github.com/blakeglucas/bails/internal/assetserver"
+	"github.com/blakeglucas/bails/internal/assetserver/webview"
+	"github.com/blakeglucas/bails/internal/capabilities"
+	"github.com/blakeglucas/bails/internal/debounce"
+	"github.com/blakeglucas/bails/internal/runtime"
+	"github.com/blakeglucas/bails/internal/sliceutil"
+	"github.com/blakeglucas/bails/internal/webview2/webviewloader"
 
-	"example.com/bails/internal/webview2/pkg/edge"
-	"example.com/bails/pkg/events"
-	"example.com/bails/pkg/w32"
+	"github.com/blakeglucas/bails/internal/webview2/pkg/edge"
+	"github.com/blakeglucas/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/w32"
 )
 
 var edgeMap = map[string]uintptr{

@@ -3,7 +3,7 @@ package application_test
 import (
 	"testing"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 func TestMenuItem_GetAccelerator(t *testing.T) {

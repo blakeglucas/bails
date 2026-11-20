@@ -7,7 +7,7 @@ import (
 	"slices"
 	"strings"
 
-	"example.com/bails/internal/generator/collect"
+	"github.com/blakeglucas/bails/internal/generator/collect"
 )
 
 // generateIncludes copies included files to the package directory

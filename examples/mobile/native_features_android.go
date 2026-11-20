@@ -3,7 +3,7 @@
 package main
 
 import (
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // registerNativeFeatures wires the "common:*" events the frontend emits to the

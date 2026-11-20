@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"os"
 
-	"example.com/bails/internal/credentialstore"
+	"github.com/blakeglucas/bails/internal/credentialstore"
 )
 
 const (

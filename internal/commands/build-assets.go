@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/buildmeta"
-	"example.com/bails/internal/gosod"
+	"github.com/blakeglucas/bails/internal/buildmeta"
+	"github.com/blakeglucas/bails/internal/gosod"
 	"gopkg.in/yaml.v3"
 	"howett.net/plist"
 )

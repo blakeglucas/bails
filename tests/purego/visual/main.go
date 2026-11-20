@@ -25,8 +25,8 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/pkg/application"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 // settle is how long a scenario stays on screen before the screenshot, so the

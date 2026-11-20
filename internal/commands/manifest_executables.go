@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func executablePackage(value string) string {

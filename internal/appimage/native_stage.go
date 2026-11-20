@@ -10,7 +10,7 @@ import (
 	"slices"
 	"strings"
 
-	"example.com/bails/internal/stagefile"
+	"github.com/blakeglucas/bails/internal/stagefile"
 )
 
 func (options Options) prepareNativeDirectory(ctx context.Context, stage string) (string, error) {

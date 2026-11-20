@@ -21,8 +21,8 @@ import (
 	"runtime"
 	"testing"
 
-	"example.com/bails/pkg/updater"
-	"example.com/bails/pkg/updater/providers/endpoint"
+	"github.com/blakeglucas/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater/providers/endpoint"
 )
 
 func genTestKey(t *testing.T) (string, ed25519.PublicKey) {

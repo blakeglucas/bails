@@ -1,8 +1,8 @@
 package commands
 
 import (
-	"example.com/bails/internal/setupwizard"
-	"example.com/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/setupwizard"
+	"github.com/blakeglucas/bails/internal/term"
 )
 
 type SetupOptions struct{}

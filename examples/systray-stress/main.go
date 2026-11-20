@@ -14,8 +14,8 @@ import (
 	"time"
 	"unsafe"
 
-	"example.com/bails/pkg/application"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 // systray-stress is a test harness that exercises SystemTray.SetMenu and

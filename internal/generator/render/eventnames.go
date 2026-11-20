@@ -7,7 +7,7 @@ import (
 	"strings"
 	"unicode"
 
-	"example.com/bails/internal/generator/collect"
+	"github.com/blakeglucas/bails/internal/generator/collect"
 )
 
 // EventNamesDir is the directory, relative to the bindings root,

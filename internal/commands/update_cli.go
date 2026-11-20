@@ -7,10 +7,10 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"example.com/bails/internal/debug"
-	"example.com/bails/internal/github"
-	"example.com/bails/internal/term"
-	"example.com/bails/internal/version"
+	"github.com/blakeglucas/bails/internal/debug"
+	"github.com/blakeglucas/bails/internal/github"
+	"github.com/blakeglucas/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/version"
 	"github.com/pterm/pterm"
 )
 
@@ -167,7 +167,7 @@ func updateToVersion(targetVersion *github.SemanticVersion, force bool, currentV
 		return fmt.Errorf("cannot find home directory: %w", err)
 	}
 
-	cmd := exec.Command("go", "install", "example.com/bails/cmd/bails@"+desiredVersion)
+	cmd := exec.Command("go", "install", "github.com/blakeglucas/bails/cmd/bails@"+desiredVersion)
 	cmd.Dir = homeDir
 	sout, err := cmd.CombinedOutput()
 	if err != nil {
@@ -177,7 +177,7 @@ func updateToVersion(targetVersion *github.SemanticVersion, force bool, currentV
 	}
 	pterm.Println("Done.")
 	pterm.Println("\nMake sure you update your project go.mod file to use " + desiredVersion + ":")
-	pterm.Println("  require example.com/bails " + desiredVersion)
+	pterm.Println("  require github.com/blakeglucas/bails " + desiredVersion)
 	pterm.Println("\nTo view the release notes, please run `bails releasenotes`")
 
 	return nil

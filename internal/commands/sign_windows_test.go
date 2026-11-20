@@ -3,8 +3,8 @@
 package commands
 
 import (
-	"example.com/bails/internal/flags"
 	"fmt"
+	"github.com/blakeglucas/bails/internal/flags"
 	"github.com/stretchr/testify/require"
 	"os"
 	"path/filepath"

@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"example.com/bails/internal/doctor/packagemanager"
-	"example.com/bails/internal/operatingsystem"
+	"github.com/blakeglucas/bails/internal/doctor/packagemanager"
+	"github.com/blakeglucas/bails/internal/operatingsystem"
 )
 
 func getInfo() (map[string]string, bool) {

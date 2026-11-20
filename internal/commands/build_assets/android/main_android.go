@@ -2,7 +2,7 @@
 
 package main
 
-import "example.com/bails/pkg/application"
+import "github.com/blakeglucas/bails/pkg/application"
 
 func init() {
 	// Register main function to be called when the Android app initializes

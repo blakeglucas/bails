@@ -22,9 +22,9 @@ import (
 
 	"encoding/json"
 
-	"example.com/bails/internal/assetserver/webview"
-	"example.com/bails/internal/runtime"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/internal/assetserver/webview"
+	"github.com/blakeglucas/bails/internal/runtime"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 func iosConsoleLogf(level string, format string, a ...interface{}) {

@@ -6,8 +6,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"example.com/bails/internal/applesign"
-	"example.com/bails/internal/stagefile"
+	"github.com/blakeglucas/bails/internal/applesign"
+	"github.com/blakeglucas/bails/internal/stagefile"
 )
 
 // Digests reads the signed CodeDirectories of a canonical app or signed DMG.

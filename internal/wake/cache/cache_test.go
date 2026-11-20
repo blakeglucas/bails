@@ -15,7 +15,7 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/internal/sourceignore"
+	"github.com/blakeglucas/bails/internal/sourceignore"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

@@ -5,7 +5,7 @@ import (
 	"slices"
 	"testing"
 
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func TestWakeToolRequirementsFollowResolvedCompiler(t *testing.T) {

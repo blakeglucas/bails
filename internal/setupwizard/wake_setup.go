@@ -7,9 +7,9 @@ import (
 	"io"
 	"net/http"
 
-	"example.com/bails/internal/features"
-	"example.com/bails/internal/wake/buildinfo"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/features"
+	"github.com/blakeglucas/bails/internal/wake/buildinfo"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 type WakeSetupConfig struct {

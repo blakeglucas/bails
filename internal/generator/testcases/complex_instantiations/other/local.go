@@ -1,6 +1,6 @@
 package other
 
-import "example.com/bails/pkg/application"
+import "github.com/blakeglucas/bails/pkg/application"
 
 type Service16 int
 

@@ -2298,7 +2298,7 @@ function loadOptionalScript(url) {
 	}).catch(() => {});
 }
 if (hasDOM) loadOptionalScript("/bails/custom.js");
-// bindings/example.com/bails/examples/file-association/greetservice.js
+// bindings/github.com/blakeglucas/bails/examples/file-association/greetservice.js
 /**
 * @param {string} name
 * @returns {$CancellablePromise<string>}

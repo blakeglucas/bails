@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"slices"
 
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 func planPrebuilt(plan Plan, config manifest.Config, request Request, multiTarget bool) (Plan, error) {

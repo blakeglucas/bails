@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"embed"
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 	"log"
 	"math/rand"
 	"runtime"

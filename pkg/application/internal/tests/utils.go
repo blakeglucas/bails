@@ -6,7 +6,7 @@ import (
 	"runtime"
 	"testing"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 var appChan chan *application.App = make(chan *application.App, 1)

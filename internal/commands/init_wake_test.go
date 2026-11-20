@@ -6,10 +6,10 @@ import (
 	"slices"
 	"testing"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/setupwizard"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/setupwizard"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func TestInitWizardChoicesConfigureTheNewProject(t *testing.T) {

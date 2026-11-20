@@ -3,11 +3,11 @@ package main
 import (
 	"embed"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 	"log"
 	"time"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // Bails uses Go's `embed` package to embed the frontend files into the binary.

@@ -3,7 +3,7 @@
 package application
 
 import (
-	"example.com/bails/pkg/w32"
+	"github.com/blakeglucas/bails/pkg/w32"
 	"sync"
 )
 

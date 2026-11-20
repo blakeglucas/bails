@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 
-	"example.com/bails/internal/wake/buildinfo"
+	"github.com/blakeglucas/bails/internal/wake/buildinfo"
 )
 
 // manifestDocument is intentionally a closed schema. Keep the YAML surface small:

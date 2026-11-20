@@ -3,7 +3,7 @@ package buildinfo
 import (
 	"testing"
 
-	wdebug "example.com/bails/internal/debug"
+	wdebug "github.com/blakeglucas/bails/internal/debug"
 )
 
 func TestGet(t *testing.T) {

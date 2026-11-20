@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/report"
+	"github.com/blakeglucas/bails/internal/report"
 	"github.com/charmbracelet/x/ansi"
 )
 

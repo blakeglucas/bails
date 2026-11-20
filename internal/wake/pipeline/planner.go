@@ -10,8 +10,8 @@ import (
 	"strconv"
 	"strings"
 
-	"example.com/bails/internal/packagesign"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/packagesign"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 	"golang.org/x/mod/modfile"
 )
 

@@ -4,7 +4,7 @@ import (
 	"context"
 	"crypto/x509/pkix"
 	"encoding/asn1"
-	"example.com/bails/internal/codesignature"
+	"github.com/blakeglucas/bails/internal/codesignature"
 )
 
 type Identity = codesignature.Identity

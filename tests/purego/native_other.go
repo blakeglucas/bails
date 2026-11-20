@@ -2,6 +2,6 @@
 
 package main
 
-import "example.com/bails/pkg/application"
+import "github.com/blakeglucas/bails/pkg/application"
 
 func checkPlatform(*application.App, *application.WebviewWindow) error { return nil }

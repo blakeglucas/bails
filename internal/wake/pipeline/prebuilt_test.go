@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 func TestPrebuiltPlansDoNotRequireBuildTools(t *testing.T) {

@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"example.com/bails/internal/wake/buildinfo"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/buildinfo"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 func TestExhaustiveProductionCapabilityMatrix(t *testing.T) {

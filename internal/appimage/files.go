@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"syscall"
 
-	"example.com/bails/internal/stagefile"
+	"github.com/blakeglucas/bails/internal/stagefile"
 )
 
 type contextWriter struct {

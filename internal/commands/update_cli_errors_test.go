@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/debug"
+	"github.com/blakeglucas/bails/internal/debug"
 )
 
 type updateDiscoveryTransport func(*http.Request) (*http.Response, error)

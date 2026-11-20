@@ -15,13 +15,13 @@ import (
 	"strings"
 	"sync"
 
-	"example.com/bails/internal/assetserver"
-	"example.com/bails/internal/assetserver/webview"
-	"example.com/bails/internal/capabilities"
-	"example.com/bails/pkg/updater"
+	"github.com/blakeglucas/bails/internal/assetserver"
+	"github.com/blakeglucas/bails/internal/assetserver/webview"
+	"github.com/blakeglucas/bails/internal/capabilities"
+	"github.com/blakeglucas/bails/pkg/updater"
 
 	// A clear error, not hundreds, when no native backend is selected.
-	_ "example.com/bails/internal/buildguard"
+	_ "github.com/blakeglucas/bails/internal/buildguard"
 )
 
 //go:embed assets/*

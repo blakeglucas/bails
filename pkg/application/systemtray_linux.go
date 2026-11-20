@@ -12,9 +12,9 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"example.com/bails/internal/dbus/menu"
-	"example.com/bails/internal/dbus/notifier"
-	"example.com/bails/pkg/icons"
+	"github.com/blakeglucas/bails/internal/dbus/menu"
+	"github.com/blakeglucas/bails/internal/dbus/notifier"
+	"github.com/blakeglucas/bails/pkg/icons"
 	"github.com/godbus/dbus/v5"
 	"github.com/godbus/dbus/v5/introspect"
 	"github.com/godbus/dbus/v5/prop"

@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	doctorng "example.com/bails/pkg/doctor-ng"
+	doctorng "github.com/blakeglucas/bails/pkg/doctor-ng"
 	tea "github.com/charmbracelet/bubbletea"
 )
 

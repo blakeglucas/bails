@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/readonlyfs"
+	"github.com/blakeglucas/bails/internal/readonlyfs"
 )
 
 // CreateNative builds a type-2 AppImage without executing target binaries or

@@ -3,8 +3,8 @@ package commands
 import (
 	"context"
 	"errors"
-	"example.com/bails/internal/dev"
 	"fmt"
+	"github.com/blakeglucas/bails/internal/dev"
 	"net"
 	"net/http"
 	"os"
@@ -15,9 +15,9 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/internal/wake/cache"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/cache"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 	"github.com/rjeczalik/notify"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

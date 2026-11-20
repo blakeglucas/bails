@@ -3,7 +3,7 @@ name: "Svelte + Vite (JavaScript)"
 shortname: svelte-js
 author: Lea Anthony
 description: "Svelte + JavaScript + Vite"
-helpurl: https://wails.io
+helpurl: https://github.com/blakeglucas/bails
 version: v0.0.1
 bailsVersion: 3
 typescript: false

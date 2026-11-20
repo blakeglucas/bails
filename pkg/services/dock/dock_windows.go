@@ -11,8 +11,8 @@ import (
 	"image/png"
 	"os"
 
-	"example.com/bails/pkg/application"
-	"example.com/bails/pkg/w32"
+	"github.com/blakeglucas/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/w32"
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/opentype"
 	"golang.org/x/image/math/fixed"

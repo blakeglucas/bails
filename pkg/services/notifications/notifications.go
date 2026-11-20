@@ -39,7 +39,7 @@ import (
 	"sync"
 	"time"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 // scheduleDelay returns the time.Duration until delivery for a Schedule.
@@ -223,7 +223,7 @@ type NotificationResult struct {
 
 // ServiceName returns the name of the service.
 func (ns *NotificationService) ServiceName() string {
-	return "example.com/bails/services/notifications"
+	return "github.com/blakeglucas/bails/services/notifications"
 }
 
 // OnNotificationResponse registers a callback function that will be called when

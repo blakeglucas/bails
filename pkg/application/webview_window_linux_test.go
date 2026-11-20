@@ -6,7 +6,7 @@ import (
 	"slices"
 	"testing"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 func TestChangedLinuxWindowStateEvents(t *testing.T) {

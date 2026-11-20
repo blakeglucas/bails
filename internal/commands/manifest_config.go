@@ -5,8 +5,8 @@ import (
 	"io"
 	"os"
 
-	"example.com/bails/internal/version"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/version"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 type EjectOptions struct {

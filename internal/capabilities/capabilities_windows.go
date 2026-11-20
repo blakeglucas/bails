@@ -2,7 +2,7 @@
 
 package capabilities
 
-import "example.com/bails/internal/webview2/webviewloader"
+import "github.com/blakeglucas/bails/internal/webview2/webviewloader"
 
 type version string
 

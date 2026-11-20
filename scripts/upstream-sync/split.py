@@ -18,11 +18,11 @@ import sys
 
 # --- Identity -----------------------------------------------------------------
 NAME = "bails"                        # lowercase name; CLI binary is the same
-MODULE = "example.com/bails"          # Go module path (placeholder)
+MODULE = "github.com/blakeglucas/bails"  # Go module path
 NPM_SCOPE = "@bails"                  # npm scope for the runtime package
 VERSION = "v0.1.0"                    # initial version (version.txt)
-RELEASE_API = "https://example.com/bails/api"  # placeholder for update/release-notes
-REPO_URL = "https://example.com/bails"
+RELEASE_API = "https://api.github.com/repos/blakeglucas/bails"  # update/release-notes
+REPO_URL = "https://github.com/blakeglucas/bails"
 
 # --- Upstream-only material (paths relative to v3/) ---------------------------
 REMOVE = [
@@ -111,6 +111,33 @@ def rename_text(text: str, docs: bool = False) -> str:
     for pat, repl in REPLACE + CLEANUP + (DOC_PATHS if docs else []):
         text = pat.sub(repl, text)
     return re.sub(r"\x00(\d+)\x00", lambda m: saved[int(m.group(1))], text)
+
+
+# Files copied into generated projects (upstream paths). Their site and
+# community links point at the bails repo; deep links into the Wails docs and
+# schema URLs stay, as bails has no docs of its own.
+PROJECT_FILES = (
+    "internal/templates/",
+    "internal/commands/build_assets/",
+    "internal/commands/updatable_build_assets/",
+    "internal/runtime/desktop/@wailsio/runtime/package.json",
+)
+
+PROJECT_LINKS = [
+    (re.compile(r"Join the \[" + Name + r" Discord\]\([^)]*\) or visit the \["
+                + Name + r" discussions on GitHub\]\([^)]*\)\."),
+     f"Open an issue on the [{Name} repository]({REPO_URL}/issues)."),
+    (re.compile(r"https://v3\.wails\.io/noit/done/yet"), REPO_URL),
+    (re.compile(r"https?://(?:v3\.)?wails\.io/?(?=[\"'\s)<]|$)", re.M), REPO_URL),
+]
+
+
+def rebrand_project_links(rel: str, text: str) -> str:
+    if not rel.startswith(PROJECT_FILES):
+        return text
+    for pat, repl in PROJECT_LINKS:
+        text = pat.sub(repl, text)
+    return text
 
 
 def rename_text_path(rel: str) -> str:
@@ -225,6 +252,7 @@ def rename_tree(dest):
             if text is None:
                 continue
             new = rename_text(text, docs=not name.endswith(".go"))
+            new = rebrand_project_links(os.path.relpath(path, dest).replace(os.sep, "/"), new)
             if new != text:
                 if name.endswith(".go") and "testdata" not in path.split(os.sep):
                     changed_go.append(path)
@@ -286,6 +314,16 @@ def set_versions(dest):
             if name == "go.mod":
                 text = read_text(path)
                 text = re.sub(re.escape(MODULE) + r" v[2-9][^\s]*", MODULE + " v0.0.0", text)
+                # Replace paths written against the old layout (e.g. ../../../v3
+                # from v3/examples/x) must point at the new root instead.
+                rel_dir = os.path.relpath(root, dest)
+
+                def fix_replace(m):
+                    old = os.path.normpath(os.path.join("/up/v3", rel_dir, m.group(2)))
+                    if old != "/up/v3" or os.path.normpath(os.path.join(root, m.group(2))) == dest:
+                        return m.group(0)
+                    return m.group(1) + (os.path.relpath(dest, root) or ".")
+                text = re.sub(r"(" + re.escape(MODULE) + r"(?: \S+)? => )(\.[^\s]*)", fix_replace, text)
                 with open(path, "w", encoding="utf-8") as f:
                     f.write(text)
             elif name == "go.sum":

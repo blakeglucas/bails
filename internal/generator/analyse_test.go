@@ -52,7 +52,7 @@ func TestAnalyser(t *testing.T) {
 		}
 
 		for i := range test.want {
-			test.want[i] = path.Clean("example.com/bails/internal/generator/testcases/" + test.name + test.want[i])
+			test.want[i] = path.Clean("github.com/blakeglucas/bails/internal/generator/testcases/" + test.name + test.want[i])
 		}
 		slices.Sort(test.want)
 
@@ -94,7 +94,7 @@ func TestAnalyser(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		pkgPattern := "example.com/bails/internal/generator/testcases/" + test.name
+		pkgPattern := "github.com/blakeglucas/bails/internal/generator/testcases/" + test.name
 
 		t.Run("pkg="+test.name, func(t *testing.T) {
 			pkgs, err := LoadPackages(nil, pkgPattern)

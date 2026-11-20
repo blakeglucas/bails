@@ -39,7 +39,7 @@ func tagPageClient(tb testing.TB, total int) (*http.Client, *int) {
 		}
 		header := make(http.Header)
 		if page < len(pages[size]) {
-			header.Set("Link", fmt.Sprintf(`<https://example.com/bails/api/tags?per_page=%d&page=%d>; rel="next"`, size, page+1))
+			header.Set("Link", fmt.Sprintf(`<https://api.github.com/repos/blakeglucas/bails/tags?per_page=%d&page=%d>; rel="next"`, size, page+1))
 		}
 		return &http.Response{StatusCode: http.StatusOK, Header: header, Body: io.NopCloser(strings.NewReader(pages[size][page-1]))}, nil
 	})}

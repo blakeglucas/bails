@@ -8,8 +8,8 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"example.com/bails/internal/mailbox"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/internal/mailbox"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 type ApplicationEvent struct {

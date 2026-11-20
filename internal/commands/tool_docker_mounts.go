@@ -8,7 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"example.com/bails/internal/buildwarnings"
+	"github.com/blakeglucas/bails/internal/buildwarnings"
 	"golang.org/x/mod/modfile"
 )
 

@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"testing"
 
-	"example.com/bails/internal/wake/cache"
+	"github.com/blakeglucas/bails/internal/wake/cache"
 	"github.com/stretchr/testify/require"
 )
 

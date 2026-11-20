@@ -1,8 +1,8 @@
-module example.com/bails/examples/server
+module github.com/blakeglucas/bails/examples/server
 
 go 1.26.0
 
-require example.com/bails v0.0.0
+require github.com/blakeglucas/bails v0.0.0
 
 require (
 	github.com/coder/websocket v1.8.14 // indirect
@@ -13,4 +13,4 @@ require (
 )
 
 // For local development - remove this line before publishing
-replace example.com/bails => ../..
+replace github.com/blakeglucas/bails => ../..

@@ -4,7 +4,7 @@
 package cfd
 
 import (
-	"example.com/bails/internal/uuid"
+	"github.com/blakeglucas/bails/internal/uuid"
 	"github.com/go-ole/go-ole"
 	"syscall"
 	"unsafe"

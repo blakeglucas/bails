@@ -3,10 +3,10 @@
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore: Unused imports
-import type {} from "../example.com/bails/internal/eventdata.js";
+import type {} from "../github.com/blakeglucas/bails/internal/eventdata.js";
 
 // Make sure event data creation code is registered with the runtime.
-import "../example.com/bails/internal/eventcreate.js";
+import "../github.com/blakeglucas/bails/internal/eventcreate.js";
 
 /**
  * Name of the custom event "events_only:class".

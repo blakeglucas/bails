@@ -12,7 +12,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/buildmeta"
+	"github.com/blakeglucas/bails/internal/buildmeta"
 )
 
 func testOptions(t *testing.T) Options {

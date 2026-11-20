@@ -8,7 +8,7 @@ import (
 	"strings"
 	"text/template"
 
-	"example.com/bails/internal/generator/collect"
+	"github.com/blakeglucas/bails/internal/generator/collect"
 )
 
 // tmplFunctions holds a map of utility functions

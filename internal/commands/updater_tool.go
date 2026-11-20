@@ -25,8 +25,8 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/github"
-	"example.com/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/github"
+	"github.com/blakeglucas/bails/internal/term"
 	"github.com/pterm/pterm"
 )
 

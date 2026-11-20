@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"example.com/bails/internal/keychain"
-	"example.com/bails/internal/signingconfig"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/keychain"
+	"github.com/blakeglucas/bails/internal/signingconfig"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 func manifestSigningPassword(config manifest.SigningPlatform, platform string, environment []string) (string, error) {

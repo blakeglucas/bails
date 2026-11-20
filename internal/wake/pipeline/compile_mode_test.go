@@ -4,7 +4,7 @@ import (
 	"slices"
 	"testing"
 
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 func TestPureGoDesktopHostTargetMatrix(t *testing.T) {

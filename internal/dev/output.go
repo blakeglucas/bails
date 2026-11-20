@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"example.com/bails/internal/report"
+	"github.com/blakeglucas/bails/internal/report"
 )
 
 // Diagnostic retains the cause and launch/build identity for CLI diagnostics.

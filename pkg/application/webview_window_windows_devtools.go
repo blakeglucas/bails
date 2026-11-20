@@ -2,7 +2,7 @@
 
 package application
 
-import "example.com/bails/internal/webview2/pkg/edge"
+import "github.com/blakeglucas/bails/internal/webview2/pkg/edge"
 
 func (w *windowsWebviewWindow) openDevTools() {
 	w.chromium.OpenDevToolsWindow()

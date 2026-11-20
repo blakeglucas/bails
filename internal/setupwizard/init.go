@@ -11,8 +11,8 @@ import (
 	"runtime"
 	"strings"
 
-	"example.com/bails/internal/features"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/features"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 // InitTemplate is a selectable project template, sourced from the templates

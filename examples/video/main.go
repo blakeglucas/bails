@@ -1,10 +1,10 @@
 package main
 
 import (
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 	"log"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 func main() {

@@ -1,6 +1,6 @@
 package nobindingshere
 
-import "example.com/bails/internal/generator/testcases/no_bindings_here/other"
+import "github.com/blakeglucas/bails/internal/generator/testcases/no_bindings_here/other"
 
 // SomeMethods exports some methods.
 type SomeMethods struct {

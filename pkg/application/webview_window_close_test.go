@@ -5,7 +5,7 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 type closeTestApp struct{ platformApp }

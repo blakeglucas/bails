@@ -286,7 +286,7 @@ task test:examples:linux:docker
 
 #### 2. **Go Module Resolution**
 - **Issue**: Inconsistent replace directives across examples
-- **Fix**: Standardized all examples to use `replace example.com/bails => ../..`
+- **Fix**: Standardized all examples to use `replace github.com/blakeglucas/bails => ../..`
 - **Examples Fixed**: gin-example, gin-routing, notifications
 
 #### 3. **Frontend Asset Embedding**
@@ -373,7 +373,7 @@ task test:examples           # Current platform only (43 builds)
 ```bash
 Error: replacement directory ../bails/v3 does not exist
 ```
-**Solution**: All examples now use standardized `replace example.com/bails => ../..`
+**Solution**: All examples now use standardized `replace github.com/blakeglucas/bails => ../..`
 
 #### **Frontend Asset Embedding Errors**
 ```bash

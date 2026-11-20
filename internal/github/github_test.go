@@ -18,7 +18,7 @@ func TestVersionTagSelection(t *testing.T) {
 	previousClient := http.DefaultClient
 	t.Cleanup(func() { http.DefaultClient = previousClient })
 	http.DefaultClient = &http.Client{Transport: tagTransport(func(r *http.Request) (*http.Response, error) {
-		if r.URL.String() != "https://example.com/bails/api/tags?per_page=100&page=1" {
+		if r.URL.String() != "https://api.github.com/repos/blakeglucas/bails/tags?per_page=100&page=1" {
 			t.Errorf("unexpected request: %s", r.URL)
 		}
 		return &http.Response{StatusCode: http.StatusOK, Body: io.NopCloser(strings.NewReader(`[
@@ -69,13 +69,13 @@ func TestVersionTagsPagination(t *testing.T) {
 		header := make(http.Header)
 		payload := `[{"name":"v3.1.0-beta.2"}]`
 		if len(bodies) == 0 {
-			header.Set("Link", `<https://example.com/bails/api/tags?page=2>; rel="next"`)
+			header.Set("Link", `<https://api.github.com/repos/blakeglucas/bails/tags?page=2>; rel="next"`)
 		} else {
 			if r.URL.Query().Get("page") != "2" {
 				t.Errorf("second page URL=%s", r.URL)
 			}
 			payload = `[{"name":"v3.0.1"},{"name":"v3.1.0-beta.3"}]`
-			header.Set("Link", `<https://example.com/bails/api/tags?page=1>; rel="prev"`)
+			header.Set("Link", `<https://api.github.com/repos/blakeglucas/bails/tags?page=1>; rel="prev"`)
 		}
 		body := &trackedResponseBody{Reader: strings.NewReader(payload)}
 		bodies = append(bodies, body)

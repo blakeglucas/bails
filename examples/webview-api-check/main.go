@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"time"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 var autorun = flag.Bool("autorun", false, "Automatically run tests and save report")

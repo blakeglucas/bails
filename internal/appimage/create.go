@@ -15,7 +15,7 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/stagefile"
+	"github.com/blakeglucas/bails/internal/stagefile"
 )
 
 type Binary struct{ Name, Path string }

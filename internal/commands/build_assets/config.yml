@@ -70,7 +70,7 @@ dev_mode:
       exit_policy: shutdown
 
 # File Associations
-# More information at: https://v3.wails.io/noit/done/yet
+# More information at: https://github.com/blakeglucas/bails
 fileAssociations:
 #  - ext: bails
 #    name: Bails

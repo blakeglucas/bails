@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"example.com/bails/internal/templates"
+	"github.com/blakeglucas/bails/internal/templates"
 )
 
 func GenerateTemplate(options *templates.BaseTemplate) error {

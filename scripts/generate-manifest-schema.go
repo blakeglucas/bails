@@ -10,7 +10,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 func main() {

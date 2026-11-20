@@ -9,8 +9,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"example.com/bails/internal/applesign"
-	"example.com/bails/internal/universalbinary"
+	"github.com/blakeglucas/bails/internal/applesign"
+	"github.com/blakeglucas/bails/internal/universalbinary"
 )
 
 func syntheticDMG() []byte {

@@ -7,7 +7,7 @@ import (
 	"context"
 	"encoding/binary"
 	"errors"
-	"example.com/bails/internal/windowspackage"
+	"github.com/blakeglucas/bails/internal/windowspackage"
 	"io"
 	"os"
 	"sort"

@@ -4,7 +4,7 @@ import (
 	_ "embed"
 	"strings"
 
-	"example.com/bails/internal/debug"
+	"github.com/blakeglucas/bails/internal/debug"
 )
 
 //go:embed version.txt

@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"log"
 
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 //go:embed assets

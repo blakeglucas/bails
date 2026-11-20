@@ -311,7 +311,7 @@ import (
 
 	"encoding/json"
 
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 var (

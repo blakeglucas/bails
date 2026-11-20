@@ -5,7 +5,7 @@ package w32_test
 import (
 	"testing"
 
-	"example.com/bails/pkg/w32"
+	"github.com/blakeglucas/bails/pkg/w32"
 	"github.com/stretchr/testify/require"
 )
 

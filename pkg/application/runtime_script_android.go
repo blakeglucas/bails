@@ -2,7 +2,7 @@
 
 package application
 
-import "example.com/bails/internal/runtime"
+import "github.com/blakeglucas/bails/internal/runtime"
 
 // androidRuntimeScript returns the runtime bootstrap (window._bails, including
 // the environment). app may be nil: the shell fetches it before Go main runs.

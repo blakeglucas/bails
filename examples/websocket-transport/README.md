@@ -74,7 +74,7 @@ The frontend uses the WebSocket transport with **generated bindings**:
 ```typescript
 import { setTransport } from "/bails/runtime.js";
 import { createWebSocketTransport } from "/websocket-transport.js";
-import { GreetService } from "/bindings/example.com/bails/examples/websocket-transport/index.js";
+import { GreetService } from "/bindings/github.com/blakeglucas/bails/examples/websocket-transport/index.js";
 
 // Create and configure WebSocket transport
 const wsTransport = createWebSocketTransport('ws://localhost:9099/bails/ws', {

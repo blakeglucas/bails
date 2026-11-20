@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"sync"
 
-	"example.com/bails/internal/hash"
+	"github.com/blakeglucas/bails/internal/hash"
 	"golang.org/x/tools/go/types/typeutil"
 )
 

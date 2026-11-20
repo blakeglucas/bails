@@ -14,9 +14,9 @@ import (
 	"strings"
 	"time"
 
-	"example.com/bails/internal/packagesign"
-	"example.com/bails/internal/wake/buildinfo"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/packagesign"
+	"github.com/blakeglucas/bails/internal/wake/buildinfo"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 const CrossContainerImage = "ghcr.io/bails/bails-cross:latest"

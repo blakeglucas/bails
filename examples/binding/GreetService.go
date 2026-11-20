@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"time"
 
-	"example.com/bails/examples/binding/data"
+	"github.com/blakeglucas/bails/examples/binding/data"
 )
 
 // GreetService is a service that greets people

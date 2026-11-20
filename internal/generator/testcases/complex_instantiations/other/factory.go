@@ -1,6 +1,6 @@
 package other
 
-import "example.com/bails/pkg/application"
+import "github.com/blakeglucas/bails/pkg/application"
 
 type Factory[T any, U any] struct {
 	simpleFactory[T]

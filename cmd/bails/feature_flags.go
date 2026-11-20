@@ -1,9 +1,9 @@
 package main
 
 import (
-	"example.com/bails/internal/commands"
-	"example.com/bails/internal/features"
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/commands"
+	"github.com/blakeglucas/bails/internal/features"
+	"github.com/blakeglucas/bails/internal/flags"
 	"github.com/leaanthony/clir"
 )
 

@@ -3,8 +3,8 @@ package main
 import (
 	"log"
 
-	"example.com/bails/internal/generator/testcases/complex_instantiations/other"
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/internal/generator/testcases/complex_instantiations/other"
+	"github.com/blakeglucas/bails/pkg/application"
 )
 
 type Service1 struct{}

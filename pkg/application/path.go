@@ -1,6 +1,6 @@
 package application
 
-import "example.com/bails/internal/userpaths"
+import "github.com/blakeglucas/bails/internal/userpaths"
 
 type PathType int
 

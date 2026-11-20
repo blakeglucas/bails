@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func (h *manifestHandler) prebuiltSource(spec pipeline.PrebuiltSpec) (string, error) {

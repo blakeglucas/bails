@@ -7,7 +7,7 @@ import (
 	"syscall"
 	"unsafe"
 
-	"example.com/bails/pkg/w32"
+	"github.com/blakeglucas/bails/pkg/w32"
 	"golang.org/x/sys/windows"
 )
 

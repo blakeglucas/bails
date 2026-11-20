@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"runtime/debug"
 
-	wdebug "example.com/bails/internal/debug"
-	"example.com/bails/internal/lo"
+	wdebug "github.com/blakeglucas/bails/internal/debug"
+	"github.com/blakeglucas/bails/internal/lo"
 )
 
 type Info struct {
@@ -20,7 +20,7 @@ type Info struct {
 	// including release artefacts produced by CI. A user running a
 	// tagged `bails.exe` on Windows would therefore see Development=true
 	// even though the Bails source tree is nowhere on their machine.
-	// The downstream effect was a malformed `replace example.com/bails
+	// The downstream effect was a malformed `replace github.com/blakeglucas/bails
 	// => /v3` directive in scaffolded projects, breaking `bails init`
 	// outright.
 	//

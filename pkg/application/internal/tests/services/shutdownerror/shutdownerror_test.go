@@ -7,10 +7,10 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"example.com/bails/pkg/application"
-	apptest "example.com/bails/pkg/application/internal/tests"
-	svctest "example.com/bails/pkg/application/internal/tests/services"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/pkg/application"
+	apptest "github.com/blakeglucas/bails/pkg/application/internal/tests"
+	svctest "github.com/blakeglucas/bails/pkg/application/internal/tests/services"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 func TestMain(m *testing.M) {

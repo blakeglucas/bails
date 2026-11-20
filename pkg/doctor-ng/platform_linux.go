@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"example.com/bails/internal/operatingsystem"
-	"example.com/bails/pkg/doctor-ng/packagemanager"
+	"github.com/blakeglucas/bails/internal/operatingsystem"
+	"github.com/blakeglucas/bails/pkg/doctor-ng/packagemanager"
 )
 
 func collectPlatformExtras() map[string]string {

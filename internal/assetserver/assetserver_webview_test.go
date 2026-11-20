@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"example.com/bails/internal/assetserver/webview"
+	"github.com/blakeglucas/bails/internal/assetserver/webview"
 )
 
 func TestWebViewRequestCancellationReachesHandler(t *testing.T) {

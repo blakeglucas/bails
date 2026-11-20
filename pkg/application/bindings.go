@@ -10,8 +10,8 @@ import (
 	"strings"
 	"sync"
 
-	"example.com/bails/internal/hash"
-	"example.com/bails/internal/sliceutil"
+	"github.com/blakeglucas/bails/internal/hash"
+	"github.com/blakeglucas/bails/internal/sliceutil"
 )
 
 // CallOptions defines the options for a method call.

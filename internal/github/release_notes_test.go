@@ -31,7 +31,7 @@ func TestReleaseNotesResponses(t *testing.T) {
 			t.Cleanup(func() { http.DefaultClient = previous })
 			body := &trackedResponseBody{Reader: strings.NewReader(tc.payload)}
 			http.DefaultClient = &http.Client{Transport: tagTransport(func(r *http.Request) (*http.Response, error) {
-				if got := r.URL.String(); got != "https://example.com/bails/api/releases/tags/v3.0.0" {
+				if got := r.URL.String(); got != "https://api.github.com/repos/blakeglucas/bails/releases/tags/v3.0.0" {
 					t.Errorf("unexpected request: %s", got)
 				}
 				return &http.Response{StatusCode: tc.status, Body: body, Header: make(http.Header)}, nil

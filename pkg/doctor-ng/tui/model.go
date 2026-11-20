@@ -8,8 +8,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"example.com/bails/internal/reportcopy"
-	doctorng "example.com/bails/pkg/doctor-ng"
+	"github.com/blakeglucas/bails/internal/reportcopy"
+	doctorng "github.com/blakeglucas/bails/pkg/doctor-ng"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
 )

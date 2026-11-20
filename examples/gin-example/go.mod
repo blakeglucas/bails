@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/gin-gonic/gin v1.11.0
-	example.com/bails v0.0.0
+	github.com/blakeglucas/bails v0.0.0
 )
 
 require (
@@ -43,4 +43,4 @@ require (
 	google.golang.org/protobuf v1.36.11 // indirect
 )
 
-replace example.com/bails => ../..
+replace github.com/blakeglucas/bails => ../..

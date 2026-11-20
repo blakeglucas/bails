@@ -1,7 +1,7 @@
 package application
 
 import (
-	"example.com/bails/pkg/errs"
+	"github.com/blakeglucas/bails/pkg/errs"
 )
 
 const (

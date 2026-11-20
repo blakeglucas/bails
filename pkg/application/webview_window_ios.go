@@ -18,7 +18,7 @@ import "C"
 import (
 	"unsafe"
 
-	"example.com/bails/internal/assetserver"
+	"github.com/blakeglucas/bails/internal/assetserver"
 )
 
 // iosWebviewWindow implements the webviewWindowImpl interface for iOS

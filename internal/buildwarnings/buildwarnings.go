@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"example.com/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/term"
 )
 
 // EnvVar is the environment variable that holds the path to the warnings file.

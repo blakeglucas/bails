@@ -8,7 +8,7 @@ import (
 	"unicode/utf16"
 	"unsafe"
 
-	"example.com/bails/pkg/w32"
+	"github.com/blakeglucas/bails/pkg/w32"
 )
 
 type nativeMenuItemSnapshot struct {

@@ -6,8 +6,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"example.com/bails/internal/defaults"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/defaults"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 )
 
 // ApplyDefaults returns a runtime copy. Only signed selected-profile targets or

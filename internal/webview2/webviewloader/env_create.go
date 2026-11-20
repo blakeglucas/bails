@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"unsafe"
 
-	"example.com/bails/internal/webview2/pkg/combridge"
+	"github.com/blakeglucas/bails/internal/webview2/pkg/combridge"
 	"golang.org/x/sys/windows"
 )
 

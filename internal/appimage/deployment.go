@@ -13,7 +13,7 @@ import (
 	"slices"
 	"strings"
 
-	"example.com/bails/internal/stagefile"
+	"github.com/blakeglucas/bails/internal/stagefile"
 )
 
 // runtimeDeployment resolves Linux names against the supplied runtime tree. It

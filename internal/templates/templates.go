@@ -10,24 +10,24 @@ import (
 	"path/filepath"
 	"strings"
 
-	"example.com/bails/internal/buildinfo"
-	"example.com/bails/internal/features"
-	"example.com/bails/internal/s"
-	"example.com/bails/internal/term"
-	"example.com/bails/internal/version"
+	"github.com/blakeglucas/bails/internal/buildinfo"
+	"github.com/blakeglucas/bails/internal/features"
+	"github.com/blakeglucas/bails/internal/s"
+	"github.com/blakeglucas/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/version"
 	"gopkg.in/yaml.v3"
 
 	"errors"
 
-	"example.com/bails/internal/debug"
-	"example.com/bails/internal/git"
+	"github.com/blakeglucas/bails/internal/debug"
+	"github.com/blakeglucas/bails/internal/git"
 	"github.com/pterm/pterm"
 
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/flags"
 
-	"example.com/bails/internal/gosod"
+	"github.com/blakeglucas/bails/internal/gosod"
 
-	"example.com/bails/internal/lo"
+	"github.com/blakeglucas/bails/internal/lo"
 )
 
 //go:embed *

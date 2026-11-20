@@ -13,8 +13,8 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"example.com/bails/pkg/updater"
-	"example.com/bails/pkg/updater/providers/github"
+	"github.com/blakeglucas/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater/providers/github"
 )
 
 const sampleReleaseJSON = `{

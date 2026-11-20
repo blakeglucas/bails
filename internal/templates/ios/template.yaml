@@ -3,6 +3,6 @@ name: "iOS Vanilla (Puppertino) + Vite"
 shortname: ios
 author: Lea Anthony
 description: "Vanilla + Vite with iOS-friendly styling and bundled Puppertino"
-helpurl: https://wails.io
+helpurl: https://github.com/blakeglucas/bails
 version: v0.0.1
 bailsVersion: 3

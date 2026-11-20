@@ -3,8 +3,8 @@ package term
 import (
 	"os"
 
-	"example.com/bails/internal/generator/config"
-	"example.com/bails/internal/version"
+	"github.com/blakeglucas/bails/internal/generator/config"
+	"github.com/blakeglucas/bails/internal/version"
 	"github.com/charmbracelet/lipgloss"
 	"github.com/muesli/termenv"
 	"github.com/pterm/pterm"

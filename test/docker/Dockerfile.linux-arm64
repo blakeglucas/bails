@@ -94,8 +94,8 @@ build_example() {
     
     # Update go.mod for Docker environment
     if [ -f go.mod ]; then
-        go mod edit -dropreplace example.com/bails 2>/dev/null || true
-        go mod edit -replace example.com/bails=/build
+        go mod edit -dropreplace github.com/blakeglucas/bails 2>/dev/null || true
+        go mod edit -replace github.com/blakeglucas/bails=/build
     fi
     
     # Tidy dependencies

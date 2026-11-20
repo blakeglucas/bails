@@ -6,7 +6,7 @@ import (
 	"strings"
 	"text/template"
 
-	"example.com/bails/internal/generator/collect"
+	"github.com/blakeglucas/bails/internal/generator/collect"
 )
 
 // SkipCreate returns true if the given array of types needs no creation code.

@@ -13,7 +13,7 @@ import (
 	"testing"
 	"unsafe"
 
-	"example.com/bails/internal/webview2/pkg/edge"
+	"github.com/blakeglucas/bails/internal/webview2/pkg/edge"
 	"golang.org/x/sys/windows"
 )
 

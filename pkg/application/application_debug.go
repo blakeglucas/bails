@@ -3,9 +3,9 @@
 package application
 
 import (
-	"example.com/bails/internal/git"
-	"example.com/bails/internal/lo"
-	"example.com/bails/internal/version"
+	"github.com/blakeglucas/bails/internal/git"
+	"github.com/blakeglucas/bails/internal/lo"
+	"github.com/blakeglucas/bails/internal/version"
 	"path/filepath"
 	"runtime/debug"
 )
@@ -46,7 +46,7 @@ func (a *App) logStartup() {
 	}
 
 	bailsPackage, _ := lo.Find(BuildInfo.Deps, func(dep *debug.Module) bool {
-		return dep.Path == "example.com/bails"
+		return dep.Path == "github.com/blakeglucas/bails"
 	})
 
 	bailsVersion := version.String()

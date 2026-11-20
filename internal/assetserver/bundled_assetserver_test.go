@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"testing"
 
-	"example.com/bails/internal/assetserver/bundledassets"
+	"github.com/blakeglucas/bails/internal/assetserver/bundledassets"
 )
 
 func TestBundledRuntimeHEAD(t *testing.T) {

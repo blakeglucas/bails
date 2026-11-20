@@ -4,7 +4,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"example.com/bails/internal/assetserver/bundledassets"
+	"github.com/blakeglucas/bails/internal/assetserver/bundledassets"
 )
 
 type RuntimeOptions struct {

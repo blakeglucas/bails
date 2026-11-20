@@ -3,7 +3,7 @@ package commands
 import (
 	"os"
 
-	"example.com/bails/internal/generator"
+	"github.com/blakeglucas/bails/internal/generator"
 )
 
 type GenerateConstantsOptions struct {

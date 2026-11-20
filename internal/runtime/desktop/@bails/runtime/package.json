@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://example.com/bails.git",
+    "url": "git+https://github.com/blakeglucas/bails.git",
     "directory": "internal/runtime/desktop/@bails/runtime"
   },
   "author": "The Bails Team",
   "license": "MIT",
-  "homepage": "https://v3.wails.io",
+  "homepage": "https://github.com/blakeglucas/bails",
   "bugs": {
     "url": "https://github.com/wailsapp/wails/issues"
   },

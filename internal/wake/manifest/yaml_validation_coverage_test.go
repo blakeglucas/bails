@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"example.com/bails/internal/wake/buildinfo"
+	"github.com/blakeglucas/bails/internal/wake/buildinfo"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

@@ -8,7 +8,7 @@ import (
 	"runtime"
 	"testing"
 
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func TestManifestExplicitCGoBuildsWithNativeCompiler(t *testing.T) {

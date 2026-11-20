@@ -9,7 +9,7 @@ import (
 	"os"
 	"strings"
 
-	"example.com/bails/internal/report/pulse/ansi"
+	"github.com/blakeglucas/bails/internal/report/pulse/ansi"
 )
 
 // Profile is what the terminal can render. We fall through TrueColor → 256 →

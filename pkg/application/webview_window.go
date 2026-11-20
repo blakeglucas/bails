@@ -10,9 +10,9 @@ import (
 	"sync/atomic"
 	"unsafe"
 
-	"example.com/bails/internal/assetserver"
-	"example.com/bails/internal/optional"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/internal/assetserver"
+	"github.com/blakeglucas/bails/internal/optional"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 // Enabled means the feature should be enabled

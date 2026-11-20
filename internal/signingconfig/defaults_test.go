@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/defaults"
-	"example.com/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/defaults"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
 	"gopkg.in/yaml.v3"
 )
 

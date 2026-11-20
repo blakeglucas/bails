@@ -7,8 +7,8 @@ import (
 	"strings"
 	"text/template"
 
-	"example.com/bails/internal/flags"
-	"example.com/bails/internal/generator/collect"
+	"github.com/blakeglucas/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/generator/collect"
 )
 
 // Renderer holds the template set for a given configuration.

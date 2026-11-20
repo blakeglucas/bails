@@ -1,7 +1,7 @@
 package application
 
 import (
-	"example.com/bails/pkg/updater"
+	"github.com/blakeglucas/bails/pkg/updater"
 )
 
 // updaterHost adapts the application's EventManager and window factory to

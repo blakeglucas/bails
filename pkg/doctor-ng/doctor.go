@@ -6,10 +6,10 @@ import (
 	"runtime/debug"
 	"strings"
 
-	"example.com/bails/internal/git"
-	"example.com/bails/internal/lo"
-	"example.com/bails/internal/operatingsystem"
-	"example.com/bails/internal/version"
+	"github.com/blakeglucas/bails/internal/git"
+	"github.com/blakeglucas/bails/internal/lo"
+	"github.com/blakeglucas/bails/internal/operatingsystem"
+	"github.com/blakeglucas/bails/internal/version"
 )
 
 type Doctor struct {
@@ -79,7 +79,7 @@ func (d *Doctor) collectBuildInfo() error {
 
 	bailsVersion := strings.TrimSpace(version.String())
 	bailsPackage, found := lo.Find(buildInfo.Deps, func(dep *debug.Module) bool {
-		return dep.Path == "example.com/bails"
+		return dep.Path == "github.com/blakeglucas/bails"
 	})
 
 	if found && bailsPackage != nil && bailsPackage.Replace != nil {

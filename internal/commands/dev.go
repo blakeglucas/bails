@@ -6,7 +6,7 @@ import (
 	"os"
 	"strconv"
 
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/flags"
 )
 
 const defaultVitePort = 9245

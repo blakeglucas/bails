@@ -18,7 +18,7 @@ import (
 	"os"
 	"sync"
 
-	"example.com/bails/internal/operatingsystem"
+	"github.com/blakeglucas/bails/internal/operatingsystem"
 )
 
 func init() {

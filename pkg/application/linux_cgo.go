@@ -9,8 +9,8 @@ import (
 	"time"
 	"unsafe"
 
-	"example.com/bails/internal/assetserver/webview"
-	"example.com/bails/pkg/events"
+	"github.com/blakeglucas/bails/internal/assetserver/webview"
+	"github.com/blakeglucas/bails/pkg/events"
 )
 
 /*

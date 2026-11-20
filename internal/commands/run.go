@@ -16,9 +16,9 @@ import (
 	"syscall"
 	"time"
 
-	"example.com/bails/internal/features"
-	"example.com/bails/internal/wake/manifest"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/features"
+	"github.com/blakeglucas/bails/internal/wake/manifest"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 type RunOptions struct {

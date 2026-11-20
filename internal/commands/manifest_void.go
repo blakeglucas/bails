@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"example.com/bails/internal/buildmeta"
-	"example.com/bails/internal/voidpackage"
-	"example.com/bails/internal/wake/pipeline"
+	"github.com/blakeglucas/bails/internal/buildmeta"
+	"github.com/blakeglucas/bails/internal/voidpackage"
+	"github.com/blakeglucas/bails/internal/wake/pipeline"
 )
 
 func (h *manifestHandler) packageVoid(ctx context.Context, spec pipeline.PackageSpec) (pipeline.RunResult, error) {

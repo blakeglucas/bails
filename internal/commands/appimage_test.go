@@ -3,8 +3,8 @@
 package commands_test
 
 import (
-	"example.com/bails/internal/commands"
-	"example.com/bails/internal/s"
+	"github.com/blakeglucas/bails/internal/commands"
+	"github.com/blakeglucas/bails/internal/s"
 	"testing"
 )
 

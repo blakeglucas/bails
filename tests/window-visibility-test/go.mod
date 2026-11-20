@@ -2,9 +2,9 @@ module window-visibility-test
 
 go 1.26.0
 
-replace example.com/bails => ../../
+replace github.com/blakeglucas/bails => ../../
 
-require example.com/bails v0.0.0
+require github.com/blakeglucas/bails v0.0.0
 
 require (
 	github.com/coder/websocket v1.8.14 // indirect

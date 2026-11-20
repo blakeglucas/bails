@@ -5,8 +5,8 @@ import (
 	"runtime"
 	"time"
 
-	"example.com/bails/pkg/application"
-	"example.com/bails/pkg/icons"
+	"github.com/blakeglucas/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/icons"
 )
 
 func main() {

@@ -11,7 +11,7 @@ import (
 	"net/http"
 	"testing"
 
-	"example.com/bails/internal/assetserver/webview"
+	"github.com/blakeglucas/bails/internal/assetserver/webview"
 )
 
 type cancellationCall struct{ session, method, params string }

@@ -14,15 +14,15 @@ import (
 	"strconv"
 	"strings"
 
-	"example.com/bails/internal/term"
+	"github.com/blakeglucas/bails/internal/term"
 
-	"example.com/bails/internal/buildinfo"
+	"github.com/blakeglucas/bails/internal/buildinfo"
 
-	"example.com/bails/internal/git"
-	"example.com/bails/internal/hostinfo"
-	"example.com/bails/internal/lo"
-	"example.com/bails/internal/operatingsystem"
-	"example.com/bails/internal/version"
+	"github.com/blakeglucas/bails/internal/git"
+	"github.com/blakeglucas/bails/internal/hostinfo"
+	"github.com/blakeglucas/bails/internal/lo"
+	"github.com/blakeglucas/bails/internal/operatingsystem"
+	"github.com/blakeglucas/bails/internal/version"
 	"github.com/pterm/pterm"
 )
 
@@ -106,7 +106,7 @@ func collectReport(quiet bool) (*DoctorReport, error) {
 	}
 
 	bailsPackage, _ := lo.Find(BuildInfo.Deps, func(dep *debug.Module) bool {
-		return dep.Path == "example.com/bails"
+		return dep.Path == "github.com/blakeglucas/bails"
 	})
 
 	bailsVersion := strings.TrimSpace(version.String())

@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"example.com/bails/internal/flags"
+	"github.com/blakeglucas/bails/internal/flags"
 	"github.com/stretchr/testify/require"
 )
 
@@ -40,7 +40,7 @@ func TestBindingIDMetadataSourceSinglePackage(t *testing.T) {
 package main
 
 import (
-	"example.com/bails/pkg/application"
+	"github.com/blakeglucas/bails/pkg/application"
 
 	demo "example.com/app/services/demo"
 )
