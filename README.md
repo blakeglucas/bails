@@ -58,15 +58,30 @@ Android and iOS support is experimental.
 
 ## Syncing with Wails
 
-`scripts/upstream-sync/split.py` generates this tree from a Wails checkout:
-it copies the Wails Go module, removes upstream-only material and renames Wails to bails.
-New files owned by bails, such as this README, live in
-`scripts/upstream-sync/overlay/`. Changes to upstream files live in
-`scripts/upstream-sync/patches/*.patch`: git diffs against the renamed tree,
-applied in order. To change an upstream file, edit it here, then regenerate its
-patch with `git diff --binary` against the split output (keeping files the
-script itself writes out of it), and rerun the split to confirm it reproduces
-the tree.
+The `upstream` branch holds renamed snapshots of Wails: what
+`scripts/upstream-sync/split.py` produces from a Wails checkout by copying its
+Go module, removing upstream-only material and renaming Wails to bails. It
+contains no bails changes. Everything bails changes is an ordinary commit on
+`main`, so edit any file freely.
+
+To pull in newer Wails changes:
+
+```bash
+scripts/upstream-sync/sync.sh ~/Projects/wails   # commits a snapshot on upstream
+git merge upstream
+```
+
+Git merges against the last synced snapshot, so only upstream's new changes
+arrive, and they conflict only where bails changed the same lines. Generated
+files (binding goldens, embedded runtime bundles, the setup wizard bundle)
+often conflict; resolve those by regenerating rather than by hand:
+
+```bash
+python3 scripts/upstream-sync/split.py --regenerate .
+```
+
+Keep `split.py` purely mechanical. A bails decision added there would apply
+to `upstream` and blur the line the merges rely on.
 
 ## License
 
