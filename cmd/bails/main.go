@@ -249,7 +249,6 @@ func main() {
 	}
 
 	app.NewSubCommandFunction("version", "Print the version", commands.Version)
-	app.NewSubCommand("sponsor", "Sponsor the project").Action(openSponsor)
 
 	defer printFooter()
 
@@ -276,28 +275,12 @@ func printFooter() {
 		docsLink := term.Hyperlink("https://v3.wails.io/getting-started/your-first-app/", "bails docs")
 
 		pterm.Println(pterm.LightGreen("\nNeed documentation? Run: ") + pterm.LightBlue(docsLink))
-		// Check if we're in a teminal
-		printer := pterm.PrefixPrinter{
-			MessageStyle: pterm.NewStyle(pterm.FgLightGreen),
-			Prefix: pterm.Prefix{
-				Style: pterm.NewStyle(pterm.FgRed, pterm.BgLightWhite),
-				Text:  "♥ ",
-			},
-		}
-
-		linkText := term.Hyperlink("https://github.com/sponsors/leaanthony", "bails sponsor")
-		printer.Println("If Bails is useful to you or your company, please consider sponsoring the project: " + pterm.LightBlue(linkText))
 	}
 }
 
 func openDocs() error {
 	commands.DisableFooter = true
 	return browser.OpenURL("https://v3.wails.io/getting-started/your-first-app/")
-}
-
-func openSponsor() error {
-	commands.DisableFooter = true
-	return browser.OpenURL("https://github.com/sponsors/leaanthony")
 }
 
 // clir reparses arguments after --. Remove application arguments before giving

@@ -114,10 +114,6 @@ function Sidebar({ currentStep, dockerStatus, buildingDocker, progress }: {
     { key: 'complete' as const, label: 'Complete' },
   ];
 
-  const handleSponsorClick = () => {
-    window.open('https://github.com/sponsors/leaanthony', '_blank', 'noopener,noreferrer');
-  };
-
   const handleReportBug = async () => {
     try {
       const { reportBug } = await import('./api');
@@ -235,15 +231,6 @@ function Sidebar({ currentStep, dockerStatus, buildingDocker, progress }: {
         >
           <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-          </svg>
-        </button>
-        <button
-          onClick={handleSponsorClick}
-          className="p-1 hover:opacity-70 transition-opacity focus:outline-hidden focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 rounded"
-          aria-label="Sponsor Bails on GitHub"
-        >
-          <svg className="w-4 h-4 text-red-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
           </svg>
         </button>
         <button
