@@ -53,7 +53,7 @@ ENV GOARCH=arm64
 # Set working directory
 WORKDIR /build
 
-# Copy the entire v3 directory structure
+# Copy the entire repository
 COPY . /build/
 
 # Create build script for ARM64 native compilation

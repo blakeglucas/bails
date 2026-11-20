@@ -19,11 +19,11 @@ func TestUpdateCLIInstall(t *testing.T) {
 		wantCode                    int
 		force                       bool
 	}{
-		{"failure", "7", "v3.0.0", "v3.0.1", 7, true},
-		{"success", "0", "v3.0.0", "v3.0.1", 0, true},
-		{"stable metadata", "0", "v3.0.0+build", "v3.0.1", 0, false},
-		{"stable metadata to prerelease", "0", "v3.0.0+build", "v3.0.0-beta.1", 0, false},
-		{"stable to prerelease", "0", "v3.0.0", "v3.0.0-beta.1", 0, false},
+		{"failure", "7", "v0.0.0", "v0.0.1", 7, true},
+		{"success", "0", "v0.0.0", "v0.0.1", 0, true},
+		{"stable metadata", "0", "v0.0.0+build", "v0.0.1", 0, false},
+		{"stable metadata to prerelease", "0", "v0.0.0+build", "v0.0.0-beta.1", 0, false},
+		{"stable to prerelease", "0", "v0.0.0", "v0.0.0-beta.1", 0, false},
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			dir := t.TempDir()

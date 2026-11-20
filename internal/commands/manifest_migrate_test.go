@@ -76,7 +76,7 @@ func TestMigrateCommandBoundaryFailuresAreObservable(t *testing.T) {
 		writeDraft:           func(string, string, manifest.Document, []string) error { return nil },
 		loadDraft:            func(string, string, string) (*manifest.Loaded, error) { return &manifest.Loaded{}, nil },
 		publishDraft:         func(string, string) error { return nil },
-		version:              func() string { return "v3.test" },
+		version:              func() string { return "v0.test" },
 	}
 
 	for _, test := range []struct {
@@ -137,7 +137,7 @@ func TestMigrateCommandOutcomeBranchesAreObservable(t *testing.T) {
 		writeDraft:           func(string, string, manifest.Document, []string) error { return nil },
 		loadDraft:            func(string, string, string) (*manifest.Loaded, error) { return &manifest.Loaded{}, nil },
 		publishDraft:         func(string, string) error { return nil },
-		version:              func() string { return "v3.test" },
+		version:              func() string { return "v0.test" },
 	}
 
 	t.Run("invalid migration output", func(t *testing.T) {
@@ -207,7 +207,7 @@ func TestMigrateCommandOutcomeBranchesAreObservable(t *testing.T) {
 		})
 		var report MigrationReport
 		require.NoError(t, json.Unmarshal([]byte(output), &report))
-		assert.Equal(t, "v3.test", report.CompletedBy)
+		assert.Equal(t, "v0.test", report.CompletedBy)
 		require.Len(t, report.Diagnostics, 1)
 		assert.Equal(t, "activated", report.Diagnostics[0].Code)
 	})

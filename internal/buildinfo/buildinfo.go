@@ -20,8 +20,8 @@ type Info struct {
 	// including release artefacts produced by CI. A user running a
 	// tagged `bails.exe` on Windows would therefore see Development=true
 	// even though the Bails source tree is nowhere on their machine.
-	// The downstream effect was a malformed `replace github.com/blakeglucas/bails
-	// => /v3` directive in scaffolded projects, breaking `bails init`
+	// The downstream effect was a malformed `replace github.com/blakeglucas/bails`
+	// directive in scaffolded projects, breaking `bails init`
 	// outright.
 	//
 	// [wdebug.LocalModulePath] is set by the debug package's init() only

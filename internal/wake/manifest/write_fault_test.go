@@ -109,18 +109,18 @@ func TestEjectWriterSelectionAndPublicationErrors(t *testing.T) {
 	called := ""
 	exclusive := func(string, []byte, os.FileMode) error { called = "exclusive"; return nil }
 	replace := func(string, []byte, os.FileMode) error { called = "replace"; return nil }
-	require.NoError(t, ejectWithWriters(root, "", "v3", false, EncodeEjectedYAML, exclusive, replace))
+	require.NoError(t, ejectWithWriters(root, "", "v0", false, EncodeEjectedYAML, exclusive, replace))
 	assert.Equal(t, "exclusive", called)
-	require.NoError(t, ejectWithWriters(root, "", "v3", true, EncodeEjectedYAML, exclusive, replace))
+	require.NoError(t, ejectWithWriters(root, "", "v0", true, EncodeEjectedYAML, exclusive, replace))
 	assert.Equal(t, "replace", called)
 
-	err := ejectWithWriters(root, "", "v3", false, EncodeEjectedYAML, func(string, []byte, os.FileMode) error { return os.ErrExist }, replace)
+	err := ejectWithWriters(root, "", "v0", false, EncodeEjectedYAML, func(string, []byte, os.FileMode) error { return os.ErrExist }, replace)
 	require.ErrorContains(t, err, "--force")
-	err = ejectWithWriters(root, "", "v3", false, EncodeEjectedYAML, func(string, []byte, os.FileMode) error { return errInjectedWrite }, replace)
+	err = ejectWithWriters(root, "", "v0", false, EncodeEjectedYAML, func(string, []byte, os.FileMode) error { return errInjectedWrite }, replace)
 	require.ErrorIs(t, err, errInjectedWrite)
-	err = ejectWithWriters(t.TempDir(), "", "v3", false, EncodeEjectedYAML, exclusive, replace)
+	err = ejectWithWriters(t.TempDir(), "", "v0", false, EncodeEjectedYAML, exclusive, replace)
 	require.Error(t, err)
-	err = ejectWithWriters(root, "", "v3", false, func(Config, string) ([]byte, error) { return nil, errInjectedWrite }, exclusive, replace)
+	err = ejectWithWriters(root, "", "v0", false, func(Config, string) ([]byte, error) { return nil, errInjectedWrite }, exclusive, replace)
 	require.ErrorIs(t, err, errInjectedWrite)
 }
 

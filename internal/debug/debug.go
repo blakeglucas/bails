@@ -9,11 +9,11 @@ import (
 var LocalModulePath = ""
 
 func init() {
-	// Check if .git exists in the relative directory from here: ../../..
+	// Check if .git exists at the repository root, relative to here: ../..
 	// If it does, we are in a local build
-	gitDir := RelativePath("..", "..", "..", ".git")
+	gitDir := RelativePath("..", "..", ".git")
 	if _, err := os.Stat(gitDir); err == nil {
-		modulePath := RelativePath("..", "..", "..")
+		modulePath := RelativePath("..", "..")
 		LocalModulePath, _ = filepath.Abs(modulePath)
 	}
 }

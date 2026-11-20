@@ -14,7 +14,7 @@ func TestGitHubRequestDeadlines(t *testing.T) {
 		run           func()
 	}{
 		{"tags", "[]", func() { _, _ = GetVersionTags() }},
-		{"notes", `{"body":null}`, func() { _, _ = GetReleaseNotes("v3.0.0") }},
+		{"notes", `{"body":null}`, func() { _, _ = GetReleaseNotes("v0.0.0") }},
 	} {
 		for _, tc := range []struct {
 			name              string

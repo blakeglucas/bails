@@ -1524,7 +1524,7 @@ func (w *WebviewWindow) DispatchBailsEvent(event *CustomEvent) {
 //
 // A main-thread emitter is never blocked by it — see enqueueEventJS.
 //
-// Chosen by measurement (v3/tests/event-performance, macOS, 25s runs). Ordering
+// Chosen by measurement (tests/event-performance, macOS, 25s runs). Ordering
 // held at every size, and 5000 ev/s was sustained at every size, so the only
 // thing that moved was tail latency, which grows with depth because an event
 // waits behind whatever is already queued:

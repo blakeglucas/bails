@@ -1,6 +1,6 @@
 # Wake - Go-native Build Systems for Bails
 
-Follow the [repository-wide instructions](../../../AGENTS.md) and the [v3 project guide](../../AGENTS.md). This file adds Wake-specific architecture and development rules for `internal/wake/`.
+This file adds Wake-specific architecture and development rules for `internal/wake/`.
 
 ## Overview
 

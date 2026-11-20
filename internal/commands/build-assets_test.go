@@ -667,7 +667,7 @@ func TestOldFormatPlistMigration(t *testing.T) {
 	}
 
 	// Simulate an older-format Info.plist that still contains raw Go template
-	// directives (as produced by wails v2 / early v3 alpha scaffolding).
+	// directives (as produced by Wails v2 and early alpha scaffolding).
 	// The outer {{if}}…{{end}} blocks are ignored by the XML parser as text
 	// nodes, but the inner <string>{{.Ext}}</string> etc. are parsed as real
 	// string values — those are the stubs the fix must remove.

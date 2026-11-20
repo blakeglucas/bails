@@ -13,7 +13,7 @@ func tagPageClient(tb testing.TB, total int) (*http.Client, *int) {
 	tb.Helper()
 	names := make([]string, total)
 	for i := range names {
-		names[i] = fmt.Sprintf(`{"name":"v3.0.%d"}`, i)
+		names[i] = fmt.Sprintf(`{"name":"v0.0.%d"}`, i)
 	}
 	pages := make(map[int][]string)
 	for _, size := range []int{30, 100} {

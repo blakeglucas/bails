@@ -84,7 +84,7 @@ func Parse(path string) (*ast.Taskfile, error) {
 	}
 
 	if tf.Version != "3" {
-		return nil, fmt.Errorf("wake: unsupported Taskfile version %q in %s (only v3 supported)", tf.Version, path)
+		return nil, fmt.Errorf("wake: unsupported Taskfile version %q in %s (only version 3 is supported)", tf.Version, path)
 	}
 
 	// Normalise an absent task map for migration analysis.

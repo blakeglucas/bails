@@ -16,8 +16,8 @@ func TestRenderNoColour(t *testing.T) {
 		t.Fatal(err)
 	}
 	notes := []string{
-		"# Release Notes for v3.0.0\n## Changes\n\n- Faster startup\n- A **bold** improvement\n\nCode: `hello()`\n",
-		"# Release Notes for v3.0.0\n",
+		"# Release Notes for v0.0.0\n## Changes\n\n- Faster startup\n- A **bold** improvement\n\nCode: `hello()`\n",
+		"# Release Notes for v0.0.0\n",
 	}
 	if len(want) != len(notes) {
 		t.Fatalf("fixture count = %d, want %d", len(want), len(notes))

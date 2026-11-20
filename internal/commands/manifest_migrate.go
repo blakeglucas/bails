@@ -614,7 +614,7 @@ func analyseMigration(root string) (MigrationReport, manifest.Document, error) {
 		classification := migration.Taskfile{File: rel, Role: role}
 		var canonical canonicalDiff
 		if knownStock {
-			// Shipped defaults changed throughout the v3 previews. Exact
+			// Shipped defaults changed throughout the Wails previews. Exact
 			// fingerprints from generated projects are stock, even when their
 			// task AST differs from the defaults compiled into this CLI.
 			classification.Classification = "historical-default"
@@ -1139,7 +1139,7 @@ var legacyTaskNames = map[string]map[string]bool{
 	"linux":   set("build", "build:native", "build:docker", "package", "create:appimage", "create:deb", "create:rpm", "create:aur", "generate:deb", "generate:rpm", "generate:aur", "generate:dotdesktop", "run", "sign:deb", "sign:rpm", "sign:packages"),
 }
 
-// Exact SHA256 fingerprints of generated platform Taskfiles shipped in v3
+// Exact SHA256 fingerprints of generated platform Taskfiles shipped in Wails
 // examples before the manifest cutover. These distinguish historical defaults
 // from user edits without weakening comparison against the current templates.
 var knownStockTaskfiles = map[string]map[string]bool{

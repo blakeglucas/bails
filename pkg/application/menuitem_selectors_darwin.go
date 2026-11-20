@@ -1,4 +1,4 @@
-// File: v3/pkg/application/menuitem_selectors_darwin.go
+// File: pkg/application/menuitem_selectors_darwin.go
 
 //go:build darwin && !server && !purego
 

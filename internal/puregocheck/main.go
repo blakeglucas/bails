@@ -32,7 +32,7 @@ import (
 	"strings"
 )
 
-// The packages that hold purego code, relative to the v3 module root.
+// The packages that hold purego code, relative to the module root.
 var packages = []string{
 	"pkg/application",
 	"pkg/events",
@@ -106,7 +106,7 @@ func run(args []string) int {
 	fs := flag.NewFlagSet("puregocheck", flag.ContinueOnError)
 	tags := fs.String("tags", "", "build tags of the purego build (comma or space separated)")
 	goos := fs.String("goos", runtime.GOOS, "target OS (static mode only; resolve uses the running OS)")
-	root := fs.String("root", ".", "v3 module root")
+	root := fs.String("root", ".", "module root")
 	jsonOut := fs.String("json", "", "write the full report as JSON to this file")
 	girDir := fs.String("gir", "", "GIR directory (e.g. /usr/share/gir-1.0): check symbols against library version floors")
 	floorsFile := fs.String("floors", "", "minimum supported library versions (default internal/puregocheck/floors.json)")

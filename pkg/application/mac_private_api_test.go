@@ -23,7 +23,7 @@ var privateMacAPIReferences = []*regexp.Regexp{
 
 func TestPrivateMacAPIsAreIsolated(t *testing.T) {
 	t.Parallel()
-	// Scan all v3 native and cgo sources, including helpers outside application.
+	// Scan all native and cgo sources, including helpers outside application.
 	err := filepath.WalkDir("../..", func(path string, entry os.DirEntry, err error) error {
 		if err != nil {
 			return err

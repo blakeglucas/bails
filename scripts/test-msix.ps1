@@ -8,7 +8,7 @@ $repo = (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
 New-Item -ItemType Directory -Force $WorkDir | Out-Null
 $WorkDir = (Resolve-Path $WorkDir).Path
 $oldPath = $env:PATH
-Push-Location (Join-Path $repo 'v3')
+Push-Location $repo
 try {
     go build -o (Join-Path $WorkDir 'bails.exe') ./cmd/bails
     if ($LASTEXITCODE -ne 0) { throw 'CLI build failed' }

@@ -52,7 +52,7 @@ tasks:
   build:docker:
     summary: Builds a Docker image for deployment
     desc: |
-      Builds from v3 root to include local server mode code.
+      Builds from the repo root to include local server mode code.
       After server mode is published, can build from example dir directly.
     dir: ../..
     cmds:

@@ -177,12 +177,12 @@ func TestToolVersion(t *testing.T) {
 			expectedError:  true,
 		},
 		{
-			name: "Bump prerelease version for issue example v3.0.0-alpha.5",
+			name: "Bump prerelease version",
 			options: ToolVersionOptions{
-				Version:    "v3.0.0-alpha.5",
+				Version:    "v0.1.0-alpha.5",
 				Prerelease: true,
 			},
-			expectedOutput: "v3.0.0-alpha.6",
+			expectedOutput: "v0.1.0-alpha.6",
 			expectedError:  false,
 		},
 	}

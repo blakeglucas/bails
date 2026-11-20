@@ -5,9 +5,17 @@ import (
 	"strings"
 
 	"github.com/blakeglucas/bails/internal/semver"
+	"github.com/blakeglucas/bails/internal/version"
 )
 
-const majorVersion = 3
+// majorVersion is this CLI's release line, taken from version.txt.
+var majorVersion = func() uint64 {
+	v, err := semver.NewVersion(version.LatestStable())
+	if err != nil {
+		return 0
+	}
+	return v.Major
+}()
 
 // SemanticVersion is a struct containing a semantic version
 type SemanticVersion struct {

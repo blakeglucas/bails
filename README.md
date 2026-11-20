@@ -2,7 +2,7 @@
 
 Build desktop and mobile applications using Go and web technologies.
 
-bails is a fork of [Wails](https://wails.io) v3, split into its own project. It
+bails is a fork of [Wails](https://wails.io), split into its own project. It
 keeps Wails' architecture (Go backend, system WebView frontend, generated
 bindings) and adds its own fixes on top.
 
@@ -59,7 +59,7 @@ Android and iOS support is experimental.
 ## Syncing with Wails
 
 `scripts/upstream-sync/split.py` generates this tree from a Wails checkout:
-it copies `v3/`, removes upstream-only material and renames Wails to bails.
+it copies the Wails Go module, removes upstream-only material and renames Wails to bails.
 New files owned by bails, such as this README, live in
 `scripts/upstream-sync/overlay/`. Changes to upstream files live in
 `scripts/upstream-sync/patches/*.patch`: git diffs against the renamed tree,

@@ -8,13 +8,13 @@ import (
 func TestSemanticVersion_IsGreaterThan(t *testing.T) {
 	is2 := require.New(t)
 
-	alpha1, err := NewSemanticVersion("v3.0.0-alpha.1")
+	alpha1, err := NewSemanticVersion("v0.0.0-alpha.1")
 	is2.NoError(err)
 
-	beta1, err := NewSemanticVersion("v3.0.0-beta.1")
+	beta1, err := NewSemanticVersion("v0.0.0-beta.1")
 	is2.NoError(err)
 
-	v2, err := NewSemanticVersion("v3.0.0")
+	v2, err := NewSemanticVersion("v0.0.0")
 	is2.NoError(err)
 
 	is2.True(alpha1.IsPreRelease())
@@ -47,12 +47,12 @@ func TestReleaseShapes(t *testing.T) {
 		v                       string
 		weekly, hotfix, nightly bool
 	}{
-		{"v3.0.0", true, false, false},
-		{"v3.1.0", true, false, false},
-		{"v3.1.1", false, true, false},
-		{"v3.2.0-nightly.20261102", false, false, true},
-		{"v3.2.0-nightly.20261102.1", false, false, true},
-		{"v3.0.0-beta.34", false, false, false},
+		{"v0.0.0", true, false, false},
+		{"v0.1.0", true, false, false},
+		{"v0.1.1", false, true, false},
+		{"v0.2.0-nightly.20261102", false, false, true},
+		{"v0.2.0-nightly.20261102.1", false, false, true},
+		{"v0.0.0-beta.34", false, false, false},
 		{"v2.12.0", false, false, false},
 	}
 	for _, c := range cases {
@@ -65,8 +65,8 @@ func TestReleaseShapes(t *testing.T) {
 		}
 	}
 	// Go @latest simulation: the newest release must beat every nightly of itself and earlier.
-	w, _ := NewSemanticVersion("v3.1.0")
-	n, _ := NewSemanticVersion("v3.1.0-nightly.20261031")
+	w, _ := NewSemanticVersion("v0.1.0")
+	n, _ := NewSemanticVersion("v0.1.0-nightly.20261031")
 	if ok, _ := w.IsGreaterThan(n); !ok {
 		t.Error("weekly must sort above its nightlies")
 	}
@@ -77,10 +77,10 @@ func TestSemanticVersionReleaseClassification(t *testing.T) {
 		input               string
 		release, prerelease bool
 	}{
-		{"v3.0.0", true, false},
-		{"v3.0.0+build.123", true, false},
-		{"v3.0.0+nightly", true, false},
-		{"v3.0.0-beta.1+build.123", false, true},
+		{"v0.0.0", true, false},
+		{"v0.0.0+build.123", true, false},
+		{"v0.0.0+nightly", true, false},
+		{"v0.0.0-beta.1+build.123", false, true},
 		{"v2.0.0+build.123", false, false},
 	} {
 		t.Run(tc.input, func(t *testing.T) {

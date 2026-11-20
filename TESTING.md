@@ -14,7 +14,6 @@ The testing system ensures all Bails examples build successfully across all supp
 The testing infrastructure is organized in a dedicated test directory:
 
 ```bash
-v3/
 ├── test/
 │   └── docker/
 │       ├── Dockerfile.linux-arm64    # ARM64 native compilation
@@ -38,7 +37,7 @@ GTK4/WebKitGTK 6.0 and the `gtk3` variant build with `CGO_ENABLED=0`, including
 Linux arm64 cross-compilation. Without the tag, `CGO_ENABLED=1` builds the cgo
 reference backend.
 
-From `v3/`, with the GTK/WebKit runtime libraries installed:
+From the repository root, with the GTK/WebKit runtime libraries installed:
 
 ```bash
 CGO_ENABLED=0 go test -tags purego ./internal/assetserver/webview ./pkg/application ./internal/puregogen
@@ -147,7 +146,7 @@ examples/badge/testbuild-badge-linux-x86_64
 
 ## Validation Status
 
-### ✅ **Bails v3.0.0 Testing**
+### ✅ **Bails Testing**
 - **Total Examples**: 43 examples fully tested
 - **macOS**: ✅ All examples compile successfully (100%)
 - **Windows**: ✅ All examples cross-compile successfully (100%)
@@ -369,12 +368,6 @@ task test:examples           # Current platform only (43 builds)
 
 ### Common Issues and Fixes
 
-#### **Go Module Resolution Errors**
-```bash
-Error: replacement directory ../bails/v3 does not exist
-```
-**Solution**: All examples now use standardized `replace github.com/blakeglucas/bails => ../..`
-
 #### **Frontend Asset Embedding Errors**
 ```bash
 Error: pattern frontend/dist: no matching files found
@@ -395,14 +388,14 @@ Some examples may show compatibility warnings (e.g., notifications using macOS 1
 #### **Parallel Builds**
 ```bash
 # The task system automatically runs builds in parallel where possible
-task v3:test:examples:all    # Optimized for maximum throughput
+task test:examples:all    # Optimized for maximum throughput
 ```
 
 #### **Selective Testing**
 ```bash
 # Test specific examples to debug issues
-task v3:test:example:darwin DIR=badge
-task v3:test:example:windows DIR=contextmenus
+task test:example:darwin DIR=badge
+task test:example:windows DIR=contextmenus
 ```
 
 ### Performance Tips
@@ -410,9 +403,9 @@ task v3:test:example:windows DIR=contextmenus
 **Parallel Builds:**
 ```bash
 # Build multiple examples simultaneously
-task v3:test:example:darwin DIR=badge &
-task v3:test:example:darwin DIR=binding &
-task v3:test:example:darwin DIR=build &
+task test:example:darwin DIR=badge &
+task test:example:darwin DIR=binding &
+task test:example:darwin DIR=build &
 wait
 ```
 
@@ -466,7 +459,7 @@ find examples -name "testbuild-*" -delete
 
 ## Changelog
 
-### v3.0.0-alpha (2025-06-20)
+### 2025-06-20
 #### 🎯 Complete Cross-Platform Testing System
 
 #### **✨ New Features**

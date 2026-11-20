@@ -2,7 +2,7 @@
 
 This probe exercises the Bails application path for issue [#5963](https://github.com/wailsapp/wails/issues/5963), including the shared `webViewAssetRequest` wrapper. It launches hidden WebView2 windows and a loopback HTTP control server, runs for 15 seconds, writes `request-cancellation-results.json` and `native.log`, and exits nonzero on a failed assertion.
 
-Build from `v3`:
+Build from the repository root:
 
 ```sh
 go build -o cancellation-probe.exe ./pkg/application/testdata/request-cancellation

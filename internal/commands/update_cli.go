@@ -18,7 +18,7 @@ type UpdateCLIOptions struct {
 	NoColour   bool   `name:"n" description:"Disable colour output"`
 	PreRelease bool   `name:"pre" description:"Update to the newest build of any kind, including nightlies"`
 	Nightly    bool   `name:"nightly" description:"Update to the newest nightly pre-release"`
-	Version    string `name:"version" description:"Update to a specific version (eg v3.0.0)"`
+	Version    string `name:"version" description:"Update to a specific version"`
 	Latest     bool   `name:"latest" description:"Install the newest release (weekly or hotfix, no nightlies)"`
 }
 
@@ -31,8 +31,7 @@ func UpdateCLI(options *UpdateCLIOptions) error {
 
 	// Check if this CLI has been installed from vcs
 	if debug.LocalModulePath != "" && !options.Latest {
-		v3Path := filepath.ToSlash(debug.LocalModulePath + "/v3")
-		term.Println("This Bails CLI has been installed from source. To update to the latest stable release, run the following commands in the `" + v3Path + "` directory:")
+		term.Println("This Bails CLI has been installed from source. To update to the latest stable release, run the following commands in the `" + filepath.ToSlash(debug.LocalModulePath) + "` directory:")
 		term.Println("   - git pull")
 		term.Println("   - bails task install")
 		term.Println("")

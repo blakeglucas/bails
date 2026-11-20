@@ -22,7 +22,7 @@ tasks:
       - mkdir -p {{.TEMPLATE_DIR}}
 
   install-runtime:
-    desc: Install this checkout's @bails/runtime into an app's frontend. Call with `task v3:install-runtime -- ./path/to/app/frontend`
+    desc: Install this checkout's @bails/runtime into an app's frontend. Call with `task install-runtime -- ./path/to/app/frontend`
     summary: |
       Installs the runtime package from this working tree into an application's
       frontend, replacing the published npm version.
@@ -44,7 +44,7 @@ tasks:
           set -eu
           TARGET="{{.CLI_ARGS}}"
           if [ -z "$TARGET" ]; then
-            echo "usage: task v3:install-runtime -- <path to your app's frontend directory>"
+            echo "usage: task install-runtime -- <path to your app's frontend directory>"
             exit 1
           fi
           if [ ! -f "$TARGET/package.json" ]; then

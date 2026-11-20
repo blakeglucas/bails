@@ -1,4 +1,4 @@
-# v3
+# Examples
 
 *NOTE*: The examples in this directory may or may not compile / run at any given time during alpha development.
 

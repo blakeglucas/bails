@@ -92,7 +92,7 @@ func stackImporter(fset *token.FileSet, tags []string) types.Importer {
 
 // checkStackPackage type-checks one package (its purego-selected files) and
 // classifies every call that places arguments on the stack.
-// checkStackPackage classifies the calls of one package. root is the v3 module
+// checkStackPackage classifies the calls of one package. root is the module
 // root, so that reported positions are relative to it.
 func checkStackPackage(fset *token.FileSet, imp types.Importer, root string, files []*ast.File) stackResult {
 	var res stackResult

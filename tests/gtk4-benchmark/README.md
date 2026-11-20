@@ -10,7 +10,7 @@ Build both versions:
 # Build GTK4 version (default)
 go build -o benchmark-gtk4 .
 
-# Build GTK3 version (legacy, opt-in via -tags gtk3, removed in v3.1)
+# Build GTK3 version (legacy, opt-in via -tags gtk3)
 go build -tags gtk3 -o benchmark-gtk3 .
 ```
 

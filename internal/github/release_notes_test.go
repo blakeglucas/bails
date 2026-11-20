@@ -14,8 +14,8 @@ func TestReleaseNotesResponses(t *testing.T) {
 		want    string
 		wantErr bool
 	}{
-		{"success", 200, `{"body":"Useful release notes"}`, "# Release Notes for v3.0.0\nUseful release notes", false},
-		{"empty_body", 200, `{"body":""}`, "# Release Notes for v3.0.0\n", false},
+		{"success", 200, `{"body":"Useful release notes"}`, "# Release Notes for v0.0.0\nUseful release notes", false},
+		{"empty_body", 200, `{"body":""}`, "# Release Notes for v0.0.0\n", false},
 		{"missing_release", 404, `{"message":"Not Found"}`, "No release notes found", true},
 		{"rate_limit", 403, `{"message":"API rate limit exceeded"}`, "HTTP 403 (Forbidden)", true},
 		{"too_many_requests", 429, `{"message":"Too many requests"}`, "HTTP 429 (Too Many Requests)", true},
@@ -31,12 +31,12 @@ func TestReleaseNotesResponses(t *testing.T) {
 			t.Cleanup(func() { http.DefaultClient = previous })
 			body := &trackedResponseBody{Reader: strings.NewReader(tc.payload)}
 			http.DefaultClient = &http.Client{Transport: tagTransport(func(r *http.Request) (*http.Response, error) {
-				if got := r.URL.String(); got != "https://api.github.com/repos/blakeglucas/bails/releases/tags/v3.0.0" {
+				if got := r.URL.String(); got != "https://api.github.com/repos/blakeglucas/bails/releases/tags/v0.0.0" {
 					t.Errorf("unexpected request: %s", got)
 				}
 				return &http.Response{StatusCode: tc.status, Body: body, Header: make(http.Header)}, nil
 			})}
-			got, err := GetReleaseNotes("v3.0.0")
+			got, err := GetReleaseNotes("v0.0.0")
 			if (err != nil) != tc.wantErr {
 				t.Fatalf("error = %v, want error %v", err, tc.wantErr)
 			}

@@ -22,8 +22,8 @@ func TestVersionTagSelection(t *testing.T) {
 			t.Errorf("unexpected request: %s", r.URL)
 		}
 		return &http.Response{StatusCode: http.StatusOK, Body: io.NopCloser(strings.NewReader(`[
-			{"name":"v2.99.0"}, {"name":"v3.0.0-beta.2"}, {"name":"v3.0.0"},
-			{"name":"v3.1.0-beta.1"}, {"name":"v30.0.0"}, {"name":"v3.0.1"}
+			{"name":"v1.99.0"}, {"name":"v0.0.0-beta.2"}, {"name":"v0.0.0"},
+			{"name":"v0.1.0-beta.1"}, {"name":"v30.0.0"}, {"name":"v0.0.1"}
 		]`)), Header: make(http.Header)}, nil
 	})}
 
@@ -31,7 +31,7 @@ func TestVersionTagSelection(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	want := []string{"3.1.0-beta.1", "3.0.1", "3.0.0", "3.0.0-beta.2"}
+	want := []string{"0.1.0-beta.1", "0.0.1", "0.0.0", "0.0.0-beta.2"}
 	if len(tags) != len(want) {
 		t.Fatalf("got %d tags, want %d: %v", len(tags), len(want), tags)
 	}
@@ -41,20 +41,20 @@ func TestVersionTagSelection(t *testing.T) {
 		}
 	}
 	stable, err := GetLatestStableRelease()
-	if err != nil || stable == nil || stable.String() != "3.0.1" {
+	if err != nil || stable == nil || stable.String() != "0.0.1" {
 		t.Errorf("latest stable=%v, error=%v", stable, err)
 	}
 	pre, err := GetLatestPreRelease()
-	if err != nil || pre == nil || pre.String() != "3.1.0-beta.1" {
+	if err != nil || pre == nil || pre.String() != "0.1.0-beta.1" {
 		t.Errorf("latest prerelease=%v, error=%v", pre, err)
 	}
-	valid, err := IsValidTag("v3.0.1")
+	valid, err := IsValidTag("v0.0.1")
 	if err != nil || !valid {
-		t.Errorf("v3 tag rejected: valid=%t, error=%v", valid, err)
+		t.Errorf("release-line tag rejected: valid=%t, error=%v", valid, err)
 	}
-	valid, err = IsValidTag("v2.99.0")
+	valid, err = IsValidTag("v1.99.0")
 	if err != nil || valid {
-		t.Errorf("v2 tag accepted: valid=%t, error=%v", valid, err)
+		t.Errorf("other major version accepted: valid=%t, error=%v", valid, err)
 	}
 }
 
@@ -67,14 +67,14 @@ func TestVersionTagsPagination(t *testing.T) {
 			t.Errorf("page size missing from request: %s", r.URL)
 		}
 		header := make(http.Header)
-		payload := `[{"name":"v3.1.0-beta.2"}]`
+		payload := `[{"name":"v0.1.0-beta.2"}]`
 		if len(bodies) == 0 {
 			header.Set("Link", `<https://api.github.com/repos/blakeglucas/bails/tags?page=2>; rel="next"`)
 		} else {
 			if r.URL.Query().Get("page") != "2" {
 				t.Errorf("second page URL=%s", r.URL)
 			}
-			payload = `[{"name":"v3.0.1"},{"name":"v3.1.0-beta.3"}]`
+			payload = `[{"name":"v0.0.1"},{"name":"v0.1.0-beta.3"}]`
 			header.Set("Link", `<https://api.github.com/repos/blakeglucas/bails/tags?page=1>; rel="prev"`)
 		}
 		body := &trackedResponseBody{Reader: strings.NewReader(payload)}
@@ -82,7 +82,7 @@ func TestVersionTagsPagination(t *testing.T) {
 		return &http.Response{StatusCode: http.StatusOK, Body: body, Header: header}, nil
 	})}
 	tags, err := GetVersionTags()
-	if err != nil || len(tags) != 3 || tags[0].String() != "3.1.0-beta.3" || tags[2].String() != "3.0.1" {
+	if err != nil || len(tags) != 3 || tags[0].String() != "0.1.0-beta.3" || tags[2].String() != "0.0.1" {
 		t.Fatalf("paginated tags=%v, error=%v", tags, err)
 	}
 	if len(bodies) != 2 {
@@ -104,7 +104,7 @@ func TestVersionTagsRejectHTTPFailures(t *testing.T) {
 		{http.StatusTooManyRequests, strings.NewReader(`{"message":"Too many requests"}`)},
 		{http.StatusInternalServerError, strings.NewReader("<html>Server error</html>")},
 		{http.StatusServiceUnavailable, iotest.ErrReader(errors.New("body read failed"))},
-		{http.StatusBadGateway, strings.NewReader(`[{"name":"v3.0.0"}]`)},
+		{http.StatusBadGateway, strings.NewReader(`[{"name":"v0.0.0"}]`)},
 	}
 	for _, tc := range cases {
 		t.Run(http.StatusText(tc.status), func(t *testing.T) {
@@ -144,8 +144,8 @@ func TestGitHubResponsesClose(t *testing.T) {
 		name, response string
 		run            func()
 	}{
-		{"tags", `[{"name":"v3.0.0"}]`, func() { _, _ = GetVersionTags() }},
-		{"notes", `{"body":"release notes"}`, func() { _, _ = GetReleaseNotes("v3.0.0") }},
+		{"tags", `[{"name":"v0.0.0"}]`, func() { _, _ = GetVersionTags() }},
+		{"notes", `{"body":"release notes"}`, func() { _, _ = GetReleaseNotes("v0.0.0") }},
 	}
 	for _, api := range apis {
 		cases := []struct {
@@ -207,7 +207,7 @@ func TestVersionTagsUseLargerPages(t *testing.T) {
 		t.Fatalf("tags=%d, requests=%d; want 245, 3", len(tags), *calls)
 	}
 	for i, tag := range tags {
-		want := fmt.Sprintf("3.0.%d", 244-i)
+		want := fmt.Sprintf("0.0.%d", 244-i)
 		if tag.String() != want {
 			t.Errorf("tag[%d]=%s, want %s", i, tag, want)
 		}
@@ -217,14 +217,14 @@ func TestVersionTagsUseLargerPages(t *testing.T) {
 func TestLatestStableRejectsEmptyVersionSuffix(t *testing.T) {
 	previousClient := http.DefaultClient
 	t.Cleanup(func() { http.DefaultClient = previousClient })
-	for _, tag := range []string{"v3.99.0-", "v3.99.0+", "v3.99.0-+build", "v3.99.0-beta+"} {
+	for _, tag := range []string{"v0.99.0-", "v0.99.0+", "v0.99.0-+build", "v0.99.0-beta+"} {
 		t.Run(tag, func(t *testing.T) {
 			http.DefaultClient = &http.Client{Transport: tagTransport(func(*http.Request) (*http.Response, error) {
-				body := fmt.Sprintf(`[{"name":%q},{"name":"v3.0.0"}]`, tag)
+				body := fmt.Sprintf(`[{"name":%q},{"name":"v0.0.0"}]`, tag)
 				return &http.Response{StatusCode: http.StatusOK, Body: io.NopCloser(strings.NewReader(body)), Header: make(http.Header)}, nil
 			})}
 			version, err := GetLatestStableRelease()
-			if err != nil || version == nil || version.String() != "3.0.0" {
+			if err != nil || version == nil || version.String() != "0.0.0" {
 				t.Fatalf("malformed tag %q returned version=%v, error=%v", tag, version, err)
 			}
 		})

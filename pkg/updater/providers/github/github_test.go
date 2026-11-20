@@ -158,7 +158,7 @@ func TestCheck_Prerelease_SkipsDrafts(t *testing.T) {
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		paths = append(paths, r.URL.Path+"?"+r.URL.RawQuery)
 		fmt.Fprintf(w, `[
-		  {"tag_name": "v3.0.0-draft", "draft": true, "prerelease": true, "published_at": "2026-04-01T10:00:00Z", "assets": []},
+		  {"tag_name": "v0.0.0-draft", "draft": true, "prerelease": true, "published_at": "2026-04-01T10:00:00Z", "assets": []},
 		  `+sampleReleaseJSON+`
 		]`, host, host, host)
 	}))

@@ -1,6 +1,6 @@
 # Non-activating NSPanel manual test
 
-Run on macOS from `v3`:
+Run on macOS from the repository root:
 
 ```sh
 go run ./test/manual/macos/non-activating-panel

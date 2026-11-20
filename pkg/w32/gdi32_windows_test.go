@@ -15,7 +15,7 @@ import (
 // GetStockObject called procGetDeviceCaps instead of procGetStockObject, even
 // though procGetStockObject was declared alongside it. GetDeviceCaps expects
 // (HDC, index); handing it a stock-object constant as the HDC returns 0, so
-// GetStockObject returned 0 for every input. It had no callers in v3, which is
+// GetStockObject returned 0 for every input. It had no callers, which is
 // why the bug survived.
 //
 // This test fails on the pre-fix code, where every call returns 0. It runs on

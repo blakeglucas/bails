@@ -2298,7 +2298,7 @@ func (w *windowsWebviewWindow) resyncWebviewRasterizationScale() bool {
 	// controller entirely when the DPI is unchanged. The GetController nil
 	// check below covers the early-initialisation / unavailable-controller
 	// window. (A chromium.IsReady() guard was considered, but that method is
-	// not in the released webview2 module v3 depends on, so it cannot be used
+	// not in the released webview2 module this module depends on, so it cannot be used
 	// here yet.)
 	controller := w.chromium.GetController()
 	if controller == nil {

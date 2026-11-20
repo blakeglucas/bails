@@ -1,6 +1,6 @@
 # Single Instance Example
 
-This example demonstrates the single instance functionality in Bails v3. It shows how to:
+This example demonstrates the single instance functionality in Bails. It shows how to:
 
 1. Ensure only one instance of your application can run at a time
 2. Notify the first instance when a second instance is launched

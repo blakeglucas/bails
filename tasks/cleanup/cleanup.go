@@ -104,7 +104,7 @@ func (pattern CleanupPattern) matches(root, path string, entry os.DirEntry) (boo
 		return false, err
 	}
 	directory := filepath.Dir(relative)
-	return directory == filepath.Join("internal", "commands") || directory == filepath.Join("v3", "internal", "commands"), nil
+	return directory == filepath.Join("internal", "commands"), nil
 }
 
 func (pattern CleanupPattern) matchesName(name string) bool {

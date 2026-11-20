@@ -80,7 +80,7 @@ func TestParseTemplate_YAML_WrongBailsVersion(t *testing.T) {
 func TestParseTemplate_JSON_Schema3_BackwardsCompat(t *testing.T) {
 	fsys := fstest.MapFS{
 		"template.json": &fstest.MapFile{
-			Data: []byte(`{"name":"Old","shortname":"old","author":"Me","description":"Old v3","version":"v0.0.1","schema":3}`),
+			Data: []byte(`{"name":"Old","shortname":"old","author":"Me","description":"Old","version":"v0.0.1","schema":3}`),
 		},
 	}
 	tmpl, err := parseTemplate(fsys, "")
@@ -338,9 +338,9 @@ func TestSplitTemplateURI(t *testing.T) {
 
 func TestRuntimeVersionFor(t *testing.T) {
 	cases := map[string]string{
-		"v3.1.0":                  "3.1.0",
-		"v3.2.0-nightly.20261102": "3.2.0-nightly.20261102",
-		"v3.0.0-beta.34":          "3.0.0-beta.34",
+		"v0.1.0":                  "0.1.0",
+		"v0.2.0-nightly.20261102": "0.2.0-nightly.20261102",
+		"v0.0.0-beta.34":          "0.0.0-beta.34",
 		"v0.0.0-dev":              "latest",
 		"":                        "latest",
 	}
@@ -383,7 +383,7 @@ func TestTemplatesPinRuntimeToCLIVersion(t *testing.T) {
 
 // Rendering a template through the real generator produces an exact pin.
 func TestInstalledTemplatePinsRuntime(t *testing.T) {
-	data := TemplateOptions{RuntimeVersion: RuntimeVersionFor("v3.1.0")}
+	data := TemplateOptions{RuntimeVersion: RuntimeVersionFor("v0.1.0")}
 	raw, err := templates.ReadFile("vanilla/frontend/package.json.tmpl")
 	if err != nil {
 		t.Fatal(err)
@@ -396,7 +396,7 @@ func TestInstalledTemplatePinsRuntime(t *testing.T) {
 	if err := tpl.Execute(&sb, data); err != nil {
 		t.Fatal(err)
 	}
-	if !strings.Contains(sb.String(), `"@bails/runtime": "3.1.0"`) {
+	if !strings.Contains(sb.String(), `"@bails/runtime": "0.1.0"`) {
 		t.Errorf("rendered package.json:\n%s", sb.String())
 	}
 }

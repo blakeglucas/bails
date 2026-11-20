@@ -135,7 +135,7 @@ executor; it has been removed.
 
 ## Verification
 
-Run from `v3/`:
+Run from the repository root:
 
 ```bash
 go test ./internal/wake/... ./internal/commands ./cmd/bails

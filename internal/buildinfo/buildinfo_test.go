@@ -19,7 +19,7 @@ func TestGet(t *testing.T) {
 // git checkout. CI-built release artefacts carry `vcs=git` in their build
 // metadata, so the old "Development = (vcs == git)" heuristic produced a
 // false positive on every user's machine and broke `bails init` by
-// emitting a stray `replace ... => /v3` in the scaffolded go.mod.
+// emitting a stray `replace` directive in the scaffolded go.mod.
 //
 // These tests pin the new semantics in place: Development tracks
 // wdebug.LocalModulePath, and nothing else.

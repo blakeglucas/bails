@@ -59,9 +59,9 @@ func GetReleaseNotes(tagVersion string) (string, error) {
 	return "# Release Notes for " + tagVersion + "\n" + *data.Body, nil
 }
 
-// GetVersionTags gets the v3 release tags of the Bails repo, sorted in
-// descending semver order. It pages through the tags API (100 per page, up to
-// 10 pages) and ignores tags that are not v3 semver tags (v2.*, stray tags).
+// GetVersionTags gets the release tags of the Bails repo in this CLI's major
+// version line, sorted in descending semver order. It pages through the tags
+// API (100 per page, up to 10 pages) and ignores other lines and stray tags.
 func GetVersionTags() ([]*SemanticVersion, error) {
 	result := []*SemanticVersion{}
 
@@ -90,7 +90,7 @@ func GetVersionTags() ([]*SemanticVersion, error) {
 
 		for _, tag := range data {
 			name, _ := tag["name"].(string)
-			if !strings.HasPrefix(name, "v3.") {
+			if !strings.HasPrefix(name, releaseLine()) {
 				continue
 			}
 			semver, err := NewSemanticVersion(name)
@@ -172,3 +172,6 @@ func IsValidTag(tagVersion string) (bool, error) {
 	}
 	return false, nil
 }
+
+// releaseLine is the tag prefix of this CLI's major version, e.g. "v0.".
+func releaseLine() string { return fmt.Sprintf("v%d.", majorVersion) }

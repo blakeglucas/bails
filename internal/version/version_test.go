@@ -14,10 +14,10 @@ func TestStringTrimsEmbeddedVersionWhitespace(t *testing.T) {
 		debug.LocalModulePath = originalModulePath
 	})
 
-	versionString = "v3.0.0-beta.1\r\n"
+	versionString = "v0.1.0-beta.1\r\n"
 	debug.LocalModulePath = ""
 
-	if got := String(); got != "v3.0.0-beta.1" {
-		t.Errorf("String() = %q, want %q", got, "v3.0.0-beta.1")
+	if got := String(); got != "v0.1.0-beta.1" {
+		t.Errorf("String() = %q, want %q", got, "v0.1.0-beta.1")
 	}
 }

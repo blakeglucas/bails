@@ -224,9 +224,9 @@ type Template struct {
 
 // parseTemplate loads and validates a template's metadata.
 //
-// It first looks for template.yaml (the v3 native format). If found, bailsVersion
+// It first looks for template.yaml (the native format). If found, bailsVersion
 // must be present and equal to 3. If only template.json exists (legacy format),
-// schema must be 3 for a v3 template; schema 0 means the template is for Wails v2.
+// schema must be 3; schema 0 means the template is for Wails v2.
 func parseTemplate(templateFS fs.FS, templateName string) (Template, error) {
 	var result Template
 
@@ -235,7 +235,7 @@ func parseTemplate(templateFS fs.FS, templateName string) (Template, error) {
 		prefix = templateName + "/"
 	}
 
-	// --- YAML path: preferred v3 format ---
+	// --- YAML path: preferred format ---
 	yamlData, yamlErr := fs.ReadFile(templateFS, prefix+"template.yaml")
 	if yamlErr == nil {
 		if err := yaml.Unmarshal(yamlData, &result); err != nil {
@@ -272,7 +272,7 @@ func parseTemplate(templateFS fs.FS, templateName string) (Template, error) {
 		return result, fmt.Errorf("template not supported by Bails: no schema or bailsVersion found. This template is probably for Wails v2")
 	}
 	if result.Schema != 3 {
-		return result, fmt.Errorf("template schema %d is not supported by Bails v3. Ensure 'schema' is set to 3 in template.json", result.Schema)
+		return result, fmt.Errorf("template schema %d is not supported by Bails. Ensure 'schema' is set to 3 in template.json", result.Schema)
 	}
 
 	return result, nil

@@ -47,7 +47,7 @@ func (n *Nixpkgs) Packages() Packagemap {
 		"webkitgtk-6.0": []*Package{
 			{Name: channel + ".webkitgtk_6_0", SystemPackage: true, Library: true},
 		},
-		// GTK3 + WebKitGTK 4.1 (legacy - opt-in via -tags gtk3, scheduled for removal in v3.1)
+		// GTK3 + WebKitGTK 4.1 (legacy - opt-in via -tags gtk3)
 		"gtk3 (legacy)": []*Package{
 			{Name: channel + ".gtk3", SystemPackage: true, Library: true, Optional: true},
 		},

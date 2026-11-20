@@ -302,7 +302,7 @@ func findGTKFilesInRoots(roots []string, files []string) ([]string, error) {
 // This is common on modern Linux distributions (Arch, Fedora 39+, Ubuntu 24.04+).
 func hasRelrDynSections() bool {
 	// Check common GTK libraries that will be bundled. We probe both the
-	// GTK4 (default since v3.0.0-alpha.93) and GTK3 (legacy `-tags gtk3`)
+	// GTK4 (default) and GTK3 (legacy `-tags gtk3`)
 	// libraries because either may be present depending on the build.
 	testLibs := []string{
 		// GTK4

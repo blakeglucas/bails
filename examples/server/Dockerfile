@@ -1,7 +1,7 @@
 # Bails Server Mode Dockerfile
 # Multi-stage build for minimal image size
 #
-# BUILD FROM v3 ROOT (to use local code before server mode is published):
+# BUILD FROM REPO ROOT (to use local code before server mode is published):
 #   docker build -t server-example -f examples/server/Dockerfile .
 #
 # BUILD FROM EXAMPLE DIR (after server mode is published):
@@ -19,14 +19,14 @@ RUN apk add --no-cache git
 COPY . .
 
 # If building from example dir, remove replace directive
-# If building from v3 root, this is a no-op
+# If building from the repo root, this is a no-op
 RUN sed -i '/^replace/d' go.mod 2>/dev/null || true
 
 # Download dependencies
 RUN go mod tidy
 
 # Build the server binary and prepare assets
-# When building from v3 root, change to example dir
+# When building from the repo root, change to example dir
 RUN if [ -d "examples/server" ]; then \
       cd examples/server && go build -tags server -ldflags="-s -w" -o /app/server . && \
       cp -r frontend/dist /app/frontend_dist; \

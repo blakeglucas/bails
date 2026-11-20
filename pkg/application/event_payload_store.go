@@ -11,7 +11,7 @@ import (
 // the webview's eval. Above a platform-specific size WebKit switches from inline
 // IPC message data to an out-of-line shared-memory transfer, and one of the two
 // processes then retains those regions for as long as the app keeps emitting.
-// Measured with v3/tests/event-performance:
+// Measured with tests/event-performance:
 //
 //   - macOS 26.4.1 / WebKit-Cocoa: the retention lands in the HOST process,
 //     visible in vmmap as "owned unmapped" — one region per oversized eval.

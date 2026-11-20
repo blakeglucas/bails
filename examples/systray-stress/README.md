@@ -40,7 +40,7 @@ reach `-iters`, whichever comes first.
 ## Running
 
 ```pwsh
-# From v3/
+# From the repo root
 go build -o harness.exe ./examples/systray-stress
 .\harness.exe -mode churn -duration 30s -churn-gap 10ms -bitmaps
 ```

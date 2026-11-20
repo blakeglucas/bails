@@ -14,10 +14,10 @@ import (
 func TestCleanupScopesArtifacts(t *testing.T) {
 	root := filepath.Join(t.TempDir(), "project.git-data")
 	files := map[string]bool{
-		"internal/commands/myapp.DEB":          false,
-		"internal/commands/myapp.RPM":          false,
-		"internal/commands/myapp.ARCHLINUX":    false,
-		"v3/internal/commands/myapp.DEB":       false,
+		"internal/commands/myapp.DEB":       false,
+		"internal/commands/myapp.RPM":       false,
+		"internal/commands/myapp.ARCHLINUX": false,
+
 		"bin/tool.test":                        false,
 		"bin/testbuild-demo":                   false,
 		"bin/appimage_testfiles":               false,
@@ -45,8 +45,8 @@ func TestCleanupScopesArtifacts(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if count != 8 {
-		t.Fatalf("removed %d items, want 8", count)
+	if count != 7 {
+		t.Fatalf("removed %d items, want 7", count)
 	}
 	for name, keep := range files {
 		_, err := os.Stat(filepath.Join(root, name))

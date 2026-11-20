@@ -26,7 +26,7 @@ func TestUpdateCLIDiscoveryFailures(t *testing.T) {
 		{"network", "", "network unavailable", 0, networkErr},
 		{"rate_limit", `{ "message": "rate limited" }`, "HTTP 403", http.StatusForbidden, nil},
 		{"invalid_json", "{", "unexpected end of JSON input", http.StatusOK, nil},
-		{"no_stable", `[{"name":"v3.0.0-beta.1"}]`, "", http.StatusOK, nil},
+		{"no_stable", `[{"name":"v0.0.0-beta.1"}]`, "", http.StatusOK, nil},
 	}
 	for _, tc := range cases {
 		t.Run(tc.name, func(t *testing.T) {
