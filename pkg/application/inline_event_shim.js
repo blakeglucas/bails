@@ -1,0 +1,67 @@
+// Inline Bails events shim for InitialHTML windows.
+//
+// Pages loaded via WebviewWindowOptions.HTML are served with
+// `window.location.origin === "null"`, so the modern HTTP runtime at
+// /bails/runtime.js can never be imported (fetch fails). This shim
+// installs the minimum subset of the runtime that postMessage-based
+// custom-event traffic needs:
+//
+//   * window._bails.dispatchBailsEvent  — the framework calls this when
+//     the host emits a custom event to the page.
+//   * window.bails.Events.On(name, cb)  — the page subscribes.
+//   * window.bails.Events.Emit(name)    — the page fires a bare-name
+//     event back to the host. Routed through
+//     `window._bails.invoke("bails:event:emit:" + name)` which the
+//     framework forwards if the owning window has
+//     WebviewWindowOptions.AllowSimpleEventEmit set.
+//
+// Once the platform layer has injected window._bails.invoke the shim
+// fires `bails:runtime:ready` so any pending host-side queued events
+// flush. If the modern HTTP runtime later loads it will overwrite
+// window.bails.Events with its richer implementation — that's fine,
+// our subset is the floor not the ceiling.
+//
+// Kept in ES5-compatible syntax (no const/let/arrow) so older WebView
+// engines that may still surface in unusual platform configurations
+// don't fail on parse.
+(function () {
+    var w = window._bails = window._bails || {};
+    if (window.bails && window.bails.Events) {
+        return; // a full runtime is already in scope
+    }
+    var listeners = Object.create(null);
+    w.dispatchBailsEvent = w.dispatchBailsEvent || function (ev) {
+        if (!ev || !ev.name) return;
+        var cbs = listeners[ev.name];
+        if (!cbs) return;
+        for (var i = 0; i < cbs.length; i++) {
+            try { cbs[i](ev); } catch (_) { /* swallow handler errors */ }
+        }
+    };
+    window.bails = window.bails || {};
+    window.bails.Events = {
+        On: function (name, cb) {
+            (listeners[name] = listeners[name] || []).push(cb);
+            return function () {
+                var arr = listeners[name];
+                if (!arr) return;
+                var i = arr.indexOf(cb);
+                if (i >= 0) arr.splice(i, 1);
+            };
+        },
+        Emit: function (eventOrName) {
+            var name = (typeof eventOrName === "string")
+                ? eventOrName
+                : (eventOrName && eventOrName.name);
+            if (!name || typeof w.invoke !== "function") return;
+            w.invoke("bails:event:emit:" + name);
+        },
+    };
+    (function ready() {
+        if (typeof w.invoke === "function") {
+            w.invoke("bails:runtime:ready");
+        } else {
+            setTimeout(ready, 30);
+        }
+    })();
+})();

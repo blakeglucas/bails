@@ -1,0 +1,5 @@
+node_modules
+.task
+*.tsbuildinfo
+desktop/@bails/runtime/dist/
+desktop/@bails/runtime/types/
